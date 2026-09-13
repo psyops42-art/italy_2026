@@ -1,0 +1,1052 @@
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>이탈리아 2026 · 우리 여섯 사람</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#FFFCF4;
+  --paper-2:#FBF4E4;
+  --ink:#243542;
+  --ink-soft:#5E7182;
+  --line:#E7DCC6;
+  --adriatic:#12718F;
+  --adriatic-deep:#0A4E66;
+  --roof:#C0522E;
+  --lemon:#F2B705;
+  --lemon-soft:#FFF0BE;
+  --olive:#6C8A45;
+  --plum:#8B4A6B;
+  --r:14px;
+  --shadow:0 1px 0 var(--line);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-size:15px; line-height:1.65; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.num{font-family:"Fraunces",Georgia,serif;font-variant-numeric:lining-nums;letter-spacing:0}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 120px}
+a{color:var(--adriatic-deep)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2.5px solid var(--adriatic);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- header ---------- */
+header.top{
+  background:linear-gradient(178deg,#FFF8E3 0%,#FFFCF4 70%);
+  border-bottom:1px solid var(--line);
+  padding:18px 0 0;
+  position:relative;overflow:hidden;
+}
+header.top::after{
+  content:"";position:absolute;inset:auto 0 -1px 0;height:3px;
+  background:linear-gradient(90deg,var(--olive) 0 33%,var(--paper) 33% 66%,var(--roof) 66% 100%);
+  opacity:.5;
+}
+.brandrow{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+h1.title{
+  margin:0;font-family:"Fraunces",Georgia,serif;font-weight:500;
+  font-size:30px;line-height:1.05;letter-spacing:-.02em;
+}
+h1.title em{display:block;font-style:normal;font-size:13px;font-family:"Pretendard Variable",Pretendard,sans-serif;
+  font-weight:500;color:var(--ink-soft);letter-spacing:.02em;margin-top:6px}
+.dday{
+  text-align:right;flex:none;
+}
+.dday b{display:block;font-family:"Fraunces",Georgia,serif;font-size:28px;font-weight:600;line-height:1;color:var(--roof)}
+.dday span{font-size:11.5px;color:var(--ink-soft)}
+
+/* day strip */
+.strip{display:flex;gap:8px;overflow-x:auto;padding:16px 16px 14px;margin:0 -16px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.chip{
+  flex:none;width:70px;background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:8px 6px;text-align:center;cursor:pointer;border-bottom-width:3px;
+}
+.chip .d{font-family:"Fraunces",Georgia,serif;font-size:17px;font-weight:600;line-height:1}
+.chip .w{font-size:10.5px;color:var(--ink-soft);margin-top:1px}
+.chip .c{font-size:11px;margin-top:4px;font-weight:600}
+.chip[data-city=roma]{border-bottom-color:var(--roof)}
+.chip[data-city=roma] .c{color:var(--roof)}
+.chip[data-city=sud]{border-bottom-color:var(--adriatic)}
+.chip[data-city=sud] .c{color:var(--adriatic)}
+.chip[data-city=firenze]{border-bottom-color:var(--olive)}
+.chip[data-city=firenze] .c{color:var(--olive)}
+.chip[data-city=toscana]{border-bottom-color:var(--lemon)}
+.chip[data-city=toscana] .c{color:#9A7200}
+.chip.on{background:var(--ink);border-color:var(--ink)}
+.chip.on .d,.chip.on .w,.chip.on .c{color:#FFF8E3}
+
+/* tabs */
+nav.tabs{
+  position:sticky;top:0;z-index:40;background:rgba(255,252,244,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+.tabs-in{display:flex;gap:2px;max-width:760px;margin:0 auto;padding:0 8px;overflow-x:auto;scrollbar-width:none}
+.tabs-in::-webkit-scrollbar{display:none}
+.tab{
+  flex:none;background:none;border:0;padding:13px 11px 11px;font-size:14px;font-weight:600;
+  color:var(--ink-soft);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;
+}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--roof)}
+
+section.pane{display:none;padding-top:20px}
+section.pane.on{display:block}
+
+h2.sec{font-size:13px;font-weight:700;color:var(--ink-soft);margin:26px 0 10px}
+h2.sec:first-child{margin-top:4px}
+
+/* ---------- day card ---------- */
+.day{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  margin-bottom:14px;overflow:hidden;
+}
+.day > summary{
+  list-style:none;cursor:pointer;padding:14px 16px;display:flex;gap:12px;align-items:center;
+}
+.day > summary::-webkit-details-marker{display:none}
+.daynum{
+  flex:none;width:46px;height:46px;border-radius:11px;display:grid;place-content:center;
+  background:var(--paper-2);text-align:center;line-height:1;
+}
+.daynum b{font-family:"Fraunces",Georgia,serif;font-size:17px;font-weight:600;display:block}
+.daynum i{font-style:normal;font-size:9.5px;color:var(--ink-soft);display:block;margin-top:3px}
+.dayhead{flex:1;min-width:0}
+.dayhead h3{margin:0;font-size:16px;font-weight:700;letter-spacing:-.02em}
+.dayhead p{margin:2px 0 0;font-size:12.5px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.caret{flex:none;color:var(--ink-soft);font-size:12px;transition:transform .18s}
+.day[open] .caret{transform:rotate(180deg)}
+.daybody{padding:2px 16px 18px;border-top:1px solid var(--paper-2)}
+
+/* timetable */
+.tt{margin:12px 0 0;padding:0;list-style:none;position:relative}
+.tt::before{content:"";position:absolute;left:52px;top:10px;bottom:10px;width:1.5px;background:var(--line)}
+.tt li{display:flex;gap:14px;padding:7px 0;position:relative}
+.tt time{
+  flex:none;width:44px;text-align:right;font-family:"Fraunces",Georgia,serif;
+  font-size:13px;font-weight:600;color:var(--adriatic-deep);padding-top:1px;
+}
+.tt .dot{
+  position:absolute;left:49px;top:14px;width:8px;height:8px;border-radius:50%;
+  background:#fff;border:2px solid var(--line);
+}
+.tt li.key .dot{background:var(--roof);border-color:var(--roof)}
+.tt li.move .dot{background:var(--adriatic);border-color:var(--adriatic)}
+.tt .what{flex:1;min-width:0;padding-left:10px}
+.tt .what b{font-weight:600;font-size:14.5px}
+.tt .what p{margin:2px 0 0;font-size:12.8px;color:var(--ink-soft);line-height:1.55}
+.tt li.key .what b{color:var(--roof)}
+
+/* boxes */
+.note{border-radius:11px;padding:11px 13px;font-size:13px;line-height:1.6;margin:14px 0 0}
+.note b{display:block;font-size:12px;margin-bottom:4px}
+.note.warn{background:#FFF2EC;border:1px solid #F3D5C7;color:#7E3417}
+.note.warn b{color:var(--roof)}
+.note.tip{background:var(--lemon-soft);border:1px solid #F0DC9C;color:#6C5203}
+.note.tip b{color:#8A6A00}
+.note.cool{background:#EAF5F8;border:1px solid #C8E2EA;color:#0A4E66}
+.note ul{margin:6px 0 0;padding-left:17px}
+.note li{margin:3px 0}
+
+.booked{
+  border:1px solid var(--line);border-left:4px solid var(--olive);border-radius:10px;
+  padding:11px 13px;margin:14px 0 0;background:var(--paper);
+}
+.booked .bk-t{font-size:11px;font-weight:700;color:var(--olive)}
+.booked.pending{border-left-color:var(--lemon)}
+.booked.pending .bk-t{color:#9A7200}
+.booked h4{margin:3px 0 5px;font-size:14px;font-weight:700;line-height:1.4}
+.booked dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12.8px}
+.booked dt{color:var(--ink-soft)}
+.booked dd{margin:0}
+.booked a.go{
+  display:inline-block;margin-top:9px;font-size:12.5px;font-weight:600;text-decoration:none;
+  background:var(--ink);color:#FFF8E3;padding:6px 12px;border-radius:99px;
+}
+
+/* memo */
+.memo{margin-top:14px}
+.memo label{font-size:11.5px;font-weight:700;color:var(--ink-soft);display:block;margin-bottom:5px}
+textarea,input[type=text],input[type=url],input[type=number],select{
+  width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;
+  padding:9px 11px;font:inherit;font-size:14px;color:var(--ink);resize:vertical;
+}
+textarea{min-height:62px}
+.saveline{display:flex;align-items:center;gap:9px;margin-top:7px}
+.btn{
+  background:var(--ink);color:#FFF8E3;border:0;border-radius:99px;padding:7px 15px;
+  font-size:13px;font-weight:600;cursor:pointer;
+}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:5px 11px;font-size:12px}
+.said{font-size:12px;color:var(--olive);opacity:0;transition:opacity .2s}
+.said.on{opacity:1}
+
+/* map */
+#map{height:62vh;min-height:380px;border-radius:var(--r);border:1px solid var(--line);background:var(--paper-2)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px}
+.fchip{
+  border:1px solid var(--line);background:#fff;border-radius:99px;padding:5px 12px;
+  font-size:12.5px;font-weight:600;cursor:pointer;color:var(--ink-soft);
+}
+.fchip.on{background:var(--ink);color:#FFF8E3;border-color:var(--ink)}
+.fchip.eatbtn{border-color:#E2C9D6;color:var(--plum)}
+.fchip.eatbtn.on{background:var(--plum);color:#FFF8E3;border-color:var(--plum)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-soft);margin-top:10px}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
+
+/* eats */
+.eat{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:9px;
+  display:flex;gap:12px;align-items:flex-start;
+}
+.eat .body{flex:1;min-width:0}
+.eat h4{margin:0;font-size:15px;font-weight:700}
+.eat .meta{font-size:11.5px;color:var(--ink-soft);margin-top:1px}
+.eat p{margin:5px 0 0;font-size:13px;line-height:1.55}
+.eat .acts{margin-top:8px;display:flex;gap:7px;flex-wrap:wrap}
+.pill{
+  font-size:11.5px;font-weight:600;text-decoration:none;border:1px solid var(--line);
+  border-radius:99px;padding:4px 10px;color:var(--adriatic-deep);background:var(--paper);
+}
+.tagline{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.tag{font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:5px;background:var(--paper-2);color:var(--ink-soft)}
+.tag.hot{background:#FFF2EC;color:var(--roof)}
+
+.adder{background:var(--paper-2);border:1px dashed #DCCBA6;border-radius:12px;padding:13px;margin-bottom:16px}
+.adder .row{display:grid;gap:7px;grid-template-columns:1fr 1fr}
+.adder input,.adder select{background:#fff}
+.adder .full{grid-column:1/-1}
+
+/* budget */
+table.bud{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table.bud th,table.bud td{padding:9px 11px;border-bottom:1px solid var(--paper-2);text-align:left}
+table.bud th{background:var(--paper-2);font-size:11.5px;color:var(--ink-soft);font-weight:700}
+table.bud td:last-child,table.bud th:last-child{text-align:right}
+table.bud input{border:0;border-bottom:1.5px dashed var(--line);border-radius:0;padding:2px 0;text-align:right;font-size:13.5px;background:transparent}
+table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0}
+.bigsum{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:15px;margin-bottom:14px;display:flex;gap:14px;justify-content:space-between;align-items:center}
+.bigsum .lab{font-size:12px;color:var(--ink-soft)}
+.bigsum .val{font-family:"Fraunces",Georgia,serif;font-size:25px;font-weight:600;line-height:1.1}
+
+/* checklist */
+.clist{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.clist h3{margin:0;padding:11px 14px;font-size:13.5px;font-weight:700;background:var(--paper-2);border-bottom:1px solid var(--line)}
+.clist label{display:flex;gap:10px;align-items:flex-start;padding:9px 14px;border-bottom:1px solid #F7F1E2;cursor:pointer;font-size:14px}
+.clist label:last-child{border-bottom:0}
+.clist input[type=checkbox]{width:19px;height:19px;flex:none;margin-top:1px;accent-color:var(--olive)}
+.clist label.done span{text-decoration:line-through;color:#A8B4BD}
+.clist label small{display:block;font-size:11.8px;color:var(--ink-soft);font-weight:400;text-decoration:none!important}
+.prog{height:5px;background:var(--paper-2)}
+.prog i{display:block;height:100%;background:var(--olive);width:0;transition:width .25s}
+
+/* stories */
+.story{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:9px;overflow:hidden}
+.story > summary{list-style:none;cursor:pointer;padding:13px 15px;font-weight:700;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.story > summary::-webkit-details-marker{display:none}
+.story > summary small{font-weight:500;font-size:11.5px;color:var(--ink-soft);flex:none}
+.story .in{padding:0 15px 15px;font-size:13.8px;line-height:1.72}
+.story .in p{margin:0 0 9px}
+.story .in p:last-child{margin-bottom:0}
+.story .in .hook{background:var(--lemon-soft);border-radius:9px;padding:9px 11px;font-size:13px;border:1px solid #F0DC9C}
+.story .in .hook b{color:#8A6A00}
+
+.foot{text-align:center;font-size:11.5px;color:var(--ink-soft);padding:26px 0 10px;line-height:1.7}
+.storagenote{font-size:11.5px;color:var(--ink-soft);background:var(--paper-2);border-radius:9px;padding:9px 12px;margin-bottom:14px;line-height:1.6}
+</style>
+
+<header class="top">
+  <div class="wrap" style="padding-bottom:0">
+    <div class="brandrow">
+      <h1 class="title">Roma · Firenze<br>Toscana
+        <em>2026.10.2 금 — 10.10 토 · 두 가족 여섯 사람</em>
+      </h1>
+      <div class="dday"><b id="ddayNum" class="num">D-</b><span id="ddayTxt">출발까지</span></div>
+    </div>
+    <div class="strip" id="strip"></div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="tabs-in" id="tabs" role="tablist">
+    <button class="tab" role="tab" data-p="plan" aria-selected="true">일정</button>
+    <button class="tab" role="tab" data-p="map" aria-selected="false">지도</button>
+    <button class="tab" role="tab" data-p="eat" aria-selected="false">맛집·링크</button>
+    <button class="tab" role="tab" data-p="money" aria-selected="false">경비</button>
+    <button class="tab" role="tab" data-p="prep" aria-selected="false">준비물</button>
+    <button class="tab" role="tab" data-p="story" aria-selected="false">이야기</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section class="pane on" id="p-plan">
+    <div class="note cool" style="margin-bottom:14px"><b>이 페이지는 링크만 있으면 누구나 볼 수 있습니다</b><ul><li>실명·숙소 주소·항공편명·좌석번호·결제금액은 일부러 빼두었습니다.</li><li>메모칸에도 <strong>여권번호·예약번호·연락처·정확한 숙소 주소는 적지 마세요.</strong> 그런 정보는 단톡방에 두는 편이 안전합니다.</li></ul></div><div class="note warn" id="todoBox">
+      <b>출발 전에 먼저 확정할 것</b>
+      <ul>
+        <li>10/3 콜로세움 투어가 아직 <strong>확정대기</strong>입니다. 미확정 시 대체 투어를 바로 잡을 수 있게 후보를 하나 정해두세요.</li>
+        <li>10/9 마지막 날 오전·오후가 아직 비어 있습니다. 저녁 20:20 출발이라 <strong>한나절은 온전히 쓸 수 있습니다</strong> — Day 8에서 고르세요.</li><li>10/8 토스카나 투어가 <strong>와이너리 코스(B)로 변경</strong>됐습니다. 오르비에또는 빠졌습니다.</li>
+        <li>10/4에 다른 숙소가 하나 더 표시돼 있습니다. 숙소 변경인지 친구 가족 숙소인지 확인하세요.</li>
+        <li>예약 3건 모두 <strong>3인 기준</strong>입니다. 친구 가족 3인 예약도 같은 투어·같은 시간대인지 대조해 보세요.</li>
+      </ul>
+    </div>
+    <div id="days"></div>
+  </section>
+
+  <section class="pane" id="p-map">
+    <div class="filters" id="mapFilters"></div>
+    <div id="map"></div>
+    <div class="legend">
+      <span><i style="background:#C0522E"></i>로마</span>
+      <span><i style="background:#12718F"></i>남부·아말피</span>
+      <span><i style="background:#6C8A45"></i>피렌체·피사</span>
+      <span><i style="background:#F2B705"></i>토스카나</span>
+      <span><i style="background:#8B4A6B"></i>맛집</span>
+    </div>
+    <p class="foot" style="padding-top:12px">핀을 누르면 이름과 구글지도 길찾기 링크가 열립니다. 맛집 핀이 거슬리면 위의 보라색 버튼으로 끌 수 있습니다. 지도 타일은 OpenStreetMap.</p>
+  </section>
+
+  <section class="pane" id="p-eat">
+    <div class="storagenote" id="shareNote">여기 적는 내용은 <strong>보고 계신 기기에만 저장됩니다.</strong> 다른 사람 화면에는 나타나지 않으니, 같이 정할 것은 단톡방에 올려주세요.</div>
+    <h2 class="sec">내가 추가한 곳 (이 기기에만 저장됩니다)</h2>
+    <div class="adder">
+      <div class="row">
+        <input class="full" type="text" id="nName" placeholder="가게 이름 또는 메모 제목">
+        <select id="nCity">
+          <option value="로마">로마</option>
+          <option value="피렌체">피렌체</option>
+          <option value="피사">피사</option>
+          <option value="남부">남부·아말피</option>
+          <option value="토스카나">토스카나</option>
+          <option value="기타">기타</option>
+        </select>
+        <select id="nKind">
+          <option value="맛집">맛집</option>
+          <option value="카페·젤라또">카페·젤라또</option>
+          <option value="쇼핑">쇼핑</option>
+          <option value="볼거리">볼거리</option>
+          <option value="링크">링크·자료</option>
+        </select>
+        <input class="full" type="text" id="nMemo" placeholder="한 줄 메모 (누가 추천했는지 적어두면 좋아요)">
+        <input class="full" type="url" id="nUrl" placeholder="링크 (선택) https://">
+        <button class="btn full" id="nAdd">목록에 추가</button>
+      </div>
+    </div>
+    <div id="mine"></div>
+    <h2 class="sec">미리 골라둔 후보</h2>
+    <div class="filters" id="eatFilters"></div>
+    <div id="eats"></div>
+  </section>
+
+  <section class="pane" id="p-money">
+    <div class="bigsum">
+      <div><div class="lab">1인 현지 지출 예상</div><div class="val num" id="sumEur">€0</div></div>
+      <div style="text-align:right"><div class="lab">6인 합계 (원화 환산)</div><div class="val num" id="sumKrw">0</div></div>
+    </div>
+    <div class="saveline" style="margin:0 0 14px">
+      <span style="font-size:12.5px;color:var(--ink-soft)">환율 1€ =</span>
+      <input type="number" id="fx" value="1560" style="width:90px;text-align:right"> 원
+      <button class="btn sm ghost" id="fxSave">적용</button>
+    </div>
+    <h2 class="sec">현지에서 실제로 내는 돈 (1인, 유로)</h2>
+    <p style="font-size:12.8px;color:var(--ink-soft);margin:0 0 10px">예약한 투어비는 이미 결제했으니 빠져 있습니다. 여기 숫자는 <strong>현장에서 추가로 내는 금액</strong>이라 지갑에 얼마를 넣을지 가늠할 때 쓰세요. 칸을 직접 고쳐도 자동 저장됩니다.</p>
+    <table class="bud"><thead><tr><th>항목</th><th>메모</th><th>€</th></tr></thead><tbody id="budBody"></tbody></table>
+    <h2 class="sec">예약한 투어 (이미 결제)</h2>
+    <table class="bud"><thead><tr><th>투어</th><th>인원</th><th>원</th></tr></thead><tbody id="tourBody"></tbody></table>
+    <div class="note tip"><b>현금은 얼마나</b>
+      <ul>
+        <li>이탈리아는 카드가 거의 다 되지만, 투어 현장비·수신기·소도시 입장료·화장실은 현금이 빠릅니다.</li>
+        <li>결제는 대부분 카드로 하고, 현장 결제용으로만 현금을 따로 준비하면 됩니다.</li>
+        <li>공항 환전소 환율은 나쁩니다. 한국에서 유로 현금을 준비하고, 부족하면 트래블카드로 현지 ATM(은행 부속 ATM만) 인출하세요.</li>
+        <li>ATM·카드 결제 시 <strong>“원화로 결제하시겠습니까(DCC)”는 반드시 거절</strong>하고 유로로 결제하세요. 3~8% 손해입니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pane" id="p-prep">
+    <div class="note warn"><b>한식 챙길 때 — EU 반입 규정</b>
+      <ul>
+        <li>EU는 비회원국에서 오는 <strong>육류와 유제품 반입을 개인 소비 목적이라도 금지</strong>합니다. 장조림·육개장·사골 등 고기 성분이 든 제품은 적발 시 폐기되고, 신고하지 않으면 과태료가 붙을 수 있습니다.</li>
+        <li>안전한 쪽: 김, 무말랭이, 단무지, 깻잎, 고추장·간장·참기름, 채소 베이스 국.</li>
+        <li>고추장·간장·참기름 같은 액체·반액체는 <strong>100ml를 넘으면 기내 반입 불가</strong>입니다. 부치는 짐에 넣고 지퍼백으로 이중 포장하세요.</li>
+        <li>돌아올 때도 같습니다. 이탈리아 살라미·프로슈토·치즈는 한국 반입이 제한됩니다.</li>
+      </ul>
+    </div>
+    <div class="note cool"><b>여섯 명이 함께 움직일 때</b>
+      식당은 6인이면 대부분 예약이 필요합니다. 인기 트라토리아는 2~3주 전에 이메일이나 전화로 잡아두세요. 기차도 6석을 붙여 앉으려면 미리 예약해야 합니다.</div>
+    <div id="checks"></div>
+  </section>
+
+  <section class="pane" id="p-story">
+    <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">가기 전에 한 번 읽고 가면 현장에서 보이는 게 달라집니다. 아이들에게는 하나씩 퀴즈로 내도 좋습니다.</p>
+    <div id="stories"></div>
+  </section>
+
+  <p class="foot">이 대시보드는 링크만 있으면 누구나 열 수 있습니다.<br>메모·맛집·체크리스트는 자동 저장됩니다.</p>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+/* ============ 데이터 ============ */
+const START = new Date(2026,9,2);
+
+const DAYS = [
+{ id:"d1", date:"10.02", wd:"금", city:"roma", cLabel:"이동", w:"⛅",
+  title:"인천 → 로마 도착", sub:"직항 · 저녁 도착 후 숙소 체크인",
+  items:[
+    {t:"09:20", k:"key", n:"인천공항 제1터미널 도착", d:"출발 3시간 전. 6명이 카운터에서 좌석 붙여달라고 요청하기 좋은 타이밍입니다."},
+    {t:"12:20", k:"move", n:"인천 출발 · 로마행 직항", d:"비행 약 13시간. 기내에서 로마 시각(한국 -7시간)으로 시계를 맞춰두세요."},
+    {t:"18:30", k:"key", n:"로마 피우미치노(FCO) 도착", d:"입국심사·수하물까지 보통 40~60분. 19:30쯤 나온다고 보면 됩니다."},
+    {t:"19:45", k:"move", n:"공항 → 테르미니역", d:"레오나르도 익스프레스 32분 직행(1인 14€) 또는 공항택시 정액. 6명+캐리어면 택시 2대나 사전예약 밴이 편합니다."},
+    {t:"20:40", n:"숙소 체크인", d:"테르미니역 남쪽 출구에서 도보 3~5분. 밤에도 사람이 있는 길이지만 캐리어는 꼭 붙잡고 다니세요."},
+    {t:"21:30", n:"가볍게 저녁", d:"첫날은 멀리 나가지 말 것. 테르미니역 안 메르카토 첸트랄레가 늦게까지 열고 취향도 제각각 고를 수 있습니다."}
+  ],
+  notes:[
+    {t:"warn", h:"테르미니역 주변 주의", b:["역 주변은 소매치기가 가장 많은 구역입니다. 가방은 앞으로, 지갑은 뒷주머니 금지.","‘도와주겠다’며 캐리어에 손대거나 티켓 발권을 돕겠다는 사람은 팁을 요구합니다. 단호히 거절하세요.","길에서 팔찌를 손목에 채워주는 사람, 서명을 요청하는 사람은 모두 피하세요."]},
+    {t:"tip", h:"도착 첫날 할 일", b:["숙소 와이파이 비밀번호와 호스트 연락처를 단톡방에 공유","유심·이심 개통 확인 (로밍이면 데이터 로밍 켜기)","다음날 아침 식사 살 곳 위치만 확인하고 일찍 자기"]}
+  ],
+  pins:[["로마 피우미치노 공항",41.8003,12.2389],["숙소 (테르미니역 인근)",41.9010,12.5020],["로마 테르미니역",41.9010,12.5020]] },
+
+{ id:"d2", date:"10.03", wd:"토", city:"roma", cLabel:"로마", w:"☀️",
+  title:"고대 로마 한복판", sub:"오전 자유 · 오후 콜로세움+포로로마노 투어",
+  items:[
+    {t:"07:30", n:"이른 아침 산책", d:"트레비 분수는 8시 전이 사람이 가장 적습니다. 같은 사진도 완전히 달라집니다."},
+    {t:"09:00", n:"판테온 · 나보나 광장 · 캄포 데 피오리", d:"셋 다 도보 10분 안쪽. 판테온은 입장 예약이 필요할 수 있으니 전날 확인하세요."},
+    {t:"12:00", n:"점심 · I Pizzicaroli", d:"나보나 광장에서 도보 2분. 살루미·치즈 바구니라 무겁지 않고 빨라서 오후 투어 전에 맞습니다. 예약을 안 받고 실내가 좁으니 12시 전에 도착하는 편이 안전합니다."},
+    {t:"13:30", k:"key", n:"콜로세오역 앞 미팅", d:"지하철 B선 Colosseo역 1층 출구. 정확한 미팅 시각은 전날 가이드 카톡으로 옵니다 — 이 시간은 가정치입니다."},
+    {t:"14:00", k:"key", n:"콜로세움 → 포로 로마노 → 팔라티노 언덕", d:"약 3~3.5시간 야외 워킹. 보안검색이 있으니 큰 가방·삼각대·유리병은 두고 가세요."},
+    {t:"17:30", n:"몬티 지구 저녁", d:"콜로세움에서 도보 10분. 로마에서 가장 예쁜 골목 동네이고 6인 테이블도 비교적 잡힙니다."}
+  ],
+  booked:[{s:"확정대기", n:"[콜로세움 + 포로로마노 내부투어] 야경투어특가할인 / 오전·오후선택",
+    rows:[["일정","10/3(토) 오후투어 · 추가 안함"],["인원","우리 가족 3인"],["요금","1인 65,000원 (결제 완료)"],["현장 추가","무선수신기 3€ · 입장료 포함 여부는 바우처 확인"]],
+    url:"https://experiences.myrealtrip.com/products/3430529"}],
+  notes:[
+    {t:"warn", h:"아직 확정이 아닙니다", b:["파트너사 확정 대기 중이라 취소될 수 있습니다. 출발 1주 전까지 확정 안 되면 문의하기를 누르세요.","확정되면 가이드가 전날 카카오톡으로 미팅 시각·장소를 보냅니다. 카톡 ID가 제대로 등록됐는지 확인하세요."]},
+    {t:"tip", h:"챙겨갈 것", b:["3시간 이상 야외 워킹 — 편한 운동화 필수","10월 로마 낮 최고 22~25도. 얇은 겉옷과 물 한 병","포로 로마노는 그늘이 거의 없습니다. 모자·선글라스"]}
+  ],
+  pins:[["콜로세움",41.8902,12.4922],["포로 로마노",41.8925,12.4853],["트레비 분수",41.9009,12.4833],["판테온",41.8986,12.4769],["나보나 광장",41.8992,12.4731],["I Pizzicaroli",41.8983,12.4707],["몬티 지구",41.8945,12.4905],["La Nuova Piazzetta",41.8933,12.4892]] },
+
+{ id:"d3", date:"10.04", wd:"일", city:"sud", cLabel:"남부", w:"⛅",
+  title:"폼페이와 아말피 해안", sub:"당일 남부투어 · 하루 종일 · 페리 탑승",
+  items:[
+    {t:"05:45", k:"key", n:"기상 · 아침 도시락 챙기기", d:"전날 밤에 빵·물을 사두세요. 이 시간에는 문 연 가게가 거의 없습니다."},
+    {t:"06:45", k:"key", n:"테르미니 인근 미팅 · 출발", d:"정확한 시각·장소는 전날 가이드 안내 기준. 대형버스라 늦으면 기다려주지 않습니다."},
+    {t:"10:30", n:"폼페이 유적 내부", d:"공인 가이드 해설. 입장료 20€는 현장 결제이고, 만 18세 미만은 여권 원본이 있으면 무료입니다."},
+    {t:"13:00", n:"점심 (약 15€)", d:"현장 결제. 나폴리 근처라 피자 수준이 좋습니다."},
+    {t:"14:30", n:"소렌토·포지타노 전망대 · 아말피 해안도로", d:"절벽 도로 구간에서 멀미가 날 수 있습니다. 멀미약은 출발 30분 전에."},
+    {t:"16:00", n:"포지타노 마을 자유시간", d:"진입 미니버스 편도 10€. 해변까지 계단이 꽤 가파릅니다."},
+    {t:"17:30", n:"페리 탑승 (포지타노 → 살레르노, 17€)", d:"바다에서 보는 포지타노가 이 투어의 하이라이트입니다. 갑판 자리를 노리세요."},
+    {t:"21:00", k:"move", n:"로마 도착 · 해산", d:"21~22시 사이 도착. 저녁은 숙소 근처에서 간단히."}
+  ],
+  booked:[{s:"예약확정", n:"[당일] 이탈리아 남부투어 – 포지타노·아말피 🚢페리 탑승 #우노트래블 (로마 출발)",
+    rows:[["일정","10/4(일) 전일"],["인원","우리 가족 3인"],["요금","1인 160,000원 (결제 완료)"],["현장 추가","폼페이 20€ + 점심 15€ + 미니버스 10€ + 페리 17€ + 수신기 3€ ≒ 65€"]],
+    url:"https://experiences.myrealtrip.com/products/3440846"}],
+  notes:[
+    {t:"warn", h:"여권 원본을 반드시 챙기세요", b:["폼페이는 만 18세 미만 무료인데 여권 원본이 있어야 합니다. 사진이나 사본은 안 됩니다.","딸 여권은 이날 가방에 꼭 넣으세요. 성인 여권은 숙소 금고에 두고 사본만 들고 다녀도 됩니다."]},
+    {t:"tip", h:"이 날의 요령", b:["왕복 7~8시간을 버스에서 보냅니다. 목베개와 보조배터리","폼페이는 돌바닥이 거칩니다. 샌들·슬리퍼 금지","현장 결제분을 미리 따로 빼두면 편합니다","10/4는 10월 첫째 일요일이라 콜로세움 무료입장일이지만, 우리는 남부에 있습니다"]}
+  ],
+  pins:[["폼페이 유적",40.7497,14.4869],["소렌토",40.6263,14.3757],["포지타노",40.6281,14.4842],["아말피",40.6340,14.6027],["살레르노 항구",40.6743,14.7497]] },
+
+{ id:"d4", date:"10.05", wd:"월", city:"roma", cLabel:"로마", w:"☁️",
+  title:"바티칸", sub:"오전 패스트트랙 투어 · 오후 자유",
+  items:[
+    {t:"06:45", n:"아침 식사", d:"입장 시간이 08:00~10:30 사이로 배정되므로 일찍 움직일 준비를 해두세요."},
+    {t:"07:30", k:"move", n:"숙소 → 바티칸", d:"지하철 A선 Termini → Ottaviano, 약 20분. 출근시간이라 붐빕니다. 택시면 15분."},
+    {t:"08:15", k:"key", n:"가이드 미팅 · 패스트트랙 입장", d:"실제 시각은 전날 카톡 안내가 기준입니다. 이 칸은 안내받는 대로 고쳐 쓰세요."},
+    {t:"08:45", k:"key", n:"바티칸 박물관 → 시스티나 예배당", d:"약 3시간. 시스티나 안에서는 사진 촬영과 대화가 금지됩니다."},
+    {t:"12:00", n:"성 베드로 대성당", d:"피에타와 베르니니의 발다키노. 쿠폴라 전망대는 별도 요금입니다."},
+    {t:"14:00", n:"점심 · 오후 자유", d:"산탄젤로 성 → 나보나 광장 방향으로 걸어 내려오면 동선이 자연스럽습니다."},
+    {t:"18:00", n:"트라스테베레 저녁", d:"강 건너 골목 동네. 로마에서 저녁 분위기가 가장 좋은 곳입니다."}
+  ],
+  booked:[{s:"예약확정", n:"[엔터바티칸] 지루함이 없는 프리미엄 바티칸 패스트트랙 [박재벌 Family's]",
+    rows:[["일정","10/5(월) 오전 · 패스트트랙"],["인원","3인 (오전, 선택 안함)"],["요금","1인 69,000원 내외 (결제 완료)"],["현장 추가","박물관 입장료 별도 · 성인 45€ 내외, 학생 할인 있음"]],
+    url:"https://experiences.myrealtrip.com/products/3430570"}],
+  notes:[
+    {t:"warn", h:"복장 규정 — 못 들어갑니다", b:["어깨와 무릎이 드러나면 입장 거부됩니다. 민소매·반바지·짧은 치마 금지.","여섯 명 모두 해당됩니다. 얇은 가디건이나 스카프를 가방에 하나씩.","큰 배낭·우산·셀카봉은 반입 금지라 물품보관소에 맡겨야 합니다."]},
+    {t:"tip", h:"입장 시간은 우리가 못 고릅니다", b:["패스트트랙은 대행사가 확보한 티켓 시각으로 배정되며 08:00~10:30 사이입니다.","투어 전날 가이드가 카톡으로 몇 시 입장인지 알려줍니다. 받는 즉시 이 일정표를 고쳐두세요.","예약 시 참여자 전원의 여권 영문 성함과 성인/학생 여부를 적었는지 확인하세요."]},
+    {t:"cool", h:"체력 배분", b:["박물관은 7km를 걷는 구조입니다. 오전에 체력을 다 쓰면 오후가 무너집니다.","점심 후 숙소에 잠깐 들어가 쉬는 편이 아이들에게 훨씬 낫습니다."]}
+  ],
+  pins:[["바티칸 박물관",41.9065,12.4536],["성 베드로 대성당",41.9022,12.4539],["산탄젤로 성",41.9031,12.4663],["트라스테베레",41.8890,12.4695]] },
+
+{ id:"d5", date:"10.06", wd:"화", city:"firenze", cLabel:"피렌체", w:"☀️",
+  title:"로마 → 피렌체", sub:"낮 12:25 출발 · 오전은 로마에서 여유롭게",
+  items:[
+    {t:"08:30", n:"아침 · 짐 정리", d:"기차가 낮 12시 25분이라 서두를 필요가 없습니다."},
+    {t:"09:30", k:"key", n:"체크아웃 · 숙소에 짐 맡기기", d:"숙소가 테르미니 바로 옆이라 짐을 맡기고 가볍게 두어 시간 더 쓸 수 있습니다."},
+    {t:"10:00", n:"로마 마지막 산책", d:"산타 마리아 마조레 대성당이 테르미니에서 도보 8분입니다. 로마 4대 바실리카 중 하나인데 관광객이 적어 조용합니다."},
+    {t:"11:40", k:"key", n:"짐 찾아 테르미니역으로", d:"이탈로는 출발 20분 전쯤 플랫폼이 전광판에 뜹니다. 역이 넓으니 여유 있게 움직이세요."},
+    {t:"12:25", k:"move", n:"로마 테르미니 출발 · 고속열차", d:"6석 연속으로 예약해 두었습니다. 티켓은 예매 앱에서 QR로 열면 되고 개찰·각인은 필요 없습니다."},
+    {t:"13:57", n:"피렌체 산타 마리아 노벨라역 도착", d:"1시간 32분. 짐칸 자리는 탑승 직후 먼저 잡는 사람이 임자입니다."},
+    {t:"14:15", n:"숙소 체크인", d:"S.M.N.역에서 도보 5분. 로마보다 훨씬 편합니다."},
+    {t:"15:00", n:"늦은 점심 · 중앙시장", d:"메르카토 첸트랄레 2층 푸드코트. 여섯 명이 각자 다른 걸 골라 한 테이블에 앉을 수 있습니다."},
+    {t:"16:00", k:"key", n:"두오모 광장 · 세례당 · 조토의 종탑", d:"쿠폴라 등반은 날짜·시간 지정 예약제입니다. 미리 안 잡았으면 당일엔 거의 불가합니다."},
+    {t:"17:15", n:"시뇨리아 광장 · 베키오 다리", d:"다리 위 금세공점 구경. 사람이 가장 많은 시간대라 소지품 주의."},
+    {t:"18:15", k:"key", n:"미켈란젤로 광장 일몰", d:"10월 초 피렌체 일몰은 18:50 전후. 30분 전에 올라가 자리를 잡으세요. 버스 12·13번 또는 도보 25분 오르막."}
+  ],
+  booked:[{s:"예약확정", n:"고속열차 · 로마 테르미니 → 피렌체 산타 마리아 노벨라",
+    rows:[["일정","10/6(화) 12:25 출발 → 13:57 도착 · 1시간 32분"],["인원","6인 전원"],["좌석","6석 연속 지정 완료"],["요금","1인 약 €32 · 좌석지정 포함"],["티켓","예매 앱의 나의 예약에서 열기"]],
+    url:""}],
+  notes:[
+    {t:"tip", h:"이탈로 탑승 요령", b:["고속열차는 지정석이라 <strong>개찰기 각인이 필요 없습니다.</strong> 지역열차(내일 피사행)만 각인 대상입니다.","출발 20분 전쯤 전광판에 플랫폼이 뜹니다. 그 전까지는 대합실에서 기다리면 됩니다.","캐리어 6개면 객차 끝 짐칸이 금방 찹니다. 탑승하자마자 짐부터 올리세요.","앱 티켓은 미리 캡처해 두면 데이터가 안 될 때도 안전합니다."]},
+    {t:"cool", h:"미리 잡아둘 것", b:["두오모 쿠폴라 (브루넬레스키 돔) — 시간 지정 예약, 조기 매진","우피치 미술관 — 여섯 명이면 사전 예약 권장","아카데미아 (다비드 상) — 짧게 보고 나올 거라면 우선순위는 낮습니다"]}
+  ],
+  pins:[["피렌체 S.M.N. 역",43.7764,11.2480],["숙소 (S.M.N.역 인근)",43.7764,11.2480],["피렌체 두오모",43.7731,11.2560],["베키오 다리",43.7680,11.2531],["우피치 미술관",43.7678,11.2553],["미켈란젤로 광장",43.7629,11.2650],["Osteria dei Medici",43.7757,11.2517]] },
+
+{ id:"d6", date:"10.07", wd:"수", city:"firenze", cLabel:"피사", w:"☀️",
+  title:"피사 당일치기", sub:"지역열차 약 1시간 · 기적의 광장",
+  items:[
+    {t:"08:40", k:"move", n:"피렌체 S.M.N. → 피사 첸트랄레", d:"지역열차(Regionale) 약 50분~1시간, 1인 10€ 안팎. 종이표는 반드시 개찰기에 각인하세요."},
+    {t:"09:50", n:"피사 첸트랄레 도착", d:"사탑까지 도보 25분 또는 LAM Rossa 버스 10분. 걸어가는 길에 아르노 강을 건넙니다."},
+    {t:"10:30", k:"key", n:"기적의 광장 · 두오모 · 세례당", d:"잔디밭에서 사탑 받치는 사진은 필수 코스. 여섯 명이 각기 다른 포즈로 찍으면 더 재밌습니다."},
+    {t:"11:30", k:"key", n:"사탑 등반 (예약 필요)", d:"시간 지정 입장이고 만 8세 미만은 오를 수 없습니다. 좁은 나선계단 294단, 가방 반입 불가."},
+    {t:"13:00", n:"점심 · 체치나 맛보기", d:"병아리콩 가루로 부친 토스카나식 간식. 피사에서 꼭 한 번."},
+    {t:"15:00", n:"선택 · 루카로 더 가거나 피렌체 복귀", d:"루카는 피사에서 기차 30분. 성벽 위 자전거가 아이들에게 인기입니다. 체력이 남으면 추천."},
+    {t:"18:00", n:"피렌체 복귀 · 저녁", d:"내일 토스카나 투어가 이른 출발이라 오늘은 일찍 정리하는 게 좋습니다."}
+  ],
+  notes:[
+    {t:"warn", h:"지역열차는 각인이 필수", b:["플랫폼 입구의 초록·흰색 개찰기에 표를 넣어 도장을 찍어야 합니다.","안 찍으면 무임승차로 간주돼 벌금 50€ 이상. 앱 QR 승차권은 각인이 필요 없습니다."]},
+    {t:"tip", h:"사탑 등반 판단", b:["예약이 없다면 올라가지 않고 광장만 봐도 충분합니다. 실제로 대부분 그렇게 합니다.","계단이 기울어져 있어 어지러움을 느끼는 사람이 있습니다.","가방은 무료 보관소에 맡겨야 하니 등반 전 소지품을 미리 정리하세요."]}
+  ],
+  pins:[["피사 사탑 · 기적의 광장",43.7230,10.3966],["피사 첸트랄레 역",43.7086,10.3989],["루카 (선택)",43.8430,10.5027]] },
+
+{ id:"d7", date:"10.08", wd:"목", city:"toscana", cLabel:"토스카나", w:"☀️",
+  title:"토스카나 소도시 → 로마", sub:"B코스 · 몬테풀치아노 와이너리 포함",
+  items:[
+    {t:"07:00", k:"key", n:"체크아웃 · 캐리어 챙기기", d:"도시간 이동이 포함된 투어라 짐을 들고 탑니다. 캐리어 6개 적재가 가능한지 미리 문의해두세요."},
+    {t:"07:40", k:"key", n:"피렌체 미팅 · 출발", d:"정확한 시각·장소는 전날 가이드 안내가 기준입니다."},
+    {t:"09:30", n:"피엔차", d:"교황이 자기 고향을 통째로 르네상스 도시로 다시 지은 곳. 페코리노 치즈로 유명합니다."},
+    {t:"11:00", n:"사이프러스 길 · 발도르차 공원", d:"이탈리아에서 가장 많이 찍히는 풍경. 영화 글래디에이터의 밀밭도 이 일대입니다."},
+    {t:"13:00", k:"key", n:"몬테풀치아노 와이너리 투어 · 단체식 점심", d:"와이너리 투어 15€(미성년자 5€) + 점심 15€, 둘 다 현장 결제이고 카드가 됩니다. 미성년자에게는 주류가 제공되지 않습니다."},
+    {t:"16:30", k:"key", n:"치비타 디 바뇨레죠", d:"다리 하나로만 연결된 '죽어가는 도시'. 입장료+셔틀 8€ 현장 결제."},
+    {t:"19:30", k:"move", n:"로마 도착 · 마지막 숙소 체크인", d:"테르미니 인근 3성 호텔. 도착 시각은 교통 상황에 따라 달라집니다."}
+  ],
+  booked:[{s:"예약확정", n:"[피렌체에서 로마 투어] 🌲토스카나 소도시 · 치비따디반뇨레죠 · 도시간이동해결 #우노트래블",
+    rows:[["일정","10/8(목) B코스 · 몬테풀치아노 와이너리 코스"],["코스","피렌체 → 피엔차 → 사이프러스길·발도르차 공원 → 몬테풀치아노 와이너리(투어+단체식 점심) → 치비따 디 바뇨레죠 → 로마"],["인원","3인"],["현장 추가","치비타 8€ + 수신기 3€ + 와이너리 15€ + 점심 15€ ≒ 41€ (미성년자 약 31€)"]],
+    url:"https://experiences.myrealtrip.com/products/3851219"}],
+  notes:[
+    {t:"warn", h:"9/1부터 코스 요일이 바뀌었습니다", b:["변경 전에는 목요일이 A코스(오르비에또)였지만, 지금은 <strong>월·목·토가 B코스(와이너리)</strong>입니다.","우리 일정 10/8은 목요일이라 <strong>몬테풀치아노 와이너리 코스</strong>로 진행됩니다. 오르비에또는 들르지 않습니다.","오르비에또를 꼭 보고 싶다면 화·금·일의 A코스로 날짜를 바꿔야 하는데, 우리 일정상 불가능합니다."]},
+    {t:"warn", h:"캐리어 확인이 가장 중요합니다", b:["도시간 이동 투어라 짐을 싣고 다니지만, 대형 캐리어 6개는 사전 문의가 필요합니다.","지금 바로 '문의하기'로 캐리어 개수와 크기를 알려두세요. 당일에 말하면 늦습니다.","소도시 골목은 대부분 자갈길이라 짐은 차에 두고 내립니다. 귀중품만 들고 내리세요."]},
+    {t:"tip", h:"와이너리 코스라 좋아진 점", b:["점심이 <strong>단체식으로 정해져 있어</strong> 여섯 명이 식당을 찾아 헤맬 일이 없습니다. A코스는 오르비에또에서 자유식이었습니다.","아이는 주류 대신 5€로 참여합니다. 포도밭과 지하 저장고 구경은 아이들도 재미있어 합니다.","와인을 사신다면 반드시 <strong>부치는 짐</strong>에. 귀국편 기내 반입이 안 됩니다.","몬테풀치아노는 마을 자체가 언덕 위 중세 도시라 경사가 가파릅니다. 편한 신발로."]}
+  ],
+  pins:[["피엔차",43.0787,11.6789],["발도르차 · 사이프러스 길",43.0746,11.6631],["몬테풀치아노",43.0919,11.7861],["치비타 디 바뇨레죠",42.6277,12.1139],["마지막 숙소 (테르미니 인근)",41.9010,12.5020]] },
+
+{ id:"d8", date:"10.09", wd:"금", city:"roma", cLabel:"로마", w:"☁️",
+  title:"로마의 마지막 한나절 → 귀국", sub:"저녁 20:20 출발 · 낮은 통째로 쓸 수 있습니다",
+  items:[
+    {t:"08:00", k:"key", n:"체크아웃 · 짐은 호텔에 맡기기", d:"대부분의 호텔이 체크아웃 후 짐 보관을 해줍니다. 전날 프런트에 미리 말해두세요. 안 되면 테르미니역 유료 보관소(Kibag)를 쓰면 됩니다."},
+    {t:"09:00", n:"보르게세 미술관", d:"예약 필수, 2시간 지정 입장. 베르니니 조각 세 점만 봐도 값을 합니다. 예약이 없다면 아래 대안으로."},
+    {t:"11:30", n:"보르게세 공원 산책", d:"미술관 바로 앞 큰 공원. 사륜자전거를 빌리면 아이들이 이 여행에서 제일 좋아하는 시간이 되기도 합니다."},
+    {t:"12:30", n:"점심 · 마지막 젤라또", d:"스페인 계단 방향으로 내려오면 동선이 자연스럽습니다."},
+    {t:"13:30", n:"스페인 계단 · 콘도티 거리 쇼핑", d:"기념품과 면세 쇼핑을 여기서 마무리. 계단에 앉는 것은 금지이고 벌금이 있습니다."},
+    {t:"15:30", k:"key", n:"호텔에서 짐 찾기 · 최종 점검", d:"보조배터리는 기내 가방, 올리브유·와인·발사믹은 부치는 짐. 여권과 탑승권 6명분 확인."},
+    {t:"16:20", k:"move", n:"테르미니 → 피우미치노 공항", d:"레오나르도 익스프레스 32분 직행(1인 14€). 6명+캐리어면 택시 2대도 좋습니다. 금요일 저녁이라 도로는 막힐 수 있습니다."},
+    {t:"17:20", k:"key", n:"FCO 도착 · 세금 환급 → 체크인", d:"환급 서류가 있으면 짐을 부치기 전에 세관 확인부터. 3터미널이고 줄이 깁니다."},
+    {t:"20:20", k:"key", n:"FCO 출발 · 인천행 직항", d:"비행 약 11시간 20분. 로마에서 인천은 올 때보다 짧습니다."}
+  ],
+  booked:[{s:"귀국편", n:"귀국 항공편 · 로마 → 인천",
+    rows:[["출발","10/9(금) 20:20 · 로마 피우미치노 (FCO)"],["도착","10/10(토) 14:40 · 인천 (ICN)"],["비행시간","약 11시간 20분"],["공항 도착 권장","17:20까지 (출발 3시간 전)"]],
+    url:""}],
+  notes:[
+    {t:"warn", h:"공항에서 자주 놓치는 것", b:["세금 환급(Tax Free)은 <strong>짐을 부치기 전</strong> 세관 도장이 먼저입니다. 구매액 70€ 초과, 미개봉 상태여야 합니다.","액체류는 100ml 이하만 기내 반입. <strong>올리브유·발사믹·와인·리몬첼로는 반드시 부치는 짐에</strong> 넣으세요.","유리병은 옷으로 감싸 캐리어 가운데에. 깨지면 옷까지 다 버립니다.","보조배터리는 반대로 <strong>부치는 짐에 넣으면 안 됩니다</strong>. 기내 가방에."]},
+    {t:"tip", h:"저녁 출발이라 하루가 통째로 남습니다", b:["위 일정은 제안입니다. 정한 뒤 아래 메모칸에 적어두세요.","다른 후보: 오스티아 안티카(로마의 폼페이, 기차 40분 · 반나절), 트라스테베레+진실의 입 도보 코스, 아웃렛 쇼핑(카스텔 로마노).","마지막 날은 무리하지 않는 편이 낫습니다. 짐 찾고 공항 가는 시간까지 계산하면 실제로 쓸 수 있는 건 오전 9시~오후 3시 사이입니다."]},
+    {t:"cool", h:"아벤티노 열쇠구멍 (짧게 들를 만한 곳)", b:["열쇠구멍으로 들여다보면 성 베드로 돔이 정확히 액자처럼 들어옵니다. 5분이면 되고 아이들 반응이 가장 좋습니다.","테르미니로 돌아오는 길에 진실의 입과 묶으면 한 시간이면 충분합니다."]}
+  ],
+  pins:[["보르게세 미술관",41.9142,12.4922],["스페인 계단",41.9060,12.4823],["진실의 입",41.8882,12.4813],["아벤티노 열쇠구멍",41.8836,12.4783],["로마 테르미니역",41.9010,12.5020],["로마 피우미치노 공항",41.8003,12.2389]] },
+
+{ id:"d9", date:"10.10", wd:"토", city:"roma", cLabel:"도착", w:"✈️",
+  title:"인천 도착", sub:"오후 14:40 도착",
+  items:[
+    {t:"14:40", k:"key", n:"인천공항 제1터미널 도착", d:"입국·수하물까지 보통 40분. 15:30 전후에 나온다고 보면 됩니다."},
+    {t:"15:30", k:"move", n:"귀가", d:"토요일 오후라 공항철도·리무진 모두 붐빕니다. 6명+캐리어면 미리 차편을 정해두세요."},
+    {t:"—", n:"세금 환급 마무리 (해당 시)", d:"공항에서 도장만 받고 현금 환급을 못 받았다면, 봉투를 우편함에 넣었는지 확인하세요."}
+  ],
+  notes:[{t:"tip", h:"돌아와서", b:["단톡방 사진을 한 폴더로 모아두면 앨범 만들기가 훨씬 쉽습니다. 여섯 명이 각자 찍은 게 합쳐지면 양이 꽤 됩니다.","이 대시보드의 메모는 그대로 남아 있습니다. 다음 여행 계획할 때 참고하세요."]}],
+  pins:[] }
+];
+
+const EATS = [
+{c:"로마", n:"La Nuova Piazzetta", ll:[41.8933,12.4892], k:"로마 요리·피자", a:"Vicolo del Buon Consiglio 23A · 콜로세움 인근", tag:["우리가 고른 곳","저녁 예약 권장"],
+ d:"큰길이 아니라 좁은 골목 안에 있어 호객이 없고, 그래서 줄이 곧 평가라는 말이 붙은 집. 카르보나라와 피자가 강점이고 좌석이 넉넉해 여섯 명도 비교적 수월합니다. 매일 11:30~22:30. 10/3 콜로세움 투어를 마치고 걸어갈 수 있는 거리입니다.",
+ u:"https://maps.app.goo.gl/vLB1FxM68sDjmrT36?g_st=akt"},
+{c:"피렌체", n:"Osteria dei Medici", ll:[43.7757,11.2517], k:"토스카나 요리", a:"Via Faenza 49R · 산 로렌초 뒤", tag:["우리가 고른 곳","숙소 도보권","예약 권장"],
+ d:"중앙시장과 S.M.N.역 사이라 숙소에서 걸어갑니다. 토마호크 스테이크를 테이블에서 썰어주는 서비스로 알려져 있고, 1인 35€ 선. TheFork 앱으로 예약하면 할인이 붙는 경우가 있으니 확인해 보세요.",
+ u:"https://maps.app.goo.gl/UpY5JPaVTUgi3aan7?g_st=akt"},
+{c:"로마", n:"I Pizzicaroli", ll:[41.8983,12.4707], k:"살루미·치즈 바구니", a:"Via della Fossa 9 · 나보나 광장 뒤 100m", tag:["우리가 고른 곳","예약 불가","일찍 가기"],
+ d:"파스타·피자가 아닌 걸 먹고 싶을 때. 살루미와 치즈를 바구니(체스토)나 도마에 담아 주고, 아리차식 포르케타와 브루스케토네가 간판입니다. 멧돼지·사슴 같은 야생육 살라미도 있어 아이들이 신기해합니다. 1인 10~20€, 매일 11:30~23:00.",
+ u:"https://maps.app.goo.gl/kNA3mpCs5G4rWHNY9?g_st=com.iwilab.KakaoTalk.Share"},
+{c:"로마", n:"Mercato Centrale Roma", ll:[41.9007,12.5042], k:"푸드코트", a:"테르미니역 안", tag:["여섯 명 최적","늦게까지"],
+ d:"역 건물 안 푸드코트. 피자·파스타·트리파·젤라또를 각자 다른 데서 사서 한 테이블에 앉습니다. 취향이 갈리는 일행에게 가장 안전한 선택이고 숙소에서 도보 3분."},
+{c:"로마", n:"Trattoria Monti", ll:[41.8952,12.4995], k:"트라토리아", a:"몬티/에스퀼리노", tag:["예약 필수"],
+ d:"마르케 지방 가정식을 내는 로마의 스테디셀러. 6인은 최소 2~3주 전 예약. 토르텔로(반숙 계란이 든 라비올리)가 시그니처."},
+{c:"로마", n:"Roscioli Salumeria con Cucina", ll:[41.8943,12.4736], k:"카르보나라", a:"캄포 데 피오리 근처", tag:["예약 필수"],
+ d:"카르보나라 이야기를 할 때 빠지지 않는 집. 살루메리아를 겸해 치즈·햄 구성이 좋습니다. 자리가 좁아 6인은 예약이 사실상 필수."},
+{c:"로마", n:"Tonnarello", ll:[41.8894,12.4694], k:"로마 파스타", a:"트라스테베레", tag:["가족 단위","웨이팅"],
+ d:"카초에페페·아마트리치아나·그리차 같은 로마 4대 파스타를 한 번에 맛보기 좋습니다. 가격이 착하고 회전이 빨라 아이 동반에 무난. 줄은 각오하세요."},
+{c:"로마", n:"Da Enzo al 29", ll:[41.8878,12.4771], k:"트라토리아", a:"트라스테베레", tag:["소규모","웨이팅"],
+ d:"작고 오래된 집. 맛은 정평이 났지만 테이블이 몇 개 없어 6인은 어렵습니다. 두 팀으로 나눠 앉을 각오라면 도전."},
+{c:"로마", n:"Bonci Pizzarium", ll:[41.9068,12.446], k:"조각피자", a:"바티칸 근처 Cipro역", tag:["바티칸 날","빠름"],
+ d:"로마 피자 알 탈리오의 기준을 만든 집. 서서 먹거나 포장. 바티칸 일정이 있는 10/5 점심으로 동선이 딱 맞습니다."},
+{c:"로마", n:"Giolitti", ll:[41.9005,12.4784], k:"젤라또", a:"판테온 근처", tag:["1900년부터"],
+ d:"먼저 계산대에서 결제하고 영수증을 들고 주문합니다. 로마에서 가장 오래된 젤라테리아 중 하나."},
+{c:"로마", n:"Sant'Eustachio Il Caffè", ll:[41.8981,12.4757], k:"커피", a:"판테온 근처", tag:["설탕 주의"],
+ d:"로마에서 에스프레소 이야기를 시작하면 나오는 이름. 기본이 단맛이 들어간 방식이라 원치 않으면 '센차 추케로'라고 말하세요."},
+{c:"로마", n:"Trapizzino", ll:[41.8896,12.4711], k:"길거리 음식", a:"트라스테베레·몬티", tag:["아이들 좋아함"],
+ d:"삼각형 피자 주머니에 로마식 스튜를 채운 음식. 한 손에 들고 먹기 좋아 이동 중 끼니로 최고."},
+{c:"피렌체", n:"Mercato Centrale Firenze", ll:[43.7765,11.2534], k:"푸드코트", a:"중앙시장 2층", tag:["여섯 명 최적"],
+ d:"로마와 같은 콘셉트의 푸드코트. 1층은 재래시장이라 구경 자체가 볼거리입니다. 피렌체 도착 첫 점심으로 좋습니다."},
+{c:"피렌체", n:"Trattoria Mario", ll:[43.7768,11.2535], k:"점심 전용", a:"중앙시장 옆", tag:["점심만","합석"],
+ d:"1953년부터 점심만 여는 노포. 합석이 기본이고 줄이 깁니다. 비스테카 알라 피오렌티나를 비교적 저렴하게. 결제 방식은 방문 전 확인하세요."},
+{c:"피렌체", n:"All'Antico Vinaio", ll:[43.769,11.2578], k:"파니니", a:"두오모 근처", tag:["줄 김","저렴"],
+ d:"한 개가 두 사람 분량입니다. 여섯 명이 세 개만 사서 나눠도 충분합니다. 줄은 여러 지점으로 분산돼 있으니 가까운 곳으로."},
+{c:"피렌체", n:"Trattoria Sostanza", ll:[43.7742,11.2472], k:"트라토리아", a:"산타 마리아 노벨라 근처", tag:["숙소 도보권","예약"],
+ d:"버터에 익힌 닭가슴살 한 접시로 유명한 작은 집. 숙소에서 걸어갈 수 있는 거리라 피렌체 저녁에 잘 맞습니다. 예약과 결제 방식 확인 필수."},
+{c:"피렌체", n:"Gelateria dei Neri", ll:[43.7688,11.2591], k:"젤라또", a:"산타 크로체 근처", tag:["현지인"],
+ d:"관광지 젤라또와 확연히 다릅니다. 색이 지나치게 화려하고 산처럼 쌓아둔 젤라또는 피하라는 게 이탈리아의 기본 상식."},
+{c:"피사", n:"Pizzeria Il Montino", ll:[43.7175,10.4], k:"피자", a:"피사 시내", tag:["체치나"],
+ d:"피사 사람들이 가는 동네 피자집. 체치나(병아리콩 전병)를 꼭 시켜보세요. 관광지 물가에서 벗어난 값."},
+{c:"남부", n:"포지타노 해변가 식당", ll:[40.6275,14.485], k:"자유시간", a:"포지타노", tag:["전망 프리미엄"],
+ d:"자유시간이 짧아 제대로 앉기는 어렵습니다. 레몬 그라니타나 젤라또 한 잔으로 바다를 보는 편이 시간 대비 낫습니다."},
+{c:"토스카나", n:"피엔차 페코리노", ll:[43.0787,11.6789], k:"치즈", a:"피엔차", tag:["선물용"],
+ d:"양젖 치즈 페코리노 디 피엔차의 본고장. 진공포장 제품은 한국까지 가져올 수 있습니다. 숙성도별로 맛보기를 시켜주는 가게가 많습니다."}
+];
+
+const BUDGET = [
+ {id:"b1", n:"공항↔시내 교통 (왕복)", m:"레오나르도 익스프레스 14€×2 또는 택시 분담", v:28},
+ {id:"b2", n:"남부투어 현장비", m:"폼페이 20 + 점심 15 + 미니버스 10 + 페리 17 + 수신기 3", v:65},
+ {id:"b3", n:"바티칸 박물관 입장료", m:"성인 기준, 학생 할인 있음", v:45},
+ {id:"b4", n:"콜로세움 투어 현장비", m:"수신기 3€ (입장료 포함 여부 확인)", v:3},
+ {id:"b5", n:"토스카나 투어 현장비", m:"치비타 8 + 수신기 3 + 와이너리 15 + 점심 15", v:41},
+ {id:"b6", n:"로마 → 피렌체 이탈로", m:"예약 완료 · 1인분", v:32},
+ {id:"b7", n:"피렌체 ↔ 피사 왕복", m:"지역열차", v:20},
+ {id:"b8", n:"피사 사탑 등반", m:"올라갈 경우에만", v:20},
+ {id:"b9", n:"피렌체 두오모 패스", m:"쿠폴라·세례당·종탑 통합권", v:30},
+ {id:"b10", n:"우피치 미술관", m:"예약 수수료 포함", v:29},
+ {id:"b11", n:"보르게세 미술관", m:"10/9 선택 시", v:25},
+ {id:"b12", n:"식비 (9일)", m:"1일 45€ 기준 · 투어 점심 제외", v:340},
+ {id:"b13", n:"시내 교통·기타", m:"지하철·버스·화장실·물", v:60},
+ {id:"b14", n:"기념품·쇼핑", m:"각자 조절", v:150}
+];
+
+const TOURS = [
+ {n:"콜로세움 + 포로로마노 내부투어 (10/3 오후)", p:"3인", v:195000, s:"확정대기"},
+ {n:"이탈리아 남부투어 · 포지타노·아말피 (10/4)", p:"3인", v:480000, s:"확정"},
+ {n:"엔터바티칸 패스트트랙 (10/5 오전)", p:"3인", v:207000, s:"확정"},
+ {n:"피렌체→로마 토스카나 투어 B코스·와이너리 (10/8)", p:"3인", v:0, s:"확정 · 금액 입력 필요"}
+];
+
+const CHECKS = [
+ {g:"출발 한 달 전", items:[
+  ["c1","여권 유효기간 6개월 이상 확인","여섯 명 전원. 잔여기간이 부족하면 재발급에 2주 걸립니다"],
+  ["c2","여행자보험 6인 가입",""],
+  ["c3","로마 → 피렌체 고속열차 6석 예약","미리 살수록 쌉니다"],
+  ["c4","피렌체 두오모 쿠폴라 예약","시간 지정제, 조기 매진"],
+  ["c5","우피치 미술관 예약",""],
+  ["c6","피사 사탑 등반 예약 (선택)","만 8세 미만 불가"],
+  ["c7","토스카나 투어에 캐리어 6개 적재 문의","10/8 도시간 이동, 가장 놓치기 쉬움"],
+  ["c8","콜로세움 투어 확정 여부 확인","확정대기 상태"],
+  ["c9","인기 식당 6인 예약 2~3곳",""]
+ ]},
+ {g:"출발 일주일 전", items:[
+  ["d1","유심·이심 또는 로밍 신청","이심이면 출발 전 QR 설치까지 완료"],
+  ["d2","유로 현금 환전","현장 결제용으로 준비"],
+  ["d3","해외결제 되는 카드 2장 이상 준비","한 장은 분실 대비 따로 보관"],
+  ["d4","여권 사본·사진을 각자 휴대폰에 저장",""],
+  ["d5","숙소 주소를 이탈리아어 그대로 캡처","택시 기사에게 보여주기용"],
+  ["d6","구글맵 로마·피렌체 오프라인 지도 다운로드",""],
+  ["d7","콘센트 어댑터 (C·F형) 3개 이상","6명이면 멀티탭 하나가 훨씬 낫습니다"],
+  ["d8","단톡방에 이 대시보드 링크 공유",""]
+ ]},
+ {g:"짐 싸기", items:[
+  ["e1","편한 운동화 — 하루 2만보를 걷습니다","새 신발은 절대 금지"],
+  ["e2","어깨·무릎 가리는 옷","바티칸 복장 규정. 10/5에 전원 해당"],
+  ["e3","얇은 겉옷 + 접이식 우산","10월 로마 낮 23도 / 아침저녁 14도"],
+  ["e4","보조배터리 (기내 수하물에만)",""],
+  ["e5","상비약 · 멀미약","10/4 아말피 해안도로, 10/8 소도시 굽잇길"],
+  ["e6","목베개 · 안대","10/4는 왕복 7~8시간 버스"],
+  ["e7","빈 물통","이탈리아 거리 수돗물(나소니)은 마실 수 있습니다"],
+  ["e8","자물쇠 달린 크로스백","뒷주머니·백팩 겉주머니 금지"],
+  ["e9","아이 여권 원본","10/4 폼페이 미성년자 무료 입장에 필요"]
+ ]},
+ {g:"현지에서 매일", items:[
+  ["f1","전날 밤 가이드 카톡 확인","미팅 시각이 바뀌는 경우가 있습니다"],
+  ["f2","다음날 현장 결제용 현금 미리 분리",""],
+  ["f3","휴대폰·보조배터리 충전",""],
+  ["f4","그날 사진 단톡방에 공유","여섯 명이 각자 찍은 걸 모으면 앨범이 됩니다"]
+ ]},
+ {g:"돌아오는 날 (10/9)", items:[
+  ["g1","호텔 짐 보관 가능한지 전날 확인","안 되면 테르미니역 유료 보관소"],
+  ["g2","세금 환급 서류 한데 모으기","영수증 + 택스프리 서류 + 여권"],
+  ["g3","올리브유·와인·발사믹은 부치는 짐에","100ml 넘는 액체는 기내 반입 불가"],
+  ["g4","보조배터리는 기내 가방에","부치면 안 됩니다"],
+  ["g5","16:20까지 테르미니역 도착","레오나르도 익스프레스 32분"],
+  ["g6","남은 유로 현금 정리","동전은 공항에서 물이나 커피로 소진"]
+ ]},
+ {g:"한식 챙기기 (여행 커뮤니티 추천 기준)", items:[
+  ["k1","블럭국 · 국물 블록형 ★★★★★","물만 부으면 되는 형태. 가장 만족도가 높다는 평"],
+  ["k2","간장 · 참기름 소포장 ★★★★★","소분 제품으로. 숙소에 소금·후추·올리브오일은 대개 있습니다"],
+  ["k3","무말랭이 ★★★★★","가볍고 상온 보관, 반찬 한 가지가 늘어납니다"],
+  ["k4","여행용 고추장 3개 세트 ★★★★","튜브형. 파스타가 물릴 때 구원투수"],
+  ["k5","김 (바삭한김류) ★★★★","부피만 차지하지 않게 소포장으로"],
+  ["k6","꼬들단무지 ★★★★","기름진 식사 뒤 입가심"],
+  ["k7","양념깻잎 ★★★★","장조림은 육류라 EU 반입 금지 — 아래 주의사항 확인"],
+  ["k8","즉석 국·탕 (미역국·된장국·계란국 등)","고기 성분이 든 육개장류는 반입 제한 대상일 수 있습니다"],
+  ["k9","라면스프 ★★★","고기 구울 때 뿌리거나 국물로. 활용도가 높다는 평"],
+  ["k10","전기포트로 되는 것 위주로 구성","숙소에 인덕션이 있는지 미리 확인"]
+ ]}
+];
+
+const STORIES = [
+ {t:"콜로세움", s:"10/3", p:[
+  "원래 이름은 콜로세움이 아니라 플라비우스 원형극장입니다. 이 자리에는 네로 황제가 만든 개인 궁전의 인공 호수가 있었는데, 네로가 몰락한 뒤 베스파시아누스 황제가 호수를 메우고 시민에게 돌려주는 상징으로 경기장을 세웠습니다. 폭군의 정원을 시민의 놀이터로 바꾼 정치적 선언이었던 셈입니다.",
+  "서기 80년 개장식은 100일 동안 이어졌습니다. 5만 명이 들어가는 공간을 15분 만에 비울 수 있게 출입구를 80개로 설계했고, 관객의 좌석 번호가 적힌 토기 조각이 입장권 역할을 했습니다. 오늘날 경기장 설계의 원형이 여기 있습니다.",
+  "지금 바닥이 뚫려 있어 지하가 보이는데, 이곳이 하이포게움입니다. 도르래와 승강기로 맹수와 무대 장치를 바닥 위로 밀어 올렸습니다. 여름에는 벨라리움이라는 거대한 차양을 펼쳐 그늘을 만들었고, 그 밧줄을 다룬 사람들은 해군 병사였습니다."
+ ], hook:"이름의 유래는 옆에 서 있던 네로의 36미터짜리 거대 청동상 콜로수스입니다. 동상은 사라졌지만 별명이 건물 이름으로 남았습니다."},
+ {t:"포로 로마노", s:"10/3", p:[
+  "지금은 돌무더기처럼 보이지만, 여기가 천 년 동안 지중해 세계의 중심이었습니다. 원래는 두 언덕 사이의 늪지였고, 배수로를 놓아 땅을 말린 뒤에야 광장이 됐습니다.",
+  "카이사르가 암살된 뒤 시신을 화장한 자리에 신전이 세워졌고, 지금도 그 터에는 누군가 놓고 간 꽃이 있습니다. 2천 년이 지나도 꽃이 끊기지 않는 무덤은 흔치 않습니다.",
+  "중세에 이곳은 '캄포 바치노', 즉 소들이 풀을 뜯는 들판으로 불렸습니다. 로마 제국이 무너진 뒤 대리석은 뜯겨 성당 재료가 됐고 광장은 흙에 묻혔습니다. 지금 보는 모습은 19세기 이후의 발굴 결과입니다."
+ ], hook:"콜로세움과 포로 로마노의 대리석은 상당수가 성 베드로 대성당에 다시 쓰였습니다. 10/5에 보게 될 건물 안에 10/3에 본 돌이 들어 있는 셈입니다."},
+ {t:"폼페이", s:"10/4", p:[
+  "서기 79년 베수비오 화산이 터졌을 때 도시를 덮은 것은 용암이 아니라 화산재와 경석이었습니다. 그래서 파괴 대신 보존이 일어났습니다. 빵집의 화덕 안에는 그날 굽던 빵이 탄화된 채 남아 있었습니다.",
+  "화산재가 굳으면서 시신이 썩은 자리에 빈 공간이 남았습니다. 19세기에 주세페 피오렐리가 그 구멍에 석고를 부어 굳히자 마지막 순간의 자세가 그대로 나왔습니다. 우리가 보는 '사람 모양'은 시신이 아니라 그 빈 공간의 본입니다.",
+  "폼페이 벽에는 낙서가 1만 개 넘게 남아 있습니다. 선거 유세 문구, 검투사 응원, 연애 고백, 그리고 '이 벽아, 이렇게 많은 낙서를 견디다니 놀랍다'는 낙서까지 있습니다."
+ ], hook:"화산 폭발을 기록으로 남긴 사람은 열일곱 살 소년 소플리니우스였습니다. 그의 삼촌은 사람들을 구하러 배를 타고 갔다가 돌아오지 못했습니다."},
+ {t:"포지타노와 아말피", s:"10/4", p:[
+  "포지타노는 19세기에 인구 대부분이 미국으로 떠나 거의 비어 있던 어촌이었습니다. 1953년 존 스타인벡이 잡지에 쓴 글 한 편이 이 마을을 세계 지도 위에 올려놓았습니다. 그는 이곳을 '머무는 동안에는 실감이 안 나고 떠난 뒤에야 선명해지는 곳'이라고 썼습니다.",
+  "집들이 절벽에 수직으로 붙어 있어 마을 안에는 평지가 거의 없습니다. 그래서 해변까지 계단으로만 내려가고, 짐은 예부터 당나귀가 날랐습니다.",
+  "아말피는 한때 베네치아·제노바와 어깨를 나란히 한 해양공화국이었습니다. 지금은 작은 마을이지만 중세 지중해 해상법의 기준을 만든 곳이고, 나침반을 실용화한 플라비오 조야의 고향으로 전해집니다."
+ ], hook:"아말피 해안도로는 1850년대에 만들어졌습니다. 그 전까지 마을들은 오직 배로만 연결돼 있었습니다."},
+ {t:"바티칸", s:"10/5", p:[
+  "면적 0.44제곱킬로미터, 세계에서 가장 작은 나라입니다. 서울 여의도의 6분의 1 정도인데 자체 우체국·은행·철도역·신문사가 있습니다.",
+  "미켈란젤로는 조각가라고 자부했고 천장화 의뢰를 거절하려 했습니다. 결국 4년 넘게 목을 젖힌 채 그렸고, 친구에게 보낸 시에서 '턱이 배에 닿고 눈은 뒤통수로 돌아갔다'고 투덜거렸습니다. 흔히 알려진 것과 달리 누워서 그린 게 아니라 비계 위에 서서 고개를 젖히고 그렸습니다.",
+  "라파엘로의 '아테네 학당'에는 동료들의 얼굴이 숨어 있습니다. 가운데 플라톤은 레오나르도 다 빈치의 얼굴이고, 계단에 홀로 턱을 괴고 앉은 헤라클레이토스는 미켈란젤로입니다. 라파엘로 자신도 오른쪽 구석에 조용히 서 있습니다.",
+  "성 베드로 대성당의 피에타는 미켈란젤로가 스물넷에 만든 작품입니다. 자기 작품이라고 서명을 남긴 유일한 조각이기도 합니다. 성모의 띠에 이름을 새겼습니다."
+ ], hook:"스위스 근위대의 화려한 제복은 1506년부터 이어진 전통입니다. 미켈란젤로가 디자인했다는 이야기가 돌지만 근거는 없습니다."},
+ {t:"피렌체 두오모", s:"10/6", p:[
+  "성당 본체는 1296년에 짓기 시작했는데, 정작 돔을 어떻게 덮을지는 아무도 몰랐습니다. 지름 45미터를 지지대 없이 덮는 방법이 당시엔 존재하지 않았습니다. 피렌체는 일단 짓고 100년 넘게 구멍을 뚫어둔 채 버텼습니다.",
+  "그 문제를 푼 사람이 브루넬레스키입니다. 그는 벽돌을 청어 뼈 모양으로 엇갈려 쌓아 아래로 흘러내리지 않게 했고, 돔을 안팎 이중 껍질로 만들어 무게를 줄였습니다. 400만 개가 넘는 벽돌이 들어갔습니다.",
+  "쿠폴라 등반은 브루넬레스키가 만든 두 껍질 사이의 좁은 통로를 걷는 일입니다. 즉 우리는 돔을 보는 게 아니라 돔 속을 지나가는 겁니다."
+ ], hook:"브루넬레스키는 설계도를 거의 남기지 않았습니다. 아이디어를 도둑맞을까 봐 일부러 감췄고, 그래서 지금도 그가 정확히 어떻게 지었는지 완전히 밝혀지지 않았습니다."},
+ {t:"베키오 다리", s:"10/6", p:[
+  "원래 이 다리 위에는 정육점과 생선가게가 있었습니다. 냄새와 오물이 심하자 16세기에 메디치 가문이 전부 내쫓고 금세공점만 남겼습니다. 지금의 보석상 거리는 그 명령에서 시작됐습니다.",
+  "다리 위층을 지나는 통로가 바사리 회랑입니다. 메디치 대공이 거리를 걷지 않고 궁에서 관청까지 이동하려고 만든 1킬로미터짜리 비밀 통로입니다.",
+  "1944년 후퇴하던 독일군은 피렌체의 다리를 모두 폭파했지만 베키오 다리만은 남겼습니다. 히틀러가 직접 보존을 지시했다는 이야기가 전해집니다."
+ ], hook:"다리 난간에 자물쇠를 채우는 유행이 있었지만 지금은 금지이고 벌금 대상입니다."},
+ {t:"피사의 사탑", s:"10/7", p:[
+  "1173년에 짓기 시작했는데 3층을 올리던 중 이미 기울기 시작했습니다. 땅이 무른 진흙과 모래라 한쪽이 가라앉은 겁니다. 전쟁 때문에 공사가 100년 가까이 멈췄는데, 그 사이 지반이 자리를 잡아 오히려 무너지지 않았습니다.",
+  "이어서 지은 건축가들은 기울기를 보정하려고 위층을 반대쪽으로 살짝 휘게 쌓았습니다. 그래서 탑은 직선이 아니라 아주 완만한 바나나 모양입니다.",
+  "1990년에는 위험 판정으로 폐쇄됐고, 10년에 걸쳐 반대편 지반의 흙을 조금씩 빼내는 방식으로 기울기를 40센티미터가량 되돌렸습니다. 2001년에 다시 열렸고 앞으로 수백 년은 안전하다고 봅니다."
+ ], hook:"갈릴레이가 이 탑에서 무게가 다른 공을 떨어뜨렸다는 이야기는 제자가 남긴 기록일 뿐 확인된 사실이 아닙니다. 갈릴레이 본인은 그 실험을 쓴 적이 없습니다."},
+ {t:"치비타 디 바뇨레죠", s:"10/8", p:[
+  "2500년 전 에트루리아인이 화산암 언덕 위에 세운 마을입니다. 문제는 그 언덕이 계속 깎여 나간다는 점입니다. 주변 흙이 비에 쓸려 내려가면서 마을은 점점 좁은 기둥 위에 남겨졌습니다.",
+  "그래서 '죽어가는 도시'라고 불립니다. 지금은 차가 들어갈 수 없고 긴 보행 다리 하나로만 연결됩니다. 상주 인구는 열 명 남짓입니다.",
+  "미야자키 하야오의 '천공의 성 라퓨타'에 영감을 준 곳으로 자주 소개됩니다. 실제로 안개가 끼는 날에는 마을이 구름 위에 떠 있는 것처럼 보입니다."
+ ], hook:"다리를 건너는 데만 10분 정도 걸리고 오르막입니다. 셔틀버스(3€)가 다리 입구까지 데려다줍니다."},
+{t:"몬테풀치아노", s:"10/8", p:[
+  "언덕 꼭대기에 올라앉은 중세 도시입니다. 성문에서 중앙 광장까지 한참을 올라가야 하는데, 그 길 양쪽이 전부 와인 창고입니다. 지상은 상점이고 지하로 내려가면 수백 년 된 저장고가 이어집니다.",
+  "이곳 와인은 비노 노빌레 디 몬테풀치아노라고 부릅니다. '귀족의 와인'이라는 뜻인데, 18세기에 이미 그렇게 불렸다는 기록이 있습니다. 이탈리아에서 최고 등급인 DOCG를 가장 먼저 받은 와인 중 하나입니다.",
+  "헷갈리기 쉬운 점 하나. 다른 지역에 '몬테풀치아노'라는 이름의 포도 품종이 따로 있는데, 이 마을 와인과는 전혀 관계가 없습니다. 여기 와인은 산조베제 계열 포도로 만듭니다.",
+  "영화 뉴문의 볼투리 장면을 이 마을 광장에서 찍었습니다. 아이가 그 시리즈를 안다면 알아볼지도 모릅니다."
+ ], hook:"와이너리에서 시음할 때 잔을 돌리는 건 멋이 아니라 향을 여는 동작입니다. 아이에게 포도 주스로 같이 해보게 하면 즐거워합니다."},
+ {t:"발도르차와 피엔차", s:"10/8", p:[
+  "발도르차의 사이프러스 나무 길과 완만한 언덕은 르네상스 화가들이 배경으로 그리던 풍경 그대로입니다. 유네스코가 이 지역을 세계유산으로 지정한 이유도 '인간이 만든 풍경의 이상형'이기 때문입니다.",
+  "영화 글래디에이터에서 막시무스가 밀밭을 손으로 쓸며 걷는 장면을 이곳에서 찍었습니다. 투어에서 '막시무스의 집'이라고 부르는 농가가 그 자리입니다.",
+  "피엔차는 교황 비오 2세가 자기 고향 마을을 통째로 르네상스 도시로 다시 지은 곳입니다. 도시 전체를 하나의 설계로 만든 유럽 최초의 사례로 꼽힙니다. 단 3년 만에 완성했습니다."
+ ], hook:"피엔차의 골목 이름 중에는 '입맞춤의 길', '사랑의 길', '행운의 길'이 나란히 있습니다. 관광용이 아니라 오래된 이름입니다."}
+];
+
+/* ============ 저장소 ============ */
+const mem = {};
+async function sGet(k, shared){
+  try{ const r = await window.storage.get(k, !!shared); return r ? JSON.parse(r.value) : null; }
+  catch(e){
+    try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : (mem[k] ?? null); }
+    catch(e2){ return mem[k] ?? null; }
+  }
+}
+async function sSet(k, val, shared){
+  mem[k] = val;
+  try{ await window.storage.set(k, JSON.stringify(val), !!shared); return true; }
+  catch(e){
+    try{ localStorage.setItem(k, JSON.stringify(val)); return true; }catch(e2){ return false; }
+  }
+}
+function flash(el){ if(!el) return; el.classList.add('on'); setTimeout(()=>el.classList.remove('on'),1400); }
+function esc(t){ return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function gmap(q){ return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
+
+/* ============ D-day & 날짜 스트립 ============ */
+(function(){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const diff = Math.round((START - today)/86400000);
+  const n = document.getElementById('ddayNum'), t = document.getElementById('ddayTxt');
+  if(diff > 0){ n.textContent = 'D-'+diff; t.textContent = '출발까지'; }
+  else if(diff === 0){ n.textContent = 'D-DAY'; t.textContent = '오늘 출발'; }
+  else if(diff >= -8){ n.textContent = 'Day '+(1-diff); t.textContent = '여행 중'; }
+  else { n.textContent = '完'; t.textContent = '다녀왔습니다'; }
+})();
+
+const strip = document.getElementById('strip');
+DAYS.forEach((d,i)=>{
+  const b = document.createElement('button');
+  b.className = 'chip'; b.dataset.city = d.city; b.dataset.go = d.id;
+  b.innerHTML = '<div class="d">'+d.date.split('.')[1]+'</div><div class="w">'+d.wd+' '+d.w+'</div><div class="c">'+d.cLabel+'</div>';
+  strip.appendChild(b);
+});
+strip.addEventListener('click', e=>{
+  const b = e.target.closest('[data-go]'); if(!b) return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+  b.classList.add('on');
+  showTab('plan');
+  const el = document.getElementById(b.dataset.go);
+  if(el){ el.open = true; setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60); }
+});
+
+/* ============ 탭 ============ */
+function showTab(p){
+  document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', String(t.dataset.p===p)));
+  document.querySelectorAll('.pane').forEach(s=>s.classList.toggle('on', s.id==='p-'+p));
+  if(p==='map') setTimeout(initMap, 60);
+  window.scrollTo({top:0});
+}
+document.getElementById('tabs').addEventListener('click', e=>{
+  const t = e.target.closest('.tab'); if(t) showTab(t.dataset.p);
+});
+
+/* ============ 일정 ============ */
+const daysWrap = document.getElementById('days');
+DAYS.forEach((d,i)=>{
+  const det = document.createElement('details');
+  det.className = 'day'; det.id = d.id; if(i<2) det.open = true;
+
+  let tt = '<ul class="tt">' + d.items.map(it =>
+    '<li class="'+(it.k||'')+'"><time>'+esc(it.t)+'</time><span class="dot"></span><div class="what"><b>'+esc(it.n)+'</b>'+
+    (it.d ? '<p>'+esc(it.d)+'</p>' : '') + '</div></li>').join('') + '</ul>';
+
+  let bk = (d.booked||[]).map(b =>
+    '<div class="booked'+(b.s==='확정대기'?' pending':'')+'"><div class="bk-t">'+esc(b.s)+'</div><h4>'+esc(b.n)+'</h4>'+
+    '<dl>'+b.rows.map(r=>'<dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd>').join('')+'</dl>'+
+    (b.url?'<a class="go" href="'+b.url+'" target="_blank" rel="noopener">예약 페이지 열기</a>':'')+'</div>').join('');
+
+  let nt = (d.notes||[]).map(n =>
+    '<div class="note '+n.t+'"><b>'+esc(n.h)+'</b><ul>'+n.b.map(x=>'<li>'+x+'</li>').join('')+'</ul></div>').join('');
+
+  let pins = (d.pins||[]).length
+    ? '<div class="tagline" style="margin-top:14px">'+d.pins.map(p=>'<a class="tag" style="text-decoration:none" href="'+gmap(p[0]+' Italy')+'" target="_blank" rel="noopener">📍 '+esc(p[0])+'</a>').join('')+'</div>' : '';
+
+  det.innerHTML =
+    '<summary><div class="daynum"><b>'+(i+1)+'</b><i>'+esc(d.date)+'</i></div>'+
+    '<div class="dayhead"><h3>'+esc(d.title)+'</h3><p>'+esc(d.wd)+'요일 · '+esc(d.sub)+'</p></div>'+
+    '<span class="caret">▾</span></summary>'+
+    '<div class="daybody">'+tt+bk+nt+pins+
+      '<div class="memo"><label for="m-'+d.id+'">나의 메모 (각자 폰에 저장됨) <span style="font-weight:500;color:var(--roof)">· 예약번호·연락처는 적지 마세요</span></label>'+
+      '<textarea id="m-'+d.id+'" placeholder="바뀐 미팅 시각, 각자 하고 싶은 것, 사고 싶은 것…"></textarea>'+
+      '<div class="saveline"><button class="btn sm" data-save="'+d.id+'">메모 저장</button><span class="said" id="s-'+d.id+'">저장했습니다</span></div></div>'+
+    '</div>';
+  daysWrap.appendChild(det);
+});
+
+(async()=>{
+  const memos = (await sGet('trip:memos', true)) || {};
+  DAYS.forEach(d=>{ const ta = document.getElementById('m-'+d.id); if(ta && memos[d.id]) ta.value = memos[d.id]; });
+})();
+
+daysWrap.addEventListener('click', async e=>{
+  const b = e.target.closest('[data-save]'); if(!b) return;
+  const id = b.dataset.save;
+  const memos = (await sGet('trip:memos', true)) || {};
+  memos[id] = document.getElementById('m-'+id).value;
+  const ok = await sSet('trip:memos', memos, true);
+  const s = document.getElementById('s-'+id);
+  s.textContent = ok ? '이 기기에 저장했습니다' : '저장하지 못했습니다';
+  flash(s);
+});
+
+/* ============ 지도 ============ */
+let map = null, layers = {}, eatLayer = null;
+const CITYC = {roma:'#C0522E', sud:'#12718F', firenze:'#6C8A45', toscana:'#F2B705'};
+function initMap(){
+  if(map){ map.invalidateSize(); return; }
+  if(typeof L === 'undefined'){ document.getElementById('map').innerHTML = '<p style="padding:20px;font-size:13px">지도를 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.</p>'; return; }
+  map = L.map('map', {scrollWheelZoom:false}).setView([42.4, 12.4], 6);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18, attribution:'&copy; OpenStreetMap'}).addTo(map);
+  const all = [];
+  DAYS.forEach((d,i)=>{
+    (d.pins||[]).forEach(p=>{
+      const m = L.circleMarker([p[1],p[2]], {radius:8, color:'#fff', weight:2, fillColor:CITYC[d.city]||'#243542', fillOpacity:1});
+      m.bindPopup('<b style="font-size:13px">'+esc(p[0])+'</b><br><span style="font-size:11px;color:#5E7182">Day '+(i+1)+' · '+d.date+'</span><br><a style="font-size:12px" href="'+gmap(p[0]+' Italy')+'" target="_blank" rel="noopener">구글지도에서 열기</a>');
+      m.__day = d.id;
+      (layers[d.id] = layers[d.id] || L.layerGroup().addTo(map)).addLayer(m);
+      all.push([p[1],p[2]]);
+    });
+  });
+  eatLayer = L.layerGroup();
+  EATS.forEach(e=>{
+    if(!e.ll) return;
+    const m = L.circleMarker(e.ll, {radius:6, color:'#fff', weight:2, fillColor:'#8B4A6B', fillOpacity:1});
+    m.bindPopup('<b style="font-size:13px">'+esc(e.n)+'</b><br><span style="font-size:11px;color:#5E7182">'+esc(e.c)+' · '+esc(e.k)+'</span><br>'+
+      (e.u?'<a style="font-size:12px" href="'+e.u+'" target="_blank" rel="noopener">저장한 지도 링크</a><br>':'')+
+      '<a style="font-size:12px" href="'+gmap(e.n+' '+e.a+' Italy')+'" target="_blank" rel="noopener">구글지도에서 열기</a>');
+    eatLayer.addLayer(m);
+  });
+  if(document.querySelector('.fchip.eatbtn.on')) eatLayer.addTo(map);
+  map.fitBounds(all, {padding:[30,30]});
+}
+const mf = document.getElementById('mapFilters');
+mf.innerHTML = '<button class="fchip eatbtn on" data-eat="1">맛집 표시 중</button>'
+  + '<button class="fchip on" data-f="all">일정 전체</button>'
+  + DAYS.map((d,i)=>'<button class="fchip" data-f="'+d.id+'">Day '+(i+1)+'</button>').join('');
+mf.addEventListener('click', e=>{
+  const b = e.target.closest('.fchip'); if(!b || !map) return;
+  if(b.dataset.eat){
+    const on = b.classList.toggle('on');
+    if(on){ eatLayer.addTo(map); b.textContent = '맛집 표시 중'; }
+    else { map.removeLayer(eatLayer); b.textContent = '맛집 숨김'; }
+    return;
+  }
+  mf.querySelectorAll('.fchip:not([data-eat])').forEach(c=>c.classList.remove('on')); b.classList.add('on');
+  const f = b.dataset.f; const pts = [];
+  DAYS.forEach(d=>{
+    const on = (f==='all' || f===d.id);
+    if(layers[d.id]){ on ? layers[d.id].addTo(map) : map.removeLayer(layers[d.id]); }
+    if(on) (d.pins||[]).forEach(p=>pts.push([p[1],p[2]]));
+  });
+  if(pts.length) map.fitBounds(pts, {padding:[35,35], maxZoom:13});
+});
+
+/* ============ 맛집 ============ */
+const eatsWrap = document.getElementById('eats');
+const ef = document.getElementById('eatFilters');
+const cities = ['전체', ...new Set(EATS.map(e=>e.c))];
+ef.innerHTML = cities.map((c,i)=>'<button class="fchip'+(i===0?' on':'')+'" data-c="'+c+'">'+c+'</button>').join('');
+function drawEats(city){
+  const list = EATS.filter(e=>city==='전체'||e.c===city);
+  eatsWrap.innerHTML = list.map(e=>
+    '<div class="eat"><div class="body"><h4>'+esc(e.n)+'</h4>'+
+    '<div class="meta">'+esc(e.c)+' · '+esc(e.k)+' · '+esc(e.a)+'</div>'+
+    '<p>'+esc(e.d)+'</p>'+
+    '<div class="tagline">'+(e.tag||[]).map(t=>'<span class="tag'+(t.includes('예약')||t.includes('웨이팅')?' hot':'')+'">'+esc(t)+'</span>').join('')+'</div>'+
+    '<div class="acts">'+(e.u?'<a class="pill" href="'+e.u+'" target="_blank" rel="noopener">저장한 지도 링크</a>':'')+'<a class="pill" href="'+gmap(e.n+' '+e.a+' Italy')+'" target="_blank" rel="noopener">구글지도</a></div>'+
+    '</div></div>').join('');
+}
+drawEats('전체');
+ef.addEventListener('click', e=>{
+  const b = e.target.closest('.fchip'); if(!b) return;
+  ef.querySelectorAll('.fchip').forEach(c=>c.classList.remove('on')); b.classList.add('on');
+  drawEats(b.dataset.c);
+});
+
+const mine = document.getElementById('mine');
+async function drawMine(){
+  const list = (await sGet('trip:mine', true)) || [];
+  if(!list.length){ mine.innerHTML = '<p style="font-size:13px;color:var(--ink-soft);padding:4px 0 8px">아직 비어 있습니다. 위에서 첫 곳을 추가해 보세요. 추가한 내용은 이 기기에만 남습니다.</p>'; return; }
+  mine.innerHTML = list.map((e,i)=>
+    '<div class="eat"><div class="body"><h4>'+esc(e.n)+'</h4>'+
+    '<div class="meta">'+esc(e.c)+' · '+esc(e.k)+'</div>'+
+    (e.m?'<p>'+esc(e.m)+'</p>':'')+
+    '<div class="acts">'+
+      (e.u?'<a class="pill" href="'+esc(e.u)+'" target="_blank" rel="noopener">링크 열기</a>':'')+
+      '<a class="pill" href="'+gmap(e.n+' '+e.c)+'" target="_blank" rel="noopener">구글지도</a>'+
+      '<button class="pill" data-del="'+i+'" style="cursor:pointer">삭제</button>'+
+    '</div></div></div>').join('');
+}
+drawMine();
+document.getElementById('nAdd').addEventListener('click', async ()=>{
+  const n = document.getElementById('nName').value.trim();
+  if(!n){ document.getElementById('nName').focus(); return; }
+  const item = {n, c:document.getElementById('nCity').value, k:document.getElementById('nKind').value,
+                m:document.getElementById('nMemo').value.trim(), u:document.getElementById('nUrl').value.trim()};
+  const list = (await sGet('trip:mine', true)) || [];
+  list.push(item);
+  const ok = await sSet('trip:mine', list, true);
+  document.getElementById('nName').value=''; document.getElementById('nMemo').value=''; document.getElementById('nUrl').value='';
+  if(!ok) document.getElementById('shareNote').textContent = '지금은 이 기기에만 저장됩니다. 공유 저장이 안 되는 환경입니다.';
+  drawMine();
+});
+mine.addEventListener('click', async e=>{
+  const b = e.target.closest('[data-del]'); if(!b) return;
+  const list = (await sGet('trip:mine', true)) || [];
+  list.splice(Number(b.dataset.del),1);
+  await sSet('trip:mine', list, true);
+  drawMine();
+});
+
+/* ============ 경비 ============ */
+const budBody = document.getElementById('budBody');
+let budVals = {};
+async function drawBudget(){
+  budVals = (await sGet('trip:budget')) || {};
+  budBody.innerHTML = BUDGET.map(b=>
+    '<tr><td>'+esc(b.n)+'</td><td style="font-size:11.5px;color:var(--ink-soft)">'+esc(b.m)+'</td>'+
+    '<td><input type="number" data-b="'+b.id+'" value="'+(budVals[b.id] ?? b.v)+'" style="width:64px"></td></tr>').join('')
+    + '<tr class="tot"><td colspan="2">1인 합계</td><td id="budTot" class="num">0</td></tr>';
+  calc();
+}
+function calc(){
+  let sum = 0;
+  budBody.querySelectorAll('input[data-b]').forEach(i=>sum += Number(i.value||0));
+  const fx = Number(document.getElementById('fx').value||1560);
+  document.getElementById('budTot').textContent = '€'+sum.toLocaleString();
+  document.getElementById('sumEur').textContent = '€'+sum.toLocaleString();
+  document.getElementById('sumKrw').textContent = (sum*fx*6).toLocaleString('ko-KR',{maximumFractionDigits:0})+'원';
+}
+budBody.addEventListener('input', async e=>{
+  const i = e.target.closest('input[data-b]'); if(!i) return;
+  budVals[i.dataset.b] = Number(i.value||0);
+  calc(); await sSet('trip:budget', budVals);
+});
+document.getElementById('fxSave').addEventListener('click', async ()=>{
+  calc(); await sSet('trip:fx', Number(document.getElementById('fx').value||1560));
+});
+(async()=>{ const f = await sGet('trip:fx'); if(f) document.getElementById('fx').value = f; await drawBudget(); })();
+
+document.getElementById('tourBody').innerHTML = TOURS.map(t=>
+  '<tr><td>'+esc(t.n)+'<div style="font-size:11px;color:'+(t.s.includes('대기')?'#9A7200':'var(--olive)')+'">'+esc(t.s)+'</div></td>'+
+  '<td>'+esc(t.p)+'</td><td class="num">'+(t.v?t.v.toLocaleString():'—')+'</td></tr>').join('')
+  + '<tr class="tot"><td colspan="2">3인 결제 합계 (토스카나 제외)</td><td class="num">'+TOURS.reduce((a,b)=>a+b.v,0).toLocaleString()+'</td></tr>';
+
+/* ============ 체크리스트 ============ */
+const checksWrap = document.getElementById('checks');
+(async()=>{
+  const state = (await sGet('trip:checks')) || {};
+  checksWrap.innerHTML = CHECKS.map(g=>
+    '<div class="clist"><h3>'+esc(g.g)+'</h3><div class="prog"><i data-prog="'+esc(g.g)+'"></i></div>'+
+    g.items.map(it=>
+      '<label class="'+(state[it[0]]?'done':'')+'"><input type="checkbox" data-c="'+it[0]+'" data-g="'+esc(g.g)+'"'+(state[it[0]]?' checked':'')+'>'+
+      '<span>'+esc(it[1])+(it[2]?'<small>'+esc(it[2])+'</small>':'')+'</span></label>').join('')
+    +'</div>').join('');
+  CHECKS.forEach(g=>prog(g.g));
+})();
+function prog(g){
+  const boxes = checksWrap.querySelectorAll('input[data-g="'+g+'"]');
+  const done = [...boxes].filter(b=>b.checked).length;
+  const bar = checksWrap.querySelector('[data-prog="'+g+'"]');
+  if(bar) bar.style.width = (boxes.length ? done/boxes.length*100 : 0)+'%';
+}
+checksWrap.addEventListener('change', async e=>{
+  const c = e.target.closest('input[data-c]'); if(!c) return;
+  c.closest('label').classList.toggle('done', c.checked);
+  const state = (await sGet('trip:checks')) || {};
+  state[c.dataset.c] = c.checked;
+  await sSet('trip:checks', state);
+  prog(c.dataset.g);
+});
+
+/* ============ 이야기 ============ */
+document.getElementById('stories').innerHTML = STORIES.map(s=>
+  '<details class="story"><summary>'+esc(s.t)+'<small>'+esc(s.s)+'</small></summary>'+
+  '<div class="in">'+s.p.map(p=>'<p>'+esc(p)+'</p>').join('')+
+  '<div class="hook"><b>덧붙이는 이야기 — </b>'+esc(s.hook)+'</div></div></details>').join('');
+</script>
