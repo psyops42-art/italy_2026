@@ -2,7 +2,7 @@
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>이탈리아 2026 · 우리 여섯 사람</title>
+<title>이탈리아 2026년 ·10월 여행 기록</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -263,6 +263,47 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
 .story .in .hook{background:var(--lemon-soft);border-radius:9px;padding:9px 11px;font-size:13px;border:1px solid #F0DC9C}
 .story .in .hook b{color:#8A6A00}
 
+/* quiz */
+.qwrap{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 16px}
+.qstart{text-align:center;padding:12px 4px}
+.qstart h3{margin:0 0 6px;font-size:21px;font-weight:700;letter-spacing:-.02em}
+.qstart p{margin:0 0 16px;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+.qbest{display:inline-block;background:var(--lemon-soft);border:1px solid #F0DC9C;border-radius:99px;padding:6px 15px;font-size:12.5px;font-weight:600;color:#8A6A00;margin-bottom:16px}
+.btn.big{padding:12px 28px;font-size:15.5px;border-radius:99px}
+.qbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.qbar .track{flex:1;height:6px;background:var(--paper-2);border-radius:99px;overflow:hidden}
+.qbar .track i{display:block;height:100%;background:var(--roof);width:0;transition:width .3s}
+.qbar .cnt{font-family:"Fraunces",Georgia,serif;font-size:13px;font-weight:600;color:var(--ink-soft);flex:none}
+.qtag{display:inline-block;font-size:11px;font-weight:700;background:var(--paper-2);color:var(--ink-soft);padding:3px 9px;border-radius:6px;margin-bottom:8px}
+.qtext{font-size:18px;font-weight:700;line-height:1.5;letter-spacing:-.02em;margin:0 0 16px}
+.qopts{display:grid;gap:8px}
+.qopt{
+  display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%;
+  background:var(--paper);border:1.5px solid var(--line);border-radius:12px;
+  padding:13px 14px;font-size:15px;line-height:1.45;cursor:pointer;
+}
+.qopt b{flex:none;width:22px;height:22px;border-radius:50%;background:#fff;border:1.5px solid var(--line);
+  display:grid;place-content:center;font-size:12px;font-weight:700;color:var(--ink-soft)}
+.qopt:disabled{cursor:default}
+.qopt.right{background:#EDF6E7;border-color:var(--olive)}
+.qopt.right b{background:var(--olive);border-color:var(--olive);color:#fff}
+.qopt.wrong{background:#FFF0EA;border-color:var(--roof)}
+.qopt.wrong b{background:var(--roof);border-color:var(--roof);color:#fff}
+.qfb{margin-top:14px;border-radius:11px;padding:12px 14px;font-size:13.5px;line-height:1.65}
+.qfb.ok{background:#EDF6E7;border:1px solid #CBE0BC;color:#3E5A2A}
+.qfb.no{background:#FFF0EA;border:1px solid #F3D5C7;color:#7E3417}
+.qfb b{display:block;margin-bottom:4px;font-size:14px}
+.qres{text-align:center;padding:8px 4px}
+.qres .score{font-family:"Fraunces",Georgia,serif;font-size:44px;font-weight:600;line-height:1;color:var(--roof)}
+.qres .of{font-size:13px;color:var(--ink-soft);margin-top:4px}
+.qres .rank{font-size:23px;font-weight:700;margin:16px 0 4px;letter-spacing:-.02em}
+.qres .msg{font-size:14px;color:var(--ink-soft);margin-bottom:18px}
+.qmiss{text-align:left;background:var(--paper-2);border-radius:11px;padding:13px;margin-bottom:16px;font-size:13px}
+.qmiss h4{margin:0 0 8px;font-size:12px;font-weight:700;color:var(--ink-soft)}
+.qmiss div{margin-bottom:9px;line-height:1.55}
+.qmiss div:last-child{margin-bottom:0}
+.qmiss em{font-style:normal;color:var(--olive);font-weight:600}
+
 .foot{text-align:center;font-size:11.5px;color:var(--ink-soft);padding:26px 0 10px;line-height:1.7}
 .storagenote{font-size:11.5px;color:var(--ink-soft);background:var(--paper-2);border-radius:9px;padding:9px 12px;margin-bottom:14px;line-height:1.6}
 </style>
@@ -287,6 +328,7 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
     <button class="tab" role="tab" data-p="money" aria-selected="false">경비</button>
     <button class="tab" role="tab" data-p="prep" aria-selected="false">준비물</button>
     <button class="tab" role="tab" data-p="story" aria-selected="false">이야기</button>
+    <button class="tab" role="tab" data-p="quiz" aria-selected="false">퀴즈 🎲</button>
   </div>
 </nav>
 
@@ -394,7 +436,12 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
     <div id="stories"></div>
   </section>
 
-  <p class="foot">이 대시보드는 링크만 있으면 누구나 열 수 있습니다.<br>메모·맛집·체크리스트는 자동 저장됩니다.</p>
+  <section class="pane" id="p-quiz">
+    <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">여행 전에 풀어보고, 현지에 가서 또 풀어보세요. 답을 알고 보면 같은 유적도 달라 보입니다.</p>
+    <div id="quiz"></div>
+  </section>
+
+  <p class="foot">요금·운영정보는 2026년 9월 기준으로 확인했습니다.<br>현지 사정으로 바뀔 수 있으니 출발 직전 한 번 더 확인하세요.<br>메모·맛집·체크리스트는 보고 계신 기기에 저장됩니다.</p>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
@@ -406,7 +453,7 @@ const DAYS = [
 { id:"d1", date:"10.02", wd:"금", city:"roma", cLabel:"이동", w:"⛅",
   title:"인천 → 로마 도착", sub:"직항 · 저녁 도착 후 숙소 체크인",
   items:[
-    {t:"09:20", k:"key", n:"인천공항 제1터미널 도착", d:"출발 3시간 전. 6명이 카운터에서 좌석 붙여달라고 요청하기 좋은 타이밍입니다."},
+    {t:"09:20", k:"key", n:"인천공항 제2터미널(T2) 도착", d:"출발 3시간 전. 아시아나는 2026년 1월 14일부로 제1터미널에서 제2터미널로 옮겼습니다. 체크인은 G~J 카운터입니다."},
     {t:"12:20", k:"move", n:"인천 출발 · 로마행 직항", d:"비행 약 13시간. 기내에서 로마 시각(한국 -7시간)으로 시계를 맞춰두세요."},
     {t:"18:30", k:"key", n:"로마 피우미치노(FCO) 도착", d:"입국심사·수하물까지 보통 40~60분. 19:30쯤 나온다고 보면 됩니다."},
     {t:"19:45", k:"move", n:"공항 → 테르미니역", d:"레오나르도 익스프레스 32분 직행(1인 14€) 또는 공항택시 정액. 6명+캐리어면 택시 2대나 사전예약 밴이 편합니다."},
@@ -415,7 +462,7 @@ const DAYS = [
   ],
   notes:[
     {t:"warn", h:"테르미니역 주변 주의", b:["역 주변은 소매치기가 가장 많은 구역입니다. 가방은 앞으로, 지갑은 뒷주머니 금지.","‘도와주겠다’며 캐리어에 손대거나 티켓 발권을 돕겠다는 사람은 팁을 요구합니다. 단호히 거절하세요.","길에서 팔찌를 손목에 채워주는 사람, 서명을 요청하는 사람은 모두 피하세요."]},
-    {t:"tip", h:"도착 첫날 할 일", b:["숙소 와이파이 비밀번호와 호스트 연락처를 단톡방에 공유","유심·이심 개통 확인 (로밍이면 데이터 로밍 켜기)","다음날 아침 식사 살 곳 위치만 확인하고 일찍 자기"]}
+    {t:"warn", h:"인천공항은 제2터미널입니다", b:["아시아나가 <strong>2026년 1월 14일부로 T1에서 T2로 이전</strong>했습니다. 예전 기억이나 오래된 블로그를 보고 T1으로 가면 셔틀로 20분을 더 써야 합니다.","공항철도·리무진 모두 <strong>T2가 종점</strong>이라 한 정거장 더 갑니다. 내리는 곳을 착각하지 마세요.","대한항공·델타·에어프랑스와 같은 터미널입니다."]},{t:"tip", h:"도착 첫날 할 일", b:["숙소 와이파이 비밀번호와 호스트 연락처를 단톡방에 공유","유심·이심 개통 확인 (로밍이면 데이터 로밍 켜기)","레오나르도 익스프레스는 <strong>성인 1인당 만 4~12세 아동 1명이 무료</strong>입니다. 해당되면 표를 한 장 덜 사도 됩니다.","다음날 아침 식사 살 곳 위치만 확인하고 일찍 자기"]}
   ],
   pins:[["로마 피우미치노 공항",41.8003,12.2389],["숙소 (테르미니역 인근)",41.9010,12.5020],["로마 테르미니역",41.9010,12.5020]] },
 
@@ -454,8 +501,8 @@ const DAYS = [
     rows:[["일정","10/4(일) 전일"],["인원","우리 가족 3인"],["요금","1인 160,000원 (결제 완료)"],["현장 추가","폼페이 20€ + 점심 15€ + 미니버스 10€ + 페리 17€ + 수신기 3€ ≒ 65€"]],
     url:"https://experiences.myrealtrip.com/products/3440846"}],
   notes:[
-    {t:"warn", h:"여권 원본을 반드시 챙기세요", b:["폼페이는 만 18세 미만 무료인데 여권 원본이 있어야 합니다. 사진이나 사본은 안 됩니다.","딸 여권은 이날 가방에 꼭 넣으세요. 성인 여권은 숙소 금고에 두고 사본만 들고 다녀도 됩니다."]},
-    {t:"tip", h:"이 날의 요령", b:["왕복 7~8시간을 버스에서 보냅니다. 목베개와 보조배터리","폼페이는 돌바닥이 거칩니다. 샌들·슬리퍼 금지","현장 결제분을 미리 따로 빼두면 편합니다","10/4는 10월 첫째 일요일이라 콜로세움 무료입장일이지만, 우리는 남부에 있습니다"]}
+    {t:"warn", h:"10/4는 폼페이 무료입장일 — 투어사에 꼭 물어보세요", b:["10월 첫째 일요일이라 이탈리아 국립 유적이 모두 무료인 <strong>도메니카 알 무세오</strong> 날입니다. 폼페이도 포함됩니다.","성사되면 6명 기준 <strong>약 120유로를 아낄 수 있습니다.</strong> 다만 무료입장일은 온라인 예약이 안 되고 현장 대기라, 단체투어가 어떻게 처리하는지는 업체마다 다릅니다.","<strong>지금 우노트래블에 문의하세요.</strong> 10/4 무료입장일인데 폼페이 20유로를 그대로 내야 하는지 한 줄만 물으면 됩니다. 안 될 수도 있으니 예산은 그대로 두세요."]},{t:"warn", h:"여권 원본을 반드시 챙기세요", b:["폼페이는 국적과 무관하게 만 18세 미만 무료지만, <strong>무료라도 표를 발권해야 하고 사진이 있는 신분증(여권 원본)</strong>이 필요합니다. 사본이나 사진은 안 됩니다.","딸 여권은 이날 가방에 꼭 넣으세요. 성인 여권은 숙소 금고에 두고 사본만 들고 다녀도 됩니다.","일부 안내에는 비EU 국적은 12세 미만만 무료라고 나옵니다. 현장 판단이 갈릴 수 있으니 20유로는 예산에 남겨두세요."]},
+    {t:"tip", h:"이 날의 요령", b:["왕복 7~8시간을 버스에서 보냅니다. 목베개와 보조배터리","폼페이는 돌바닥이 거칩니다. 샌들·슬리퍼 금지","현장 결제분을 미리 따로 빼두면 편합니다","10/4는 10월 첫째 일요일이라 <strong>폼페이가 전원 무료입장일</strong>입니다 — 위 주의사항 확인"]}
   ],
   pins:[["폼페이 유적",40.7497,14.4869],["소렌토",40.6263,14.3757],["포지타노",40.6281,14.4842],["아말피",40.6340,14.6027],["살레르노 항구",40.6743,14.7497]] },
 
@@ -471,11 +518,11 @@ const DAYS = [
     {t:"18:00", n:"트라스테베레 저녁", d:"강 건너 골목 동네. 로마에서 저녁 분위기가 가장 좋은 곳입니다."}
   ],
   booked:[{s:"예약확정", n:"[엔터바티칸] 지루함이 없는 프리미엄 바티칸 패스트트랙 [박재벌 Family's]",
-    rows:[["일정","10/5(월) 오전 · 패스트트랙"],["인원","3인 (오전, 선택 안함)"],["요금","1인 69,000원 내외 (결제 완료)"],["현장 추가","박물관 입장료 별도 · 성인 45€ 내외, 학생 할인 있음"]],
+    rows:[["일정","10/5(월) 오전 · 패스트트랙"],["인원","3인 (오전, 선택 안함)"],["요금","1인 69,000원 내외 (결제 완료)"],["현장 추가","성인 45€ 내외 (입장료+예약비+수신기+대행수수료 포함) · 아래 주의사항 확인"]],
     url:"https://experiences.myrealtrip.com/products/3430570"}],
   notes:[
     {t:"warn", h:"복장 규정 — 못 들어갑니다", b:["어깨와 무릎이 드러나면 입장 거부됩니다. 민소매·반바지·짧은 치마 금지.","여섯 명 모두 해당됩니다. 얇은 가디건이나 스카프를 가방에 하나씩.","큰 배낭·우산·셀카봉은 반입 금지라 물품보관소에 맡겨야 합니다."]},
-    {t:"tip", h:"입장 시간은 우리가 못 고릅니다", b:["패스트트랙은 대행사가 확보한 티켓 시각으로 배정되며 08:00~10:30 사이입니다.","투어 전날 가이드가 카톡으로 몇 시 입장인지 알려줍니다. 받는 즉시 이 일정표를 고쳐두세요.","예약 시 참여자 전원의 여권 영문 성함과 성인/학생 여부를 적었는지 확인하세요."]},
+    {t:"warn", h:"입장료가 45유로가 아닐 수 있습니다", b:["패스트트랙 요금은 업체가 확보한 대행사 티켓 값이라 <strong>시즌에 따라 성인 45~58유로</strong>로 벌어집니다. 우리 일정 10/5는 성수기(3/15~11/15) 구간입니다.","만 18세 미만이나 국제학생증 소지자는 보통 10유로 싼 학생요금인데, <strong>2026년 들어 학생 티켓을 못 구해 성인가만 적용하는 업체가 늘었습니다.</strong>","현금만 받는 곳이 많습니다. 카드가 되는지도 함께 물어보세요.","<strong>지금 엔터바티칸에 3인 총액을 물어 확정해 두세요.</strong> 당일 현장에서 알면 늦습니다."]},{t:"tip", h:"입장 시간은 우리가 못 고릅니다", b:["패스트트랙은 대행사가 확보한 티켓 시각으로 배정되며 08:00~10:30 사이입니다.","투어 전날 가이드가 카톡으로 몇 시 입장인지 알려줍니다. 받는 즉시 이 일정표를 고쳐두세요.","예약 시 참여자 전원의 여권 영문 성함과 성인/학생 여부를 적었는지 확인하세요."]},
     {t:"cool", h:"체력 배분", b:["박물관은 7km를 걷는 구조입니다. 오전에 체력을 다 쓰면 오후가 무너집니다.","점심 후 숙소에 잠깐 들어가 쉬는 편이 아이들에게 훨씬 낫습니다."]}
   ],
   pins:[["바티칸 박물관",41.9065,12.4536],["성 베드로 대성당",41.9022,12.4539],["산탄젤로 성",41.9031,12.4663],["트라스테베레",41.8890,12.4695]] },
@@ -517,7 +564,7 @@ const DAYS = [
   ],
   notes:[
     {t:"warn", h:"지역열차는 각인이 필수", b:["플랫폼 입구의 초록·흰색 개찰기에 표를 넣어 도장을 찍어야 합니다.","안 찍으면 무임승차로 간주돼 벌금 50€ 이상. 앱 QR 승차권은 각인이 필요 없습니다."]},
-    {t:"tip", h:"사탑 등반 판단", b:["예약이 없다면 올라가지 않고 광장만 봐도 충분합니다. 실제로 대부분 그렇게 합니다.","계단이 기울어져 있어 어지러움을 느끼는 사람이 있습니다.","가방은 무료 보관소에 맡겨야 하니 등반 전 소지품을 미리 정리하세요."]}
+    {t:"tip", h:"사탑 등반 판단", b:["예약이 없다면 올라가지 않고 광장만 봐도 충분합니다. 실제로 대부분 그렇게 합니다.","<strong>만 8세 미만은 등반 불가</strong>, 만 8~18세는 반드시 보호자 동반이어야 합니다. 아이가 오른다면 어른 한 명이 같이 올라가야 합니다.","계단이 기울어져 있어 어지러움을 느끼는 사람이 있습니다. 티켓 시각에 늦으면 입장 불가이고 환불도 안 됩니다.","가방은 무료 보관소에 맡겨야 하니 등반 전 소지품을 미리 정리하세요."]}
   ],
   pins:[["피사 사탑 · 기적의 광장",43.7230,10.3966],["피사 첸트랄레 역",43.7086,10.3989],["루카 (선택)",43.8430,10.5027]] },
 
@@ -559,7 +606,7 @@ const DAYS = [
     rows:[["출발","10/9(금) 20:20 · 로마 피우미치노 (FCO)"],["도착","10/10(토) 14:40 · 인천 (ICN)"],["비행시간","약 11시간 20분"],["공항 도착 권장","17:20까지 (출발 3시간 전)"]],
     url:""}],
   notes:[
-    {t:"warn", h:"공항에서 자주 놓치는 것", b:["세금 환급(Tax Free)은 <strong>짐을 부치기 전</strong> 세관 도장이 먼저입니다. 구매액 70€ 초과, 미개봉 상태여야 합니다.","액체류는 100ml 이하만 기내 반입. <strong>올리브유·발사믹·와인·리몬첼로는 반드시 부치는 짐에</strong> 넣으세요.","유리병은 옷으로 감싸 캐리어 가운데에. 깨지면 옷까지 다 버립니다.","보조배터리는 반대로 <strong>부치는 짐에 넣으면 안 됩니다</strong>. 기내 가방에."]},
+    {t:"warn", h:"공항에서 자주 놓치는 것", b:["세금 환급은 <strong>짐을 부치기 전</strong> 세관 도장이 먼저입니다. 같은 날 같은 매장에서 70유로 초과(2024년에 154.94유로에서 내려감), 미개봉, 만 16세 이상 조건입니다.","도장을 받은 뒤 <strong>환급사 우체통에 서류를 넣어야</strong> 끝납니다. 안 넣으면 카드에서 세금이 도로 빠져나갑니다. 현금 환급은 서류 한 장당 3유로 수수료가 붙습니다.","액체류는 100ml 이하만 기내 반입. <strong>올리브유·발사믹·와인·리몬첼로는 반드시 부치는 짐에</strong> 넣으세요.","유리병은 옷으로 감싸 캐리어 가운데에. 깨지면 옷까지 다 버립니다.","보조배터리는 반대로 <strong>부치는 짐에 넣으면 안 됩니다</strong>. 기내 가방에."]},
     {t:"tip", h:"저녁 출발이라 하루가 통째로 남습니다", b:["위 일정은 제안입니다. 정한 뒤 아래 메모칸에 적어두세요.","다른 후보: 오스티아 안티카(로마의 폼페이, 기차 40분 · 반나절), 트라스테베레+진실의 입 도보 코스, 아웃렛 쇼핑(카스텔 로마노).","마지막 날은 무리하지 않는 편이 낫습니다. 짐 찾고 공항 가는 시간까지 계산하면 실제로 쓸 수 있는 건 오전 9시~오후 3시 사이입니다."]},
     {t:"cool", h:"아벤티노 열쇠구멍 (짧게 들를 만한 곳)", b:["열쇠구멍으로 들여다보면 성 베드로 돔이 정확히 액자처럼 들어옵니다. 5분이면 되고 아이들 반응이 가장 좋습니다.","테르미니로 돌아오는 길에 진실의 입과 묶으면 한 시간이면 충분합니다."]}
   ],
@@ -568,7 +615,7 @@ const DAYS = [
 { id:"d9", date:"10.10", wd:"토", city:"roma", cLabel:"도착", w:"✈️",
   title:"인천 도착", sub:"오후 14:40 도착",
   items:[
-    {t:"14:40", k:"key", n:"인천공항 제1터미널 도착", d:"입국·수하물까지 보통 40분. 15:30 전후에 나온다고 보면 됩니다."},
+    {t:"14:40", k:"key", n:"인천공항 제2터미널(T2) 도착", d:"입국·수하물까지 보통 40분. 15:30 전후에 나온다고 보면 됩니다. 마중 나오는 분이 있다면 T2라고 꼭 알려주세요."},
     {t:"15:30", k:"move", n:"귀가", d:"토요일 오후라 공항철도·리무진 모두 붐빕니다. 6명+캐리어면 미리 차편을 정해두세요."},
     {t:"—", n:"세금 환급 마무리 (해당 시)", d:"공항에서 도장만 받고 현금 환급을 못 받았다면, 봉투를 우편함에 넣었는지 확인하세요."}
   ],
@@ -624,8 +671,8 @@ const EATS = [
 
 const BUDGET = [
  {id:"b1", n:"공항↔시내 교통 (왕복)", m:"레오나르도 익스프레스 14€×2 또는 택시 분담", v:28},
- {id:"b2", n:"남부투어 현장비", m:"폼페이 20 + 점심 15 + 미니버스 10 + 페리 17 + 수신기 3", v:65},
- {id:"b3", n:"바티칸 박물관 입장료", m:"성인 기준, 학생 할인 있음", v:45},
+ {id:"b2", n:"남부투어 현장비", m:"폼페이 20(무료일 가능성) + 점심 15 + 미니버스 10 + 페리 17 + 수신기 3", v:65},
+ {id:"b3", n:"바티칸 패스트트랙 입장료", m:"성수기라 45~58€ 변동 · 업체 확인 필요", v:50},
  {id:"b4", n:"콜로세움 투어 현장비", m:"수신기 3€ (입장료 포함 여부 확인)", v:3},
  {id:"b5", n:"토스카나 투어 현장비", m:"치비타 8 + 수신기 3 + 와이너리 15 + 점심 15", v:41},
  {id:"b6", n:"로마 → 피렌체 이탈로", m:"예약 완료 · 1인분", v:32},
@@ -705,6 +752,65 @@ const CHECKS = [
   ["k9","라면스프 ★★★","고기 구울 때 뿌리거나 국물로. 활용도가 높다는 평"],
   ["k10","전기포트로 되는 것 위주로 구성","숙소에 인덕션이 있는지 미리 확인"]
  ]}
+];
+
+const QUIZ = [
+{d:"콜로세움", q:"콜로세움의 원래 이름은 무엇일까?", o:["플라비우스 원형극장","네로 경기장","로마 대극장","티투스 극장"], a:0,
+ e:"베스파시아누스 황제의 가문 이름을 따서 '플라비우스 원형극장'이었어. 콜로세움은 나중에 붙은 별명이야."},
+{d:"콜로세움", q:"그럼 '콜로세움'이라는 별명은 어디서 왔을까?", o:["돌이 아주 커서","옆에 거대한 청동상이 서 있어서","콜로세오라는 마을 이름에서","황제 이름에서"], a:1,
+ e:"바로 옆에 네로 황제의 36미터짜리 청동 거상(콜로수스)이 서 있었거든. 동상은 사라졌는데 별명만 남았어."},
+{d:"콜로세움", q:"콜로세움 바닥 아래 지하에서 무엇을 끌어올렸을까?", o:["물과 배","맹수와 무대 장치","관객의 음식","황제의 마차"], a:1,
+ e:"하이포게움이라는 지하에서 도르래로 사자와 무대 세트를 바닥 위로 올렸어. 지금도 그 통로가 보여."},
+{d:"콜로세움", q:"5만 명이 들어가는 콜로세움을 다 비우는 데 걸린 시간은?", o:["약 15분","약 1시간","약 3시간","하루 종일"], a:0,
+ e:"출입구를 80개나 만들어서 15분이면 빠져나갔대. 요즘 축구장 설계도 이걸 따라 한 거야."},
+{d:"폼페이", q:"폼페이를 덮은 것은 무엇이었을까?", o:["뜨거운 용암","화산재와 돌가루","바닷물","모래바람"], a:1,
+ e:"용암이 아니라 화산재였어. 그래서 도시가 부서지지 않고 그대로 '보존'됐지."},
+{d:"폼페이", q:"폼페이에서 보는 '사람 모양'은 사실 무엇일까?", o:["돌로 만든 조각상","시신이 썩고 남은 빈 공간에 석고를 부은 것","밀랍 인형","화산재가 굳은 우연한 모양"], a:1,
+ e:"몸이 사라진 자리에 구멍이 남았고, 거기에 석고를 부어 굳혔더니 마지막 순간의 자세가 그대로 나왔어."},
+{d:"폼페이", q:"폼페이 벽에 남아 있는 옛날 낙서는 몇 개쯤일까?", o:["10개쯤","100개쯤","1,000개쯤","10,000개 넘게"], a:3,
+ e:"선거 유세, 검투사 응원, 연애 고백까지. '이 벽아, 이 많은 낙서를 견디다니 놀랍다'는 낙서도 있어."},
+{d:"포지타노", q:"조용한 어촌이던 포지타노를 세계에 알린 사람은?", o:["어느 화가","어느 작가","어느 가수","어느 황제"], a:1,
+ e:"1953년 작가 존 스타인벡이 잡지에 쓴 글 한 편 때문이야. 글 하나가 마을을 바꿔 놓은 거지."},
+{d:"아말피", q:"해안도로가 생기기 전, 아말피 마을들은 어떻게 오갔을까?", o:["배를 타고","당나귀를 타고","산을 넘어 걸어서","기차로"], a:0,
+ e:"도로는 1850년대에야 생겼어. 그전에는 오직 바다로만 연결돼 있었지."},
+{d:"바티칸", q:"바티칸은 세계에서 몇 번째로 작은 나라일까?", o:["가장 작은 나라","두 번째","다섯 번째","열 번째"], a:0,
+ e:"0.44제곱킬로미터로 세계에서 가장 작아. 그런데 우체국, 은행, 신문사까지 다 있어."},
+{d:"바티칸", q:"미켈란젤로는 시스티나 천장화를 어떤 자세로 그렸을까?", o:["누워서","비계 위에 서서 고개를 젖히고","의자에 앉아서","사다리에 매달려서"], a:1,
+ e:"누워서 그렸다는 얘기가 유명한데 사실이 아니야. 서서 목을 4년이나 젖히고 그려서 '턱이 배에 닿았다'고 투덜댔대."},
+{d:"바티칸", q:"라파엘로 그림 '아테네 학당' 가운데 플라톤의 얼굴은 누구를 닮게 그렸을까?", o:["미켈란젤로","레오나르도 다 빈치","라파엘로 자신","교황"], a:1,
+ e:"플라톤은 다 빈치 얼굴, 계단에 턱 괴고 앉은 사람은 미켈란젤로야. 라파엘로 자신도 구석에 슬쩍 들어가 있어."},
+{d:"바티칸", q:"미켈란젤로가 유일하게 자기 이름을 새긴 조각은?", o:["다비드","피에타","모세","최후의 심판"], a:1,
+ e:"스물넷에 만든 피에타. 성모의 띠에 이름을 새겼어. 평생 이 작품에만 서명했대."},
+{d:"피렌체", q:"피렌체 두오모는 돔을 못 덮어서 얼마나 오래 뚫린 채로 있었을까?", o:["1년쯤","10년쯤","100년 넘게","500년"], a:2,
+ e:"지름 45미터를 덮는 방법을 아무도 몰라서, 일단 짓고 100년 넘게 구멍을 뚫어둔 채 버텼어."},
+{d:"피렌체", q:"브루넬레스키는 벽돌을 어떤 모양으로 쌓아 돔을 완성했을까?", o:["청어 뼈 모양으로 엇갈려","동그라미로 빙빙","네모 반듯하게","위에서 아래로"], a:0,
+ e:"엇갈려 쌓으니 벽돌이 흘러내리지 않았어. 게다가 안팎 두 겹으로 만들어 무게도 줄였지."},
+{d:"피렌체", q:"두오모 쿠폴라에 오를 때 우리는 어디를 걷는 걸까?", o:["돔 바깥 지붕 위","돔 안쪽과 바깥쪽 껍질 사이","돔 한가운데 빈 공간","성당 지하"], a:1,
+ e:"두 겹 껍질 사이의 좁은 통로야. 돔을 보는 게 아니라 돔 '속'을 지나가는 거지."},
+{d:"피렌체", q:"베키오 다리 위에 원래 있던 가게는?", o:["보석 가게","정육점과 생선가게","빵집","서점"], a:1,
+ e:"냄새가 심해서 메디치 가문이 다 내쫓고 금세공점만 남겼어. 지금의 보석상 거리는 그래서 생긴 거야."},
+{d:"피사", q:"피사의 사탑이 기울어진 진짜 이유는?", o:["일부러 그렇게 지어서","땅이 무른 진흙과 모래라서","지진 때문에","전쟁 때 포탄을 맞아서"], a:1,
+ e:"3층을 올리던 중 한쪽이 가라앉기 시작했어. 공사가 100년 멈춘 덕에 지반이 굳어서 안 무너졌지."},
+{d:"피사", q:"피사의 사탑은 실제로 어떤 모양일까?", o:["완전히 곧은 직선","아주 완만한 바나나 모양","계단 모양","나선 모양"], a:1,
+ e:"기울기를 잡으려고 위층을 반대쪽으로 살짝 휘게 쌓았거든. 그래서 살짝 휘어 있어."},
+{d:"피사", q:"갈릴레이가 사탑에서 공을 떨어뜨렸다는 이야기는?", o:["확인된 사실이다","제자가 남긴 이야기일 뿐 확인되지 않았다","갈릴레이가 직접 기록했다","사탑이 아니라 두오모에서 했다"], a:1,
+ e:"갈릴레이 본인은 그 실험을 쓴 적이 없어. 유명한 이야기라고 다 사실은 아니라는 좋은 예야."},
+{d:"토스카나", q:"치비타 디 바뇨레죠의 별명은?", o:["하늘의 도시","죽어가는 도시","잠든 도시","숨은 도시"], a:1,
+ e:"언덕이 계속 깎여나가서 '죽어가는 도시'라고 불러. 지금 사는 사람은 열 명 남짓이야."},
+{d:"토스카나", q:"몬테풀치아노 와인 '비노 노빌레'는 무슨 뜻일까?", o:["귀족의 와인","언덕의 와인","오래된 와인","붉은 와인"], a:0,
+ e:"'고귀한 와인'이라는 뜻이야. 18세기에 이미 그렇게 불렸다는 기록이 있어."},
+{d:"로마 생활", q:"로마 거리 곳곳의 작은 물 분수 '나소니'의 물은?", o:["마시면 안 된다","그냥 마셔도 된다","끓여야 한다","동전을 넣어야 나온다"], a:1,
+ e:"깨끗한 수돗물이라 그냥 마셔도 돼. 빈 물통을 들고 다니면 물값을 아낄 수 있어."},
+{d:"로마 생활", q:"트레비 분수에 동전을 하나 던지면 어떤 소원이 이뤄진다고 할까?", o:["부자가 된다","로마에 다시 온다","사랑이 이뤄진다","시험에 붙는다"], a:1,
+ e:"하루에 모이는 동전이 3천 유로쯤 되는데, 전부 자선단체에 기부된대."}
+];
+
+const RANKS = [
+ [10,"🏛️ 로마 황제","이 정도면 가이드를 해도 되겠어!"],
+ [8,"🎖️ 원로원 의원","거의 다 맞혔어. 대단한데?"],
+ [6,"🛡️ 백부장","꽤 잘 아는걸. 조금만 더!"],
+ [4,"🍕 로마 시민","괜찮아. 이야기 탭을 한 번 읽고 다시 도전!"],
+ [0,"🎒 견습 여행자","이야기 탭에 답이 다 숨어 있어. 읽고 다시 해보자!"]
 ];
 
 const STORIES = [
@@ -1043,6 +1149,72 @@ checksWrap.addEventListener('change', async e=>{
   await sSet('trip:checks', state);
   prog(c.dataset.g);
 });
+
+/* ============ 퀴즈 ============ */
+const qEl = document.getElementById('quiz');
+const QN = 10;
+let qSet = [], qIdx = 0, qScore = 0, qMiss = [];
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+async function qHome(){
+  const best = (await sGet('trip:quizBest')) || 0;
+  qEl.innerHTML = '<div class="qwrap"><div class="qstart">'+
+    '<h3>이탈리아 여행 퀴즈</h3>'+
+    '<p>우리가 갈 곳들에 대한 문제 '+QN+'개.<br>답은 모두 <strong>이야기 탭</strong>에 숨어 있어요.</p>'+
+    (best ? '<div class="qbest">최고 기록 '+best+' / '+QN+'</div><br>' : '')+
+    '<button class="btn big" id="qGo">시작하기</button>'+
+    '</div></div>';
+  document.getElementById('qGo').onclick = qStart;
+}
+function qStart(){
+  qSet = shuffle(QUIZ).slice(0,QN).map(q=>{
+    const idx = shuffle(q.o.map((_,i)=>i));
+    return {d:q.d, q:q.q, e:q.e, o:idx.map(i=>q.o[i]), a:idx.indexOf(q.a)};
+  });
+  qIdx = 0; qScore = 0; qMiss = []; qShow();
+}
+function qShow(){
+  const q = qSet[qIdx];
+  qEl.innerHTML = '<div class="qwrap">'+
+    '<div class="qbar"><div class="track"><i style="width:'+(qIdx/QN*100)+'%"></i></div>'+
+    '<span class="cnt">'+(qIdx+1)+' / '+QN+'</span></div>'+
+    '<span class="qtag">'+esc(q.d)+'</span>'+
+    '<p class="qtext">'+esc(q.q)+'</p>'+
+    '<div class="qopts">'+q.o.map((t,i)=>
+      '<button class="qopt" data-i="'+i+'"><b>'+'ABCD'[i]+'</b><span>'+esc(t)+'</span></button>').join('')+
+    '</div><div id="qfb"></div></div>';
+  qEl.querySelectorAll('.qopt').forEach(b=>b.onclick = ()=>qPick(Number(b.dataset.i)));
+}
+function qPick(i){
+  const q = qSet[qIdx], ok = (i === q.a);
+  if(ok) qScore++; else qMiss.push(q);
+  qEl.querySelectorAll('.qopt').forEach((b,bi)=>{
+    b.disabled = true;
+    if(bi === q.a) b.classList.add('right');
+    else if(bi === i) b.classList.add('wrong');
+  });
+  document.getElementById('qfb').innerHTML =
+    '<div class="qfb '+(ok?'ok':'no')+'"><b>'+(ok?'정답! 🎉':'아쉬워요 — 정답은 '+'ABCD'[q.a]+'번')+'</b>'+esc(q.e)+'</div>'+
+    '<div class="saveline" style="justify-content:flex-end"><button class="btn" id="qNext">'+
+    (qIdx===QN-1?'결과 보기':'다음 문제')+'</button></div>';
+  document.getElementById('qNext').onclick = ()=>{ qIdx++; (qIdx<QN) ? qShow() : qEnd(); };
+}
+async function qEnd(){
+  const r = RANKS.find(x=>qScore>=x[0]);
+  const best = (await sGet('trip:quizBest')) || 0;
+  const isNew = qScore > best;
+  if(isNew) await sSet('trip:quizBest', qScore);
+  qEl.innerHTML = '<div class="qwrap"><div class="qres">'+
+    '<div class="score num">'+qScore+'</div><div class="of">/ '+QN+' 문제'+(isNew?' · 최고 기록 경신! 🎊':'')+'</div>'+
+    '<div class="rank">'+r[1]+'</div><div class="msg">'+r[2]+'</div>'+
+    (qMiss.length ? '<div class="qmiss"><h4>틀린 문제 다시 보기</h4>'+qMiss.map(m=>
+      '<div>'+esc(m.q)+'<br><em>→ '+esc(m.o[m.a])+'</em></div>').join('')+'</div>' : '')+
+    '<button class="btn big" id="qAgain">다시 도전</button>'+
+    '</div></div>';
+  document.getElementById('qAgain').onclick = qStart;
+}
+qHome();
 
 /* ============ 이야기 ============ */
 document.getElementById('stories').innerHTML = STORIES.map(s=>
