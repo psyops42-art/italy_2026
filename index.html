@@ -2,7 +2,7 @@
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>이탈리아 2026 · 10월 여행가이드</title>
+<title>이탈리아 2026 · 10월 여행 가이드</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,15 +69,15 @@ h1.title em{display:block;font-style:normal;font-size:13px;font-family:"Pretenda
 .dday span{font-size:11.5px;color:var(--ink-soft)}
 
 /* day strip */
-.strip{display:flex;gap:8px;overflow-x:auto;padding:16px 16px 14px;margin:0 -16px;scrollbar-width:none}
-.strip::-webkit-scrollbar{display:none}
+.strip{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:14px 0 12px;margin:0}
+@media (min-width:600px){.strip{grid-template-columns:repeat(9,1fr)}}
 .chip{
-  flex:none;width:70px;background:#fff;border:1px solid var(--line);border-radius:12px;
-  padding:8px 6px;text-align:center;cursor:pointer;border-bottom-width:3px;
+  min-width:0;background:#fff;border:1px solid var(--line);border-radius:10px;
+  padding:6px 2px;text-align:center;cursor:pointer;border-bottom-width:3px;
 }
-.chip .d{font-family:"Fraunces",Georgia,serif;font-size:17px;font-weight:600;line-height:1}
-.chip .w{font-size:10.5px;color:var(--ink-soft);margin-top:1px}
-.chip .c{font-size:11px;margin-top:4px;font-weight:600}
+.chip .d{font-family:"Fraunces",Georgia,serif;font-size:15px;font-weight:600;line-height:1}
+.chip .w{font-size:9.5px;color:var(--ink-soft);margin-top:1px;line-height:1.25;min-height:12px}
+.chip .c{font-size:10px;margin-top:3px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chip[data-city=roma]{border-bottom-color:var(--roof)}
 .chip[data-city=roma] .c{color:var(--roof)}
 .chip[data-city=sud]{border-bottom-color:var(--adriatic)}
@@ -117,10 +117,10 @@ nav.tabs{
   position:sticky;top:0;z-index:40;background:rgba(255,252,244,.94);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
 }
-.tabs-in{display:flex;gap:2px;max-width:760px;margin:0 auto;padding:0 8px;overflow-x:auto;scrollbar-width:none}
+.tabs-in{display:flex;gap:0;max-width:760px;margin:0 auto;padding:0 4px;overflow-x:auto;scrollbar-width:none}
 .tabs-in::-webkit-scrollbar{display:none}
 .tab{
-  flex:none;background:none;border:0;padding:13px 11px 11px;font-size:14px;font-weight:600;
+  flex:none;background:none;border:0;padding:12px 7px 10px;font-size:13.5px;font-weight:600;
   color:var(--ink-soft);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;
 }
 .tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--roof)}
@@ -327,6 +327,19 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
 .qmiss div:last-child{margin-bottom:0}
 .qmiss em{font-style:normal;color:var(--olive);font-weight:600}
 
+.story .vlink{
+  display:inline-block;margin-top:12px;text-decoration:none;font-size:13px;font-weight:600;
+  background:#FFF0EA;border:1px solid #F3D5C7;color:var(--roof);border-radius:99px;padding:7px 14px;
+}
+
+.qart{width:100%;height:auto;display:block;border-radius:11px;margin:0 0 14px;border:1px solid var(--line)}
+.qtimer{height:5px;background:var(--paper-2);border-radius:99px;overflow:hidden;margin:0 0 12px}
+.qtimer i{display:block;height:100%;background:var(--olive);width:100%;transition:width .95s linear}
+.qtimer.low i{background:var(--roof)}
+.qsec{font-family:"Fraunces",Georgia,serif;font-size:12px;font-weight:600;color:var(--ink-soft);flex:none;min-width:26px;text-align:right}
+.qtoggle{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);margin-bottom:16px;cursor:pointer}
+.qtoggle input{width:18px;height:18px;accent-color:var(--olive)}
+
 .foot{text-align:center;font-size:11.5px;color:var(--ink-soft);padding:26px 0 10px;line-height:1.7}
 .storagenote{font-size:11.5px;color:var(--ink-soft);background:var(--paper-2);border-radius:9px;padding:9px 12px;margin-bottom:14px;line-height:1.6}
 </style>
@@ -335,13 +348,14 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
   <div class="wrap" style="padding-bottom:0">
     <div class="brandrow">
       <h1 class="title">Roma · Firenze<br>Toscana
-        <em>2026.10.2 금 — 10.10 토 · 두 가족 여섯 사람</em>
+        <em>2026.10.2 금 — 10.10 토 · 이탈리아 여행 가이드</em>
       </h1>
       <div class="dday"><b id="ddayNum" class="num">D-</b><span id="ddayTxt">출발까지</span></div>
     </div>
     <div class="strip" id="strip"></div>
     <div class="wxrow" id="wx"><div class="wxcard skel">현지 날씨를 불러오는 중…</div></div>
     <div class="quick" id="quick"></div>
+    <p id="fcNote" style="margin:-6px 0 12px;font-size:11px;color:var(--ink-soft);line-height:1.5">날짜별 예보를 확인하는 중…</p>
   </div>
 </header>
 
@@ -689,6 +703,34 @@ const DAYS = [
 ];
 
 const EATS = [
+{c:"로마", n:"Armando al Pantheon", ll:[41.8990,12.4770], k:"로마 요리", a:"Salita de' Crescenzi 31 · 판테온 앞", tag:["예약 필수","일요일 휴무"],
+ d:"1961년부터 가르졸리 가족이 3대째 운영하는 작은 트라토리아. 미슐랭 가이드에 꾸준히 실립니다. 판테온에서 몇 걸음이라 10/3 오전 동선과 맞습니다. 점심 12:30~15:00, 저녁 19:00~23:00, 일요일 휴무. 자리가 적어 예약이 사실상 필수입니다."},
+{c:"로마", n:"Felice a Testaccio", ll:[41.8790,12.4760], k:"카초에페페", a:"테스타초", tag:["예약 필수","관광객 많음"],
+ d:"테이블에서 직접 비벼주는 카초에페페로 유명합니다. 다만 최근에는 관광지화됐고 값이 올랐다는 후기도 꾸준합니다. 예약 없이는 거의 불가능하니 가실 거면 미리 잡으세요."},
+{c:"로마", n:"Pompi", ll:[41.9053,12.4830], k:"티라미수", a:"스페인 계단 근처", tag:["포장","5유로"],
+ d:"티라미수 전문점. 클래식과 딸기 맛이 각 5유로 선이고 포장해 가는 사람이 대부분입니다. 냉장 상태가 중요하니 사서 바로 드세요. 10/9 스페인 계단 쇼핑 동선에 끼워 넣기 좋습니다."},
+{c:"로마", n:"Dar Poeta", ll:[41.8899,12.4680], k:"피자", a:"트라스테베레", tag:["가족 단위"],
+ d:"트라스테베레의 동네 피자집. 도우가 두툼한 로마식이 아니라 중간쯤이라 한국 사람 입에 잘 맞습니다. 누텔라 칼초네가 디저트로 유명해 아이가 좋아합니다."},
+{c:"로마", n:"Forno Campo de' Fiori", ll:[41.8955,12.4722], k:"피자 알 탈리오", a:"캄포 데 피오리 광장", tag:["아침","저렴"],
+ d:"광장 한쪽의 빵집. 로마식 흰 피자(피자 비앙카)를 무게로 잘라 팝니다. 아침이나 이동 중 간식으로 좋고, 시장 구경과 묶으면 30분이면 됩니다."},
+{c:"피렌체", n:"Il Latini", ll:[43.7723,11.2497], k:"토스카나 요리", a:"Via dei Palchetti 6r", tag:["미슐랭 빕구르망","월요일 휴무"],
+ d:"천장에 프로슈토가 매달린 피렌체의 터줏대감. 2026 미슐랭 빕구르망입니다. 비스테카 알라 피오렌티나와 리볼리타, 마무리로 칸투치와 빈산토. <strong>월요일 휴무이고 화~금은 저녁(19:30~22:30)만</strong> 엽니다. 10/6 화요일 저녁이면 갑니다."},
+{c:"피렌체", n:"Dall'Oste", ll:[43.7760,11.2490], k:"티본스테이크", a:"S.M.N.역 앞", tag:["숙소 도보권","한국어 메뉴"],
+ d:"산타 마리아 노벨라역 바로 앞이라 숙소에서 가장 가깝습니다. 한국어 메뉴판이 있어 여섯 명이 주문하기 편하고, 티본은 1kg 65유로 선입니다. 접근성으로는 이 목록에서 최고."},
+{c:"피렌체", n:"Trattoria ZaZa", ll:[43.7772,11.2540], k:"티본스테이크", a:"중앙시장 옆 메르카토 광장", tag:["예약 권장"],
+ d:"현지인과 여행객 모두에게 인기 있는 큰 트라토리아. 티본이 45유로 선이고 테이블이 많아 6인 예약이 비교적 쉽습니다. 야외 테라스 자리가 기분이 좋습니다."},
+{c:"피렌체", n:"Vivoli", ll:[43.7703,11.2601], k:"젤라또·아포가토", a:"Via Isola delle Stinche 7r", tag:["월요일 휴무","아포가토"],
+ d:"1930년대부터 이어온 젤라테리아. 콘이 없고 컵만 주는 곳입니다. 아포가토(바닐라 젤라또에 에스프레소를 부은 것)가 6유로인데 이 집의 간판입니다. 화~토 08:00~21:00, 일 09:00~20:00, 월요일 휴무."},
+{c:"피렌체", n:"Mercato Centrale 1층 · Nerbone", ll:[43.7765,11.2534], k:"람프레도토", a:"중앙시장 1층", tag:["5유로","점심"],
+ d:"피렌체의 소울푸드 람프레도토(소 위장 샌드위치)를 5유로에. 도전 정신이 필요하지만 아이에게 이야깃거리가 됩니다. 못 먹겠으면 바로 옆 2층 푸드코트로 올라가면 됩니다."},
+{c:"피렌체", n:"Caffè Gilli", ll:[43.7717,11.2540], k:"카페·디저트", a:"레푸블리카 광장", tag:["서서 마시면 저렴"],
+ d:"290년 된 카페. 바에 서서 에스프레소를 마시면 1.5유로, 자리에 앉으면 4~5유로로 값이 달라집니다. 이탈리아 카페 문화를 아이에게 보여주기 딱 좋은 예입니다."},
+{c:"피사", n:"Osteria dei Cavalieri", ll:[43.7196,10.4001], k:"토스카나 요리", a:"기사의 광장 근처", tag:["예약 권장","점심"],
+ d:"기적의 광장에서 도보 10분, 관광지 물가에서 한 발 벗어난 곳. 콩과 소고기를 쓴 토스카나 가정식이 좋습니다. 점심에 6인이면 예약해 두세요."},
+{c:"피사", n:"De' Coltelli", ll:[43.7166,10.3995], k:"젤라또", a:"아르노 강변", tag:["유기농"],
+ d:"피사에서 젤라또 이야기를 하면 나오는 이름. 강변에 있어 사탑에서 역으로 걸어 돌아가는 길에 들르기 좋습니다."},
+{c:"토스카나", n:"몬테풀치아노 와인 저장고", ll:[43.0919,11.7861], k:"와인", a:"몬테풀치아노 중심가", tag:["투어 포함"],
+ d:"투어에 와이너리 방문이 포함돼 있지만, 자유시간이 있다면 중심가 상점의 지하 저장고를 구경해 보세요. 지상은 가게인데 계단을 내려가면 수백 년 된 동굴이 나옵니다. 구경만 해도 됩니다."},
 {c:"로마", n:"La Nuova Piazzetta", ll:[41.8933,12.4892], k:"로마 요리·피자", a:"Vicolo del Buon Consiglio 23A · 콜로세움 인근", tag:["우리가 고른 곳","저녁 예약 권장"],
  d:"큰길이 아니라 좁은 골목 안에 있어 호객이 없고, 그래서 줄이 곧 평가라는 말이 붙은 집. 카르보나라와 피자가 강점이고 좌석이 넉넉해 여섯 명도 비교적 수월합니다. 매일 11:30~22:30. 10/3 콜로세움 투어를 마치고 걸어갈 수 있는 거리입니다.",
  u:"https://maps.app.goo.gl/vLB1FxM68sDjmrT36?g_st=akt"},
@@ -819,6 +861,19 @@ const CHECKS = [
  ]}
 ];
 
+const QART = {
+ "콜로세움": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><g fill="#C0522E" opacity=".9"><path d="M40 78V34a70 26 0 0 1 140 0v44z" opacity=".18"/></g><g stroke="#C0522E" stroke-width="2.4" fill="none"><path d="M42 78V36a68 24 0 0 1 136 0v42"/><path d="M42 56h136M42 66h136"/></g><g fill="#C0522E"><circle cx="62" cy="47" r="5"/><circle cx="88" cy="43" r="5"/><circle cx="114" cy="42" r="5"/><circle cx="140" cy="43" r="5"/><circle cx="166" cy="47" r="5"/></g><rect x="30" y="78" width="160" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
+ "폼페이": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M110 12l46 62H64z" fill="#8B4A6B" opacity=".25"/><path d="M110 12l46 62H64z" fill="none" stroke="#8B4A6B" stroke-width="2.2"/><g fill="#5E7182" opacity=".55"><circle cx="110" cy="14" r="7"/><circle cx="96" cy="8" r="5"/><circle cx="124" cy="9" r="6"/></g><g stroke="#C0522E" stroke-width="2.6"><path d="M28 74V50M44 74V50M60 74V50"/><path d="M22 50h44M22 74h44"/></g><rect x="14" y="74" width="192" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
+ "포지타노": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M0 60c40-6 60-30 110-30s70 24 110 30v32H0z" fill="#12718F" opacity=".16"/><g fill="#F2B705" opacity=".85"><rect x="52" y="34" width="16" height="14" rx="2"/><rect x="74" y="44" width="18" height="16" rx="2"/><rect x="40" y="50" width="15" height="14" rx="2"/><rect x="98" y="30" width="16" height="14" rx="2"/></g><g fill="#C0522E"><rect x="120" y="42" width="17" height="16" rx="2"/><rect x="142" y="52" width="15" height="14" rx="2"/></g><path d="M0 72q22 6 44 0t44 0 44 0 44 0 44 0" stroke="#12718F" stroke-width="2.4" fill="none"/><path d="M0 82q22 6 44 0t44 0 44 0 44 0 44 0" stroke="#12718F" stroke-width="2" fill="none" opacity=".6"/></svg>`,
+ "아말피": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M0 44c50 0 60 26 110 26s60-26 110-26v48H0z" fill="#12718F" opacity=".16"/><path d="M150 30l12 24h-24z" fill="#6C8A45" opacity=".6"/><g fill="none" stroke="#12718F" stroke-width="2.4"><path d="M8 62h58l14-10h50"/></g><g fill="#C0522E"><rect x="20" y="46" width="14" height="14" rx="2"/><rect x="44" y="42" width="14" height="18" rx="2"/></g><path d="M0 80q22 6 44 0t44 0 44 0 44 0 44 0" stroke="#12718F" stroke-width="2.2" fill="none"/></svg>`,
+ "바티칸": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M110 18a26 26 0 0 1 26 26h-52a26 26 0 0 1 26-26z" fill="#12718F" opacity=".2"/><path d="M110 18a26 26 0 0 1 26 26h-52a26 26 0 0 1 26-26z" fill="none" stroke="#0A4E66" stroke-width="2.4"/><path d="M110 6v10M105 11h10" stroke="#F2B705" stroke-width="2.6"/><rect x="78" y="44" width="64" height="30" fill="none" stroke="#0A4E66" stroke-width="2.2"/><g stroke="#0A4E66" stroke-width="2"><path d="M40 74V52M54 74V52M68 74V52M152 74V52M166 74V52M180 74V52"/><path d="M34 52h40M146 52h40"/></g><rect x="24" y="74" width="172" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
+ "피렌체": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M110 14l30 34H80z" fill="#C0522E" opacity=".75"/><path d="M110 14l30 34H80z" fill="none" stroke="#8A3A1C" stroke-width="2"/><path d="M110 8v8" stroke="#F2B705" stroke-width="3"/><g stroke="#8A3A1C" stroke-width="1.6" opacity=".7"><path d="M110 16v32M96 30l14-16 14 16"/></g><rect x="82" y="48" width="56" height="26" fill="none" stroke="#6C8A45" stroke-width="2.2"/><rect x="150" y="24" width="18" height="50" fill="none" stroke="#6C8A45" stroke-width="2.2"/><path d="M150 36h18M150 48h18M150 60h18" stroke="#6C8A45" stroke-width="1.6"/><rect x="40" y="74" width="140" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
+ "피사": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><g transform="rotate(-9 118 74)"><rect x="100" y="18" width="36" height="56" fill="none" stroke="#6C8A45" stroke-width="2.4"/><path d="M100 30h36M100 40h36M100 50h36M100 60h36" stroke="#6C8A45" stroke-width="1.5"/><rect x="104" y="8" width="28" height="10" fill="none" stroke="#6C8A45" stroke-width="2.2"/></g><path d="M40 78h140" stroke="#243542" stroke-width="3.5" opacity=".25" stroke-linecap="round"/><g fill="#6C8A45" opacity=".35"><ellipse cx="58" cy="72" rx="14" ry="5"/><ellipse cx="172" cy="72" rx="14" ry="5"/></g></svg>`,
+ "토스카나": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M0 62q55-26 110-8t110-6v44H0z" fill="#6C8A45" opacity=".2"/><path d="M0 62q55-26 110-8t110-6" fill="none" stroke="#6C8A45" stroke-width="2.4"/><g fill="#6C8A45"><path d="M46 62c-4 0-6-12-2-20s6-10 8 0-1 20-6 20z"/><path d="M70 60c-4 0-6-14-2-22s6-10 8 0-1 22-6 22z"/><path d="M158 56c-4 0-6-12-2-20s6-10 8 0-1 20-6 20z"/></g><circle cx="186" cy="24" r="10" fill="#F2B705" opacity=".8"/><path d="M0 80q28 5 55 0t55 0 55 0 55 0" stroke="#6C8A45" stroke-width="1.8" fill="none" opacity=".5"/></svg>`,
+ "로마 생활": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M78 74V40h64v34z" fill="#12718F" opacity=".15"/><path d="M78 74V40h64v34" fill="none" stroke="#0A4E66" stroke-width="2.4"/><path d="M110 40V22a12 12 0 0 1 24 0" fill="none" stroke="#0A4E66" stroke-width="2.4"/><g stroke="#12718F" stroke-width="2" stroke-linecap="round" opacity=".75"><path d="M110 44v8M118 44v6M102 44v6"/></g><circle cx="134" cy="22" r="4" fill="#F2B705"/><rect x="54" y="74" width="112" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
+ "판테온": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M110 20a34 30 0 0 1 34 30H76a34 30 0 0 1 34-30z" fill="#C0522E" opacity=".18"/><path d="M110 20a34 30 0 0 1 34 30H76a34 30 0 0 1 34-30z" fill="none" stroke="#C0522E" stroke-width="2.4"/><circle cx="110" cy="26" r="5" fill="#F2B705"/><path d="M110 31v20" stroke="#F2B705" stroke-width="2" opacity=".6"/><g stroke="#C0522E" stroke-width="2.2"><path d="M84 74V52M96 74V52M110 74V52M124 74V52M136 74V52"/><path d="M76 52h68"/></g><rect x="62" y="74" width="96" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`
+};
+
 const QUIZ = [
 {d:"콜로세움", q:"콜로세움의 원래 이름은 무엇일까?", o:["플라비우스 원형극장","네로 경기장","로마 대극장","티투스 극장"], a:0,
  e:"베스파시아누스 황제의 가문 이름을 따서 '플라비우스 원형극장'이었어. 콜로세움은 나중에 붙은 별명이야."},
@@ -867,7 +922,17 @@ const QUIZ = [
 {d:"로마 생활", q:"로마 거리 곳곳의 작은 물 분수 '나소니'의 물은?", o:["마시면 안 된다","그냥 마셔도 된다","끓여야 한다","동전을 넣어야 나온다"], a:1,
  e:"깨끗한 수돗물이라 그냥 마셔도 돼. 빈 물통을 들고 다니면 물값을 아낄 수 있어."},
 {d:"로마 생활", q:"트레비 분수에 동전을 하나 던지면 어떤 소원이 이뤄진다고 할까?", o:["부자가 된다","로마에 다시 온다","사랑이 이뤄진다","시험에 붙는다"], a:1,
- e:"하루에 모이는 동전이 3천 유로쯤 되는데, 전부 자선단체에 기부된대."}
+ e:"하루에 모이는 동전이 3천 유로쯤 되는데, 전부 자선단체에 기부된대."},
+{d:"판테온", q:"판테온 천장 한가운데 뚫린 구멍에 비가 오면 어떻게 될까?", o:["유리가 덮여 있어 안 들어온다","그대로 들이치고 바닥으로 빠진다","비 오는 날은 문을 닫는다","천막을 친다"], a:1,
+ e:"오쿨루스에는 덮개가 없어. 비가 그대로 들어오고 바닥의 배수구로 빠지게 설계했어."},
+{d:"판테온", q:"로마인들이 판테온 돔을 위로 갈수록 무엇으로 쌓았을까?", o:["더 무거운 돌","더 가벼운 화산암","나무","철"], a:1,
+ e:"아래는 무거운 돌, 위는 가벼운 화산암. 그래서 철근 없이도 2천 년을 버텼어."},
+{d:"로마 생활", q:"트레비 분수의 물은 언제 만든 수도교를 타고 올까?", o:["작년","100년 전","2천 년 전","물을 수돗물로 받는다"], a:2,
+ e:"기원전 19년에 만든 '아쿠아 비르고' 수도교야. 지금도 같은 물길이 쓰이고 있어."},
+{d:"로마 생활", q:"로마 거리의 물 분수 나소니에서 물을 위로 솟게 하려면?", o:["버튼을 누른다","주둥이 끝을 손가락으로 막는다","동전을 넣는다","두 번 두드린다"], a:1,
+ e:"끝을 막으면 관 위의 작은 구멍에서 물이 솟아. 직접 해보면 제일 재미있는 로마 기술이야."},
+{d:"피렌체", q:"우피치(Uffizi)라는 이름은 원래 무슨 뜻일까?", o:["사무실","보물","언덕","다리"], a:0,
+ e:"원래 행정 관청 건물이었거든. 이탈리아어로 사무실이라는 뜻이야."}
 ];
 
 const RANKS = [
@@ -882,60 +947,94 @@ const STORIES = [
  {t:"콜로세움", s:"10/3", p:[
   "원래 이름은 콜로세움이 아니라 플라비우스 원형극장입니다. 이 자리에는 네로 황제가 만든 개인 궁전의 인공 호수가 있었는데, 네로가 몰락한 뒤 베스파시아누스 황제가 호수를 메우고 시민에게 돌려주는 상징으로 경기장을 세웠습니다. 폭군의 정원을 시민의 놀이터로 바꾼 정치적 선언이었던 셈입니다.",
   "서기 80년 개장식은 100일 동안 이어졌습니다. 5만 명이 들어가는 공간을 15분 만에 비울 수 있게 출입구를 80개로 설계했고, 관객의 좌석 번호가 적힌 토기 조각이 입장권 역할을 했습니다. 오늘날 경기장 설계의 원형이 여기 있습니다.",
-  "지금 바닥이 뚫려 있어 지하가 보이는데, 이곳이 하이포게움입니다. 도르래와 승강기로 맹수와 무대 장치를 바닥 위로 밀어 올렸습니다. 여름에는 벨라리움이라는 거대한 차양을 펼쳐 그늘을 만들었고, 그 밧줄을 다룬 사람들은 해군 병사였습니다."
- ], hook:"이름의 유래는 옆에 서 있던 네로의 36미터짜리 거대 청동상 콜로수스입니다. 동상은 사라졌지만 별명이 건물 이름으로 남았습니다."},
+  "지금 바닥이 뚫려 있어 지하가 보이는데, 이곳이 하이포게움입니다. 도르래와 승강기로 맹수와 무대 장치를 바닥 위로 밀어 올렸습니다. 여름에는 벨라리움이라는 거대한 차양을 펼쳐 그늘을 만들었고, 그 밧줄을 다룬 사람들은 해군 병사였습니다.",
+  "검투사는 대부분 노예나 전쟁 포로였지만, 인기 검투사는 지금의 스포츠 스타 같았습니다. 폼페이 벽에서 발견된 낙서에는 어떤 검투사를 두고 ‘처녀들의 한숨’이라고 적어둔 것도 있습니다. 그리고 영화와 달리 <strong>싸움이 늘 죽음으로 끝나지는 않았습니다.</strong> 검투사를 키우는 데 돈이 많이 들어서 주인들이 죽는 걸 싫어했거든요."
+ ], hook:"이름의 유래는 옆에 서 있던 네로의 36미터짜리 거대 청동상 콜로수스입니다. 동상은 사라졌지만 별명이 건물 이름으로 남았습니다.", v:"https://www.youtube.com/results?search_query=Colosseum+history+for+kids", vt:"콜로세움 영상 찾아보기"},
  {t:"포로 로마노", s:"10/3", p:[
   "지금은 돌무더기처럼 보이지만, 여기가 천 년 동안 지중해 세계의 중심이었습니다. 원래는 두 언덕 사이의 늪지였고, 배수로를 놓아 땅을 말린 뒤에야 광장이 됐습니다.",
   "카이사르가 암살된 뒤 시신을 화장한 자리에 신전이 세워졌고, 지금도 그 터에는 누군가 놓고 간 꽃이 있습니다. 2천 년이 지나도 꽃이 끊기지 않는 무덤은 흔치 않습니다.",
   "중세에 이곳은 '캄포 바치노', 즉 소들이 풀을 뜯는 들판으로 불렸습니다. 로마 제국이 무너진 뒤 대리석은 뜯겨 성당 재료가 됐고 광장은 흙에 묻혔습니다. 지금 보는 모습은 19세기 이후의 발굴 결과입니다."
- ], hook:"콜로세움과 포로 로마노의 대리석은 상당수가 성 베드로 대성당에 다시 쓰였습니다. 10/5에 보게 될 건물 안에 10/3에 본 돌이 들어 있는 셈입니다."},
+ ], hook:"콜로세움과 포로 로마노의 대리석은 상당수가 성 베드로 대성당에 다시 쓰였습니다. 10/5에 보게 될 건물 안에 10/3에 본 돌이 들어 있는 셈입니다.", v:"https://www.youtube.com/results?search_query=Roman+Forum+reconstruction+animation", vt:"포로 로마노 복원 영상 찾아보기"},
  {t:"폼페이", s:"10/4", p:[
   "서기 79년 베수비오 화산이 터졌을 때 도시를 덮은 것은 용암이 아니라 화산재와 경석이었습니다. 그래서 파괴 대신 보존이 일어났습니다. 빵집의 화덕 안에는 그날 굽던 빵이 탄화된 채 남아 있었습니다.",
   "화산재가 굳으면서 시신이 썩은 자리에 빈 공간이 남았습니다. 19세기에 주세페 피오렐리가 그 구멍에 석고를 부어 굳히자 마지막 순간의 자세가 그대로 나왔습니다. 우리가 보는 '사람 모양'은 시신이 아니라 그 빈 공간의 본입니다.",
-  "폼페이 벽에는 낙서가 1만 개 넘게 남아 있습니다. 선거 유세 문구, 검투사 응원, 연애 고백, 그리고 '이 벽아, 이렇게 많은 낙서를 견디다니 놀랍다'는 낙서까지 있습니다."
- ], hook:"화산 폭발을 기록으로 남긴 사람은 열일곱 살 소년 소플리니우스였습니다. 그의 삼촌은 사람들을 구하러 배를 타고 갔다가 돌아오지 못했습니다."},
+  "폼페이 벽에는 낙서가 1만 개 넘게 남아 있습니다. 선거 유세 문구, 검투사 응원, 연애 고백, 그리고 '이 벽아, 이렇게 많은 낙서를 견디다니 놀랍다'는 낙서까지 있습니다.",
+  "폼페이가 다시 발견된 건 1748년입니다. 그 전까지 1,600년 넘게 아무도 도시가 거기 있는 줄 몰랐습니다. 지금도 <strong>발굴이 끝나지 않아</strong> 전체의 3분의 1 정도는 아직 땅속에 있습니다. 우리가 걷는 길 옆에도 아직 열어보지 않은 집이 있다는 뜻입니다."
+ ], hook:"화산 폭발을 기록으로 남긴 사람은 열일곱 살 소년 소플리니우스였습니다. 그의 삼촌은 사람들을 구하러 배를 타고 갔다가 돌아오지 못했습니다.", v:"https://ed.ted.com/lessons/run-sail-or-hide-how-to-survive-the-destruction-of-pompeii-gary-devore", vt:"TED-Ed 애니메이션 · 폼페이 탈출기 (자막 있음)"},
  {t:"포지타노와 아말피", s:"10/4", p:[
   "포지타노는 19세기에 인구 대부분이 미국으로 떠나 거의 비어 있던 어촌이었습니다. 1953년 존 스타인벡이 잡지에 쓴 글 한 편이 이 마을을 세계 지도 위에 올려놓았습니다. 그는 이곳을 '머무는 동안에는 실감이 안 나고 떠난 뒤에야 선명해지는 곳'이라고 썼습니다.",
   "집들이 절벽에 수직으로 붙어 있어 마을 안에는 평지가 거의 없습니다. 그래서 해변까지 계단으로만 내려가고, 짐은 예부터 당나귀가 날랐습니다.",
   "아말피는 한때 베네치아·제노바와 어깨를 나란히 한 해양공화국이었습니다. 지금은 작은 마을이지만 중세 지중해 해상법의 기준을 만든 곳이고, 나침반을 실용화한 플라비오 조야의 고향으로 전해집니다."
- ], hook:"아말피 해안도로는 1850년대에 만들어졌습니다. 그 전까지 마을 사이 이동은 주로 배였고, 절벽을 넘는 산길도 있었습니다. 지금 인기 있는 트레킹 코스 ‘신들의 길’이 그런 옛길 중 하나입니다."},
+ ], hook:"아말피 해안도로는 1850년대에 만들어졌습니다. 그 전까지 마을 사이 이동은 주로 배였고, 절벽을 넘는 산길도 있었습니다. 지금 인기 있는 트레킹 코스 ‘신들의 길’이 그런 옛길 중 하나입니다.", v:"https://www.youtube.com/results?search_query=Amalfi+Coast+Positano+aerial+4K", vt:"아말피 해안 항공 영상 찾아보기"},
  {t:"바티칸", s:"10/5", p:[
   "면적 0.44제곱킬로미터, 세계에서 가장 작은 나라입니다. 서울 여의도의 6분의 1 정도인데 자체 우체국·은행·철도역·신문사가 있습니다.",
   "미켈란젤로는 조각가라고 자부했고 천장화 의뢰를 거절하려 했습니다. 결국 4년 넘게 목을 젖힌 채 그렸고, 친구에게 보낸 시에서 '턱이 배에 닿고 눈은 뒤통수로 돌아갔다'고 투덜거렸습니다. 흔히 알려진 것과 달리 누워서 그린 게 아니라 비계 위에 서서 고개를 젖히고 그렸습니다.",
   "라파엘로의 '아테네 학당'에는 동료들의 얼굴이 숨어 있습니다. 가운데 플라톤은 레오나르도 다 빈치의 얼굴이고, 계단에 홀로 턱을 괴고 앉은 헤라클레이토스는 미켈란젤로입니다. 라파엘로 자신도 오른쪽 구석에 조용히 서 있습니다.",
-  "성 베드로 대성당의 피에타는 미켈란젤로가 스물넷에 만든 작품입니다. 자기 작품이라고 서명을 남긴 유일한 조각이기도 합니다. 성모의 띠에 이름을 새겼습니다."
- ], hook:"스위스 근위대의 화려한 제복은 1506년부터 이어진 전통입니다. 미켈란젤로가 디자인했다는 이야기가 돌지만 근거는 없습니다."},
+  "성 베드로 대성당의 피에타는 미켈란젤로가 스물넷에 만든 작품입니다. 자기 작품이라고 서명을 남긴 유일한 조각이기도 합니다. 성모의 띠에 이름을 새겼습니다.",
+  "시스티나 예배당에서 새 교황을 뽑을 때 굴뚝으로 연기를 피웁니다. 검은 연기면 아직 안 정해진 것, 흰 연기면 정해진 것. 예전에는 색이 헷갈려서 사람들이 우왕좌왕했는데, 지금은 화학약품을 섞어 색을 확실하게 만듭니다."
+ ], hook:"스위스 근위대의 화려한 제복은 1506년부터 이어진 전통입니다. 미켈란젤로가 디자인했다는 이야기가 돌지만 근거는 없습니다.", v:"https://www.youtube.com/watch?v=G2XWeZ5r6wQ", vt:"시스티나 예배당 3D 가상 투어"},
  {t:"피렌체 두오모", s:"10/6", p:[
   "성당은 1296년에 짓기 시작했는데, 정작 돔을 어떻게 덮을지는 아무도 몰랐습니다. 지름 45미터를 지지대 없이 덮는 방법이 당시엔 존재하지 않았거든요. 그래도 피렌체는 일단 짓기 시작했습니다. 돔을 올릴 자리는 1413년에야 준비가 끝났고, 실제 돔 공사는 1420년에 시작해 1436년에 끝났습니다. 착공부터 완성까지 140년이 걸린 셈입니다.",
   "그 문제를 푼 사람이 브루넬레스키입니다. 그는 벽돌을 청어 뼈 모양으로 엇갈려 쌓아 아래로 흘러내리지 않게 했고, 돔을 안팎 이중 껍질로 만들어 무게를 줄였습니다. 400만 개가 넘는 벽돌이 들어갔습니다.",
-  "쿠폴라 등반은 브루넬레스키가 만든 두 껍질 사이의 좁은 통로를 걷는 일입니다. 즉 우리는 돔을 보는 게 아니라 돔 속을 지나가는 겁니다."
- ], hook:"브루넬레스키는 설계도를 거의 남기지 않았습니다. 아이디어를 도둑맞을까 봐 일부러 감췄고, 그래서 지금도 그가 정확히 어떻게 지었는지 완전히 밝혀지지 않았습니다."},
+  "쿠폴라 등반은 브루넬레스키가 만든 두 껍질 사이의 좁은 통로를 걷는 일입니다. 즉 우리는 돔을 보는 게 아니라 돔 속을 지나가는 겁니다.",
+  "브루넬레스키는 이 일을 맡으려고 경쟁자 기베르티와 다퉜습니다. 시에서 둘을 공동 책임자로 앉히자, 브루넬레스키는 아픈 척하고 드러누워 버렸습니다. 기베르티 혼자서는 공사를 진행하지 못했고, 결국 브루넬레스키가 실질적인 총책임자가 됐습니다."
+ ], hook:"브루넬레스키는 설계도를 거의 남기지 않았습니다. 아이디어를 도둑맞을까 봐 일부러 감췄고, 그래서 지금도 그가 정확히 어떻게 지었는지 완전히 밝혀지지 않았습니다.", v:"https://www.youtube.com/watch?v=_IOPlGPQPuM", vt:"TED-Ed · 아마추어가 세계 최대의 돔을 지은 방법"},
  {t:"베키오 다리", s:"10/6", p:[
   "원래 이 다리 위에는 정육점과 생선가게가 있었습니다. 냄새와 오물이 심하자 16세기에 메디치 가문이 전부 내쫓고 금세공점만 남겼습니다. 지금의 보석상 거리는 그 명령에서 시작됐습니다.",
   "다리 위층을 지나는 통로가 바사리 회랑입니다. 메디치 대공이 거리를 걷지 않고 궁에서 관청까지 이동하려고 만든 1킬로미터짜리 비밀 통로입니다.",
   "1944년 후퇴하던 독일군은 피렌체의 다리를 모두 폭파했지만 베키오 다리만은 남겼습니다. 히틀러가 직접 보존을 지시했다는 이야기가 전해집니다."
- ], hook:"다리 난간에 자물쇠를 채우는 유행이 있었지만 지금은 금지이고 벌금 대상입니다."},
+ ], hook:"다리 난간에 자물쇠를 채우는 유행이 있었지만 지금은 금지이고 벌금 대상입니다.", v:"https://www.youtube.com/results?search_query=Ponte+Vecchio+Vasari+Corridor+history", vt:"베키오 다리와 바사리 회랑 영상 찾아보기"},
  {t:"피사의 사탑", s:"10/7", p:[
   "1173년에 짓기 시작했는데 3층을 올리던 중 이미 기울기 시작했습니다. 땅이 무른 진흙과 모래라 한쪽이 가라앉은 겁니다. 전쟁 때문에 공사가 100년 가까이 멈췄는데, 그 사이 지반이 자리를 잡아 오히려 무너지지 않았습니다.",
   "이어서 지은 건축가들은 기울기를 보정하려고 위층을 반대쪽으로 살짝 휘게 쌓았습니다. 그래서 탑은 직선이 아니라 아주 완만한 바나나 모양입니다.",
-  "1990년에는 위험 판정으로 폐쇄됐고, 10년에 걸쳐 반대편 지반의 흙을 조금씩 빼내는 방식으로 기울기를 40센티미터가량 되돌렸습니다. 2001년에 다시 열렸고 앞으로 수백 년은 안전하다고 봅니다."
- ], hook:"갈릴레이가 이 탑에서 무게가 다른 공을 떨어뜨렸다는 이야기는 제자가 남긴 기록일 뿐 확인된 사실이 아닙니다. 갈릴레이 본인은 그 실험을 쓴 적이 없습니다."},
+  "1990년에는 위험 판정으로 폐쇄됐고, 10년에 걸쳐 반대편 지반의 흙을 조금씩 빼내는 방식으로 기울기를 40센티미터가량 되돌렸습니다. 2001년에 다시 열렸고 앞으로 수백 년은 안전하다고 봅니다.",
+  "피사에는 사실 기울어진 탑이 셋 있습니다. 사탑이 가장 유명할 뿐, 산 니콜라 성당과 산 미켈레 성당의 종탑도 기울어져 있습니다. 도시 전체가 무른 땅 위에 있기 때문입니다."
+ ], hook:"갈릴레이가 이 탑에서 무게가 다른 공을 떨어뜨렸다는 이야기는 제자가 남긴 기록일 뿐 확인된 사실이 아닙니다. 갈릴레이 본인은 그 실험을 쓴 적이 없습니다.", v:"https://www.youtube.com/results?search_query=how+they+fixed+leaning+tower+of+pisa", vt:"사탑을 바로 세운 공사 영상 찾아보기"},
  {t:"치비타 디 바뇨레죠", s:"10/8", p:[
   "2500년 전 에트루리아인이 화산암 언덕 위에 세운 마을입니다. 문제는 그 언덕이 계속 깎여 나간다는 점입니다. 주변 흙이 비에 쓸려 내려가면서 마을은 점점 좁은 기둥 위에 남겨졌습니다.",
   "그래서 '죽어가는 도시'라고 불립니다. 지금은 차가 들어갈 수 없고 긴 보행 다리 하나로만 연결됩니다. 상주 인구는 열 명 남짓입니다.",
   "미야자키 하야오의 '천공의 성 라퓨타'에 영감을 준 곳으로 자주 소개됩니다. 실제로 안개가 끼는 날에는 마을이 구름 위에 떠 있는 것처럼 보입니다."
- ], hook:"다리를 건너는 데만 10분 정도 걸리고 오르막입니다. 셔틀버스(3€)가 다리 입구까지 데려다줍니다."},
+ ], hook:"다리를 건너는 데만 10분 정도 걸리고 오르막입니다. 셔틀버스(3€)가 다리 입구까지 데려다줍니다.", v:"https://www.youtube.com/results?search_query=Civita+di+Bagnoregio+dying+town", vt:"치비타 영상 찾아보기"},
 {t:"몬테풀치아노", s:"10/8", p:[
   "언덕 꼭대기에 올라앉은 중세 도시입니다. 성문에서 중앙 광장까지 한참을 올라가야 하는데, 그 길 양쪽이 전부 와인 창고입니다. 지상은 상점이고 지하로 내려가면 수백 년 된 저장고가 이어집니다.",
   "이곳 와인은 비노 노빌레 디 몬테풀치아노라고 부릅니다. '귀족의 와인'이라는 뜻인데, 18세기에 이미 그렇게 불렸다는 기록이 있습니다. 이탈리아에서 최고 등급인 DOCG를 가장 먼저 받은 와인 중 하나입니다.",
   "헷갈리기 쉬운 점 하나. 다른 지역에 '몬테풀치아노'라는 이름의 포도 품종이 따로 있는데, 이 마을 와인과는 전혀 관계가 없습니다. 여기 와인은 산조베제 계열 포도로 만듭니다.",
   "영화 뉴문의 볼투리 장면을 이 마을 광장에서 찍었습니다. 아이가 그 시리즈를 안다면 알아볼지도 모릅니다."
- ], hook:"와이너리에서 시음할 때 잔을 돌리는 건 멋이 아니라 향을 여는 동작입니다. 아이에게 포도 주스로 같이 해보게 하면 즐거워합니다."},
+ ], hook:"와이너리에서 시음할 때 잔을 돌리는 건 멋이 아니라 향을 여는 동작입니다. 아이에게 포도 주스로 같이 해보게 하면 즐거워합니다.", v:"https://www.youtube.com/results?search_query=Montepulciano+Tuscany+walking+tour", vt:"몬테풀치아노 골목 걷기 영상"},
  {t:"발도르차와 피엔차", s:"10/8", p:[
   "발도르차의 사이프러스 나무 길과 완만한 언덕은 르네상스 화가들이 배경으로 그리던 풍경 그대로입니다. 유네스코가 이 지역을 세계유산으로 지정한 이유도 '인간이 만든 풍경의 이상형'이기 때문입니다.",
   "영화 글래디에이터에서 막시무스가 밀밭을 손으로 쓸며 걷는 장면을 이곳에서 찍었습니다. 투어에서 '막시무스의 집'이라고 부르는 농가가 그 자리입니다.",
   "피엔차는 교황 비오 2세가 자기 고향 마을을 통째로 르네상스 도시로 다시 지은 곳입니다. 도시 전체를 하나의 설계로 만든 유럽 최초의 사례로 꼽힙니다. 단 3년 만에 완성했습니다."
- ], hook:"피엔차의 골목 이름 중에는 '입맞춤의 길', '사랑의 길', '행운의 길'이 나란히 있습니다. 관광용이 아니라 오래된 이름입니다."}
+ ], hook:"피엔차의 골목 이름 중에는 '입맞춤의 길', '사랑의 길', '행운의 길'이 나란히 있습니다. 관광용이 아니라 오래된 이름입니다.", v:"https://www.youtube.com/results?search_query=Val+d%27Orcia+Gladiator+filming+location", vt:"발도르차·글래디에이터 촬영지 영상"},
+ {t:"판테온", s:"10/3", p:[
+  "서기 126년에 지어진 건물인데 지금도 지붕이 멀쩡합니다. 2천 년 가까이 무너지지 않은 콘크리트 돔으로는 세계에서 가장 큽니다. 지름과 높이가 똑같이 43.3미터라, 안에 거대한 공이 딱 들어가는 구조입니다.",
+  "천장 한가운데 지름 8.7미터짜리 구멍이 뚫려 있습니다. 오쿨루스, 즉 ‘눈’이라고 부릅니다. 유리도 덮개도 없어서 <strong>비가 오면 그대로 들이칩니다.</strong> 바닥에 배수구가 뚫려 있어 물이 빠지도록 만들어 뒀습니다.",
+  "로마인들은 위로 올라갈수록 가벼운 재료를 썼습니다. 아래쪽은 무거운 돌, 꼭대기 근처는 가벼운 화산암. 그래서 돔이 자기 무게로 주저앉지 않습니다. 철근도 없던 시절에 계산으로 해낸 겁니다.",
+  "르네상스의 거장 라파엘로가 여기 묻혀 있습니다. 본인이 유언으로 부탁했다고 합니다."
+ ], hook:"매년 6월 21일 정오에는 오쿨루스로 들어온 빛이 정문 입구를 정확히 비춥니다. 우연이 아니라 설계입니다.",
+ v:"https://www.youtube.com/results?search_query=Pantheon+Rome+concrete+dome+engineering", vt:"판테온 돔 구조 영상 찾아보기"},
+ {t:"트레비 분수", s:"10/3", p:[
+  "이 분수의 물은 기원전 19년에 만든 수도교를 타고 옵니다. 아쿠아 비르고, ‘처녀의 물’이라는 이름인데, 목마른 병사들에게 어린 소녀가 샘을 알려줬다는 전설에서 왔습니다. 2천 년 넘게 같은 물길이 지금도 쓰이고 있습니다.",
+  "분수 한가운데 인물은 바다의 신 오케아노스입니다. 그가 탄 조개 마차를 두 마리 말이 끄는데, 한 마리는 사납게 날뛰고 다른 한 마리는 얌전합니다. 바다의 두 얼굴을 나타낸 겁니다. 가서 직접 찾아보세요.",
+  "동전 던지기 전설은 원래 ‘떠나기 전 이 물을 마시면 돌아온다’는 옛 풍습이 변한 것입니다. 지금은 던지는 쪽으로 굳었고, 하루에 3천 유로쯤 모여 전액 자선단체로 갑니다.",
+  "2026년 2월부터 분수 바로 앞 계단은 관광객 2유로 유료가 됐습니다. 위 광장에서 보는 것은 여전히 무료입니다."
+ ], hook:"동전은 오른손으로 왼쪽 어깨 너머로 던지는 게 정석입니다. 하나면 재방문, 둘이면 사랑, 셋이면 결혼이라고 합니다.",
+ v:"https://www.youtube.com/results?search_query=Trevi+Fountain+history+aqueduct", vt:"트레비 분수와 수도교 영상 찾아보기"},
+ {t:"로마의 물과 나소니", s:"내내", p:[
+  "로마 거리를 걷다 보면 작은 쇠 수도꼭지에서 물이 계속 흐르는 걸 보게 됩니다. 나소니라고 부르고, 로마 시내에 2,500개가 넘습니다. 전부 마실 수 있는 물입니다.",
+  "물이 계속 흐르는 게 낭비처럼 보이지만, 그래야 관이 막히지 않고 여름에도 물이 시원합니다. 흘러나온 물은 다시 모여 하수로 갑니다.",
+  "쓰는 요령이 있습니다. 주둥이 위쪽을 손가락으로 막으면, 관 위에 뚫린 작은 구멍에서 물이 위로 솟습니다. 그러면 얼굴을 대고 분수처럼 마실 수 있습니다. <strong>아이가 제일 재미있어하는 로마 기술입니다.</strong>",
+  "빈 물통을 하나씩 들고 다니면 여섯 명 기준으로 하루에 10유로 가까이 아낍니다."
+ ], hook:"나소니는 이탈리아어로 ‘큰 코’라는 뜻입니다. 물이 나오는 주둥이가 코처럼 생겨서 붙은 별명입니다.",
+ v:"https://www.youtube.com/results?search_query=Rome+nasoni+drinking+fountain+trick", vt:"나소니 마시는 요령 영상 찾아보기"},
+ {t:"메디치 가문", s:"10/6", p:[
+  "피렌체에서 보게 될 것의 절반은 메디치 가문과 연결돼 있습니다. 원래는 약재상이나 모직 상인이었다가 은행업으로 유럽 최고의 부자가 된 집안입니다. 가문의 문장에 있는 붉은 공 여섯 개를 피렌체 곳곳에서 찾을 수 있습니다.",
+  "이들이 대단한 건 돈을 예술에 썼다는 점입니다. 미켈란젤로는 열다섯 살에 메디치 저택에 들어가 가족처럼 자랐고, 도나텔로와 보티첼리도 이 집안의 돈으로 작품을 만들었습니다. 르네상스가 피렌체에서 터진 이유 중 하나입니다.",
+  "마지막 상속인 안나 마리아 루이자는 1737년에 가문의 모든 미술품을 피렌체에 남기면서 <strong>단 하나의 조건</strong>을 걸었습니다. 절대 도시 밖으로 내보내지 말 것. 그 약속 덕분에 우피치의 소장품이 오늘날까지 여기 있습니다.",
+  "우피치라는 이름은 사실 ‘사무실(uffizi)’이라는 뜻입니다. 원래 행정 관청 건물이었거든요."
+ ], hook:"베키오 다리 위층의 바사리 회랑은 메디치 대공이 거리를 걷지 않고 궁에서 관청까지 가려고 만든 1킬로미터짜리 통로입니다.",
+ v:"https://www.youtube.com/results?search_query=Medici+family+Renaissance+Florence+documentary", vt:"메디치 가문 다큐 찾아보기"}
+
 ];
 
 /* ============ 저장소 ============ */
@@ -956,6 +1055,7 @@ async function sSet(k, val, shared){
 }
 function flash(el){ if(!el) return; el.classList.add('on'); setTimeout(()=>el.classList.remove('on'),1400); }
 function esc(t){ return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function rich(t){ return esc(t).replace(/&lt;(\/?(?:strong|em|br))&gt;/g,'<$1>'); }
 function gmap(q){ return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
 
 /* ============ D-day & 날짜 스트립 ============ */
@@ -973,7 +1073,7 @@ const strip = document.getElementById('strip');
 DAYS.forEach((d,i)=>{
   const b = document.createElement('button');
   b.className = 'chip'; b.dataset.city = d.city; b.dataset.go = d.id;
-  b.innerHTML = '<div class="d">'+d.date.split('.')[1]+'</div><div class="w">'+d.wd+' '+d.w+'</div><div class="c">'+d.cLabel+'</div>';
+  b.innerHTML = '<div class="d">'+d.date.split('.')[1]+'</div><div class="w" id="w-'+d.id+'">'+d.wd+'</div><div class="c">'+d.cLabel+'</div>';
   strip.appendChild(b);
 });
 strip.addEventListener('click', e=>{
@@ -984,6 +1084,40 @@ strip.addEventListener('click', e=>{
   const el = document.getElementById(b.dataset.go);
   if(el){ el.open = true; setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60); }
 });
+
+/* ============ 날짜별 실제 예보 ============ */
+const FCCITY = {
+  roma:{la:41.9028, lo:12.4964}, sud:{la:40.6281, lo:14.4842},
+  firenze:{la:43.7696, lo:11.2558}, toscana:{la:43.0919, lo:11.7861}
+};
+(async function loadForecast(){
+  const note = document.getElementById('fcNote');
+  try{
+    const keys = Object.keys(FCCITY);
+    const data = {};
+    await Promise.all(keys.map(async k=>{
+      const c = FCCITY[k];
+      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude='+c.la+'&longitude='+c.lo+
+        '&daily=weather_code,temperature_2m_max&timezone=Europe%2FRome&forecast_days=16').then(x=>x.json());
+      data[k] = r.daily;
+    }));
+    let hit = 0;
+    DAYS.forEach(d=>{
+      const dl = data[d.city]; if(!dl) return;
+      const date = '2026-' + d.date.replace('.','-');
+      const i = dl.time.indexOf(date); if(i < 0) return;
+      const el = document.getElementById('w-'+d.id); if(!el) return;
+      el.innerHTML = d.wd + ' ' + wxIcon(dl.weather_code[i]) + '<br><span style="font-size:10px">' +
+        Math.round(dl.temperature_2m_max[i]) + '°</span>';
+      hit++;
+    });
+    if(note) note.textContent = hit
+      ? '날짜 칩의 날씨는 실제 예보입니다 (' + hit + '일치). 예보 범위 밖인 날은 표시되지 않습니다.'
+      : '아직 예보 범위(약 2주) 밖이라 날짜별 날씨는 비어 있습니다. 출발이 가까워지면 자동으로 채워집니다.';
+  }catch(e){
+    if(note) note.textContent = '날짜별 예보를 불러오지 못했습니다.';
+  }
+})();
 
 /* ============ 탭 ============ */
 function showTab(p){
@@ -1060,12 +1194,12 @@ DAYS.forEach((d,i)=>{
   det.className = 'day'; det.id = d.id; if(i<2) det.open = true;
 
   let tt = '<ul class="tt">' + d.items.map(it =>
-    '<li class="'+(it.k||'')+'"><time>'+esc(it.t)+'</time><span class="dot"></span><div class="what"><b>'+esc(it.n)+'</b>'+
-    (it.d ? '<p>'+esc(it.d)+'</p>' : '') + '</div></li>').join('') + '</ul>';
+    '<li class="'+(it.k||'')+'"><time>'+esc(it.t)+'</time><span class="dot"></span><div class="what"><b>'+rich(it.n)+'</b>'+
+    (it.d ? '<p>'+rich(it.d)+'</p>' : '') + '</div></li>').join('') + '</ul>';
 
   let bk = (d.booked||[]).map(b =>
     '<div class="booked'+(b.s==='확정대기'?' pending':'')+'"><div class="bk-t">'+esc(b.s)+'</div><h4>'+esc(b.n)+'</h4>'+
-    '<dl>'+b.rows.map(r=>'<dt>'+esc(r[0])+'</dt><dd>'+esc(r[1])+'</dd>').join('')+'</dl>'+
+    '<dl>'+b.rows.map(r=>'<dt>'+esc(r[0])+'</dt><dd>'+rich(r[1])+'</dd>').join('')+'</dl>'+
     (b.url?'<a class="go" href="'+b.url+'" target="_blank" rel="noopener">예약 페이지 열기</a>':'')+'</div>').join('');
 
   let nt = (d.notes||[]).map(n =>
@@ -1133,9 +1267,9 @@ function initMap(){
   map.fitBounds(all, {padding:[30,30]});
 }
 const mf = document.getElementById('mapFilters');
-mf.innerHTML = '<button class="fchip eatbtn on" data-eat="1">맛집 표시 중</button>'
-  + '<button class="fchip on" data-f="all">일정 전체</button>'
-  + DAYS.map((d,i)=>'<button class="fchip" data-f="'+d.id+'">Day '+(i+1)+'</button>').join('');
+mf.innerHTML = '<button class="fchip on" data-f="all">일정 전체</button>'
+  + DAYS.map((d,i)=>'<button class="fchip" data-f="'+d.id+'">Day '+(i+1)+'</button>').join('')
+  + '<button class="fchip eatbtn" data-eat="1">맛집 숨김</button>';
 mf.addEventListener('click', e=>{
   const b = e.target.closest('.fchip'); if(!b || !map) return;
   if(b.dataset.eat){
@@ -1164,7 +1298,7 @@ function drawEats(city){
   eatsWrap.innerHTML = list.map(e=>
     '<div class="eat"><div class="body"><h4>'+esc(e.n)+'</h4>'+
     '<div class="meta">'+esc(e.c)+' · '+esc(e.k)+' · '+esc(e.a)+'</div>'+
-    '<p>'+esc(e.d)+'</p>'+
+    '<p>'+rich(e.d)+'</p>'+
     '<div class="tagline">'+(e.tag||[]).map(t=>'<span class="tag'+(t.includes('예약')||t.includes('웨이팅')?' hot':'')+'">'+esc(t)+'</span>').join('')+'</div>'+
     '<div class="acts">'+(e.u?'<a class="pill" href="'+e.u+'" target="_blank" rel="noopener">저장한 지도 링크</a>':'')+'<a class="pill" href="'+gmap(e.n+' '+e.a+' Italy')+'" target="_blank" rel="noopener">구글지도</a></div>'+
     '</div></div>').join('');
@@ -1285,8 +1419,10 @@ async function qHome(){
     '<h3>이탈리아 여행 퀴즈</h3>'+
     '<p>우리가 갈 곳들에 대한 문제 '+QN+'개.<br>답은 모두 <strong>이야기 탭</strong>에 숨어 있어요.</p>'+
     (best ? '<div class="qbest">최고 기록 '+best+' / '+QN+'</div><br>' : '')+
+    '<label class="qtoggle"><input type="checkbox" id="qT"'+(qTimed?' checked':'')+'>한 문제당 '+QSEC+'초 제한</label><br>'+
     '<button class="btn big" id="qGo">시작하기</button>'+
     '</div></div>';
+  document.getElementById('qT').onchange = e => { qTimed = e.target.checked; };
   document.getElementById('qGo').onclick = qStart;
 }
 function qStart(){
@@ -1296,37 +1432,61 @@ function qStart(){
   });
   qIdx = 0; qScore = 0; qMiss = []; qShow();
 }
+const QSEC = 25;
+let qTimer = null, qLeft = 0, qTimed = true;
+function qStop(){ if(qTimer){ clearInterval(qTimer); qTimer = null; } }
 function qShow(){
   const q = qSet[qIdx];
   qEl.innerHTML = '<div class="qwrap">'+
     '<div class="qbar"><div class="track"><i style="width:'+(qIdx/QN*100)+'%"></i></div>'+
-    '<span class="cnt">'+(qIdx+1)+' / '+QN+'</span></div>'+
+    '<span class="cnt">'+(qIdx+1)+' / '+QN+'</span>'+
+    (qTimed ? '<span class="qsec" id="qsec">'+QSEC+'초</span>' : '')+'</div>'+
+    (qTimed ? '<div class="qtimer" id="qtm"><i></i></div>' : '')+
+    (QART[q.d] || '')+
     '<span class="qtag">'+esc(q.d)+'</span>'+
     '<p class="qtext">'+esc(q.q)+'</p>'+
     '<div class="qopts">'+q.o.map((t,i)=>
       '<button class="qopt" data-i="'+i+'"><b>'+'ABCD'[i]+'</b><span>'+esc(t)+'</span></button>').join('')+
     '</div><div id="qfb"></div></div>';
   qEl.querySelectorAll('.qopt').forEach(b=>b.onclick = ()=>qPick(Number(b.dataset.i)));
+  qStop();
+  if(!qTimed) return;
+  qLeft = QSEC;
+  const bar = document.querySelector('#qtm i'), sec = document.getElementById('qsec'), wrap = document.getElementById('qtm');
+  qTimer = setInterval(()=>{
+    qLeft--;
+    if(sec) sec.textContent = qLeft + '초';
+    if(bar) bar.style.width = Math.max(0, qLeft/QSEC*100) + '%';
+    if(wrap) wrap.classList.toggle('low', qLeft <= 7);
+    if(qLeft <= 0){ qStop(); qPick(-1); }
+  }, 1000);
 }
 function qPick(i){
-  const q = qSet[qIdx], ok = (i === q.a);
+  qStop();
+  const q = qSet[qIdx], ok = (i === q.a), out = (i === -1);
   if(ok) qScore++; else qMiss.push(q);
   qEl.querySelectorAll('.qopt').forEach((b,bi)=>{
     b.disabled = true;
     if(bi === q.a) b.classList.add('right');
     else if(bi === i) b.classList.add('wrong');
   });
+  const tm = document.getElementById('qtm'); if(tm) tm.style.display = 'none';
+  const sec = document.getElementById('qsec'); if(sec) sec.textContent = '';
+  const head = ok ? '정답! 🎉' : (out ? '시간 초과 — 정답은 '+'ABCD'[q.a]+'번' : '아쉬워요 — 정답은 '+'ABCD'[q.a]+'번');
   document.getElementById('qfb').innerHTML =
-    '<div class="qfb '+(ok?'ok':'no')+'"><b>'+(ok?'정답! 🎉':'아쉬워요 — 정답은 '+'ABCD'[q.a]+'번')+'</b>'+esc(q.e)+'</div>'+
+    '<div class="qfb '+(ok?'ok':'no')+'"><b>'+head+'</b>'+rich(q.e)+'</div>'+
     '<div class="saveline" style="justify-content:flex-end"><button class="btn" id="qNext">'+
     (qIdx===QN-1?'결과 보기':'다음 문제')+'</button></div>';
-  document.getElementById('qNext').onclick = ()=>{ qIdx++; (qIdx<QN) ? qShow() : qEnd(); };
+  const go = ()=>{ qIdx++; (qIdx<QN) ? qShow() : qEnd(); };
+  document.getElementById('qNext').onclick = ()=>{ clearTimeout(auto); go(); };
+  const auto = setTimeout(go, out ? 4000 : 6000);
 }
 async function qEnd(){
   const r = RANKS.find(x=>qScore>=x[0]);
   const best = (await sGet('trip:quizBest')) || 0;
   const isNew = qScore > best;
   if(isNew) await sSet('trip:quizBest', qScore);
+  qStop();
   qEl.innerHTML = '<div class="qwrap"><div class="qres">'+
     '<div class="score num">'+qScore+'</div><div class="of">/ '+QN+' 문제'+(isNew?' · 최고 기록 경신! 🎊':'')+'</div>'+
     '<div class="rank">'+r[1]+'</div><div class="msg">'+r[2]+'</div>'+
@@ -1341,6 +1501,7 @@ qHome();
 /* ============ 이야기 ============ */
 document.getElementById('stories').innerHTML = STORIES.map(s=>
   '<details class="story"><summary>'+esc(s.t)+'<small>'+esc(s.s)+'</small></summary>'+
-  '<div class="in">'+s.p.map(p=>'<p>'+esc(p)+'</p>').join('')+
-  '<div class="hook"><b>덧붙이는 이야기 — </b>'+esc(s.hook)+'</div></div></details>').join('');
+  '<div class="in">'+s.p.map(p=>'<p>'+rich(p)+'</p>').join('')+
+  '<div class="hook"><b>덧붙이는 이야기 — </b>'+rich(s.hook)+'</div>'+
+  (s.v?'<a class="vlink" href="'+s.v+'" target="_blank" rel="noopener">▶ '+esc(s.vt||'관련 영상 보기')+'</a>':'')+'</div></details>').join('');
 </script>
