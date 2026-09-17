@@ -2,7 +2,7 @@
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>이탈리아 2026 · 10월 여행 가이드</title>
+<title>이탈리아 2026 · 우리 여섯 사람</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,6 +181,11 @@ h2.sec:first-child{margin-top:4px}
 .note.tip b{color:#8A6A00}
 .note.cool{background:#EAF5F8;border:1px solid #C8E2EA;color:#0A4E66}
 .note ul{margin:6px 0 0;padding-left:17px}
+/* 탭 최상위 안내 카드와 다음 카드 사이 여백 */
+.pane > .note,.pane > details.note,.pane > .storagenote{margin-bottom:14px}
+.pane > .note:first-child,.pane > details.note:first-child{margin-top:4px}
+#days,#checks{margin-top:14px}
+.clist:first-child,.day:first-child{margin-top:0}
 .note li{margin:3px 0}
 
 .booked{
@@ -342,6 +347,36 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
 
 .foot{text-align:center;font-size:11.5px;color:var(--ink-soft);padding:26px 0 10px;line-height:1.7}
 .storagenote{font-size:11.5px;color:var(--ink-soft);background:var(--paper-2);border-radius:9px;padding:9px 12px;margin-bottom:14px;line-height:1.6}
+
+/* 2026-09-17 mobile layout */
+.strip{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:7px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding-bottom:12px}
+.strip .chip{flex:0 0 72px;padding:10px 4px;scroll-snap-align:start}
+.chip .d{font-size:22px}.chip .w{font-size:11px}.chip .c{font-size:12px}
+.travel-tools{padding-top:14px}
+.travel-tools[hidden]{display:none!important}.wxrow{overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:7px}
+.wxcard{flex:0 0 245px;scroll-snap-align:start;min-height:90px}.wxmeta{font-size:10px;color:var(--ink-soft)}
+.fold>summary{cursor:pointer;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
+.fold>summary::-webkit-details-marker{display:none}.fold>summary::after{content:'＋';font-size:20px}.fold[open]>summary::after{content:'−'}
+.fold-body{padding-top:8px}.comic{margin-top:12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
+.comic>summary{cursor:pointer;padding:12px;font-weight:700;color:var(--adriatic-deep)}
+.comic img{width:100%;height:auto;display:block}.comic figcaption{font-size:12px;color:var(--ink-soft);padding:12px}.comic figure{margin:0}
+.quiz-scene{width:100%;aspect-ratio:8/3;overflow:hidden;border-radius:10px;margin:8px 0 16px;background:var(--paper-2)}
+.quiz-scene img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.comic-captions{font-size:13px;padding:0 18px 0 34px;line-height:1.8}.comic-captions li{margin:5px 0}.comic-title{margin:0;padding:12px;font-size:14px;color:var(--adriatic-deep)}.story .comic{margin:0 0 18px}
+/* Native horizontal touch swipe, without visible scrollbar tracks. */
+.strip,.wxrow{
+  overflow-x:auto;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  touch-action:pan-x pan-y pinch-zoom;
+}
+.strip::-webkit-scrollbar,.wxrow::-webkit-scrollbar{
+  display:none;
+  width:0;
+  height:0;
+}
 </style>
 
 <header class="top">
@@ -353,8 +388,8 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
       <div class="dday"><b id="ddayNum" class="num">D-</b><span id="ddayTxt">출발까지</span></div>
     </div>
     <div class="strip" id="strip"></div>
-    <div class="wxrow" id="wx"><div class="wxcard skel">현지 날씨를 불러오는 중…</div></div>
-    <div class="quick" id="quick"></div>
+    
+    
     <p id="fcNote" style="margin:-6px 0 12px;font-size:11px;color:var(--ink-soft);line-height:1.5">날짜별 예보를 확인하는 중…</p>
   </div>
 </header>
@@ -372,19 +407,18 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
 </nav>
 
 <main class="wrap">
+<div class="travel-tools" aria-label="현재 날씨와 길찾기"><div class="wxrow" id="wx"><div class="wxcard skel">현지 날씨를 불러오는 중…</div></div><div class="quick" id="quick"></div></div>
 
   <section class="pane on" id="p-plan">
-    <div class="note cool" style="margin-bottom:14px"><b>이 페이지는 링크만 있으면 누구나 볼 수 있습니다</b><ul><li>실명·숙소 주소·항공편명·좌석번호·결제금액은 일부러 빼두었습니다.</li><li>메모칸에도 <strong>여권번호·예약번호·연락처·정확한 숙소 주소는 적지 마세요.</strong> 그런 정보는 단톡방에 두는 편이 안전합니다.</li></ul></div><div class="note warn" id="todoBox">
-      <b>출발 전에 반드시 확인할 네 가지</b>
+    <details class="note warn fold" id="todoBox"><summary>출발 전에 반드시 확인할 네 가지</summary><div class="fold-body">
       <ul>
         <li><strong>10/4 집합 06:20 · 호텔 갈레스 앞</strong> — 일정표의 ‘호텔 갈레스’는 숙소가 아니라 남부투어 집합 장소였습니다.</li>
         <li><strong>10/8 집합 06:30 · 피렌체 중앙역 Piazzale Montelungo</strong> — 역 뒤쪽입니다. 코스가 A인지 B인지도 함께 확인하세요.</li>
         <li><strong>콜로세움 입장권을 따로 결제했는지</strong> — 투어비에 포함돼 있지 않습니다. 성인 35유로, 학생 10유로 별도입니다.</li>
         <li><strong>10/5 바티칸은 전원 여권 원본</strong> — 아이만이 아니라 어른도 들고 가야 합니다.</li>
       </ul>
-    </div>
-    <div class="note cool">
-      <b>집합 시각 한눈에</b>
+    </div></details>
+    <details class="note cool fold"><summary>집합 시각 한눈에</summary><div class="fold-body">
       <ul>
         <li><strong>10/3(토)</strong> 콜로세움 · 오후 — 전날 카톡 안내가 기준 <em style="color:#9A7200;font-style:normal">확정대기</em></li>
         <li><strong>10/4(일)</strong> 06:20 · 호텔 갈레스 앞 (Viale Castro Pretorio 66) — 숙소에서 06:00 출발</li>
@@ -392,17 +426,18 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
         <li><strong>10/8(목)</strong> 06:30 · 피렌체 중앙역 뒤편 — 숙소에서 06:05 출발</li>
       </ul>
       상품 공지 기준입니다. <strong>가이드가 전날 보내는 안내가 언제나 최종</strong>이니, 받으면 각 날짜의 메모칸에 적어두세요.
-    </div>
-    <div class="note tip">
+    </div></details>
+    
+    <div id="days"></div>
+<div class="note cool" style="margin-bottom:14px"><b>이 페이지는 링크만 있으면 누구나 볼 수 있습니다</b><ul><li>숙소 주소·항공편명·좌석번호·결제금액은 일부러 빼두었습니다.</li><li>메모칸에도 <strong>여권번호·예약번호·연락처·정확한 숙소 주소는 적지 마세요.</strong> 그런 정보는 단톡방에 두는 편이 안전합니다.</li></ul></div>
+<div class="note tip">
       <b>이 대시보드를 읽는 법</b>
       <ul>
         <li>초록색 <strong>예약확정</strong> 카드의 내용은 상품 공지에서 확인한 것입니다.</li>
         <li>시간표의 나머지 시각은 <strong>제안이자 목표치</strong>입니다. 투어 집합 시각 외에는 그대로 지킬 필요가 없습니다.</li>
-        <li>날짜 칩의 날씨 아이콘은 <strong>장식일 뿐 실제 예보가 아닙니다.</strong> 날씨는 출발 직전에 따로 확인하세요.</li>
         <li>숙소 핀은 정확한 건물이 아니라 <strong>가까운 역 좌표</strong>로 찍혀 있습니다. 길찾기에는 실제 주소를 쓰세요.</li>
       </ul>
     </div>
-    <div id="days"></div>
   </section>
 
   <section class="pane" id="p-map">
@@ -476,7 +511,11 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
   </section>
 
   <section class="pane" id="p-prep">
-    <div class="note warn"><b>한식 챙길 때 — EU 반입 규정</b>
+    
+    <div class="note cool"><b>여섯 명이 함께 움직일 때</b>
+      식당은 6인이면 대부분 예약이 필요합니다. 인기 트라토리아는 2~3주 전에 이메일이나 전화로 잡아두세요. 기차도 6석을 붙여 앉으려면 미리 예약해야 합니다.</div>
+    <div id="checks"></div>
+<div class="note warn"><b>한식 챙길 때 — EU 반입 규정</b>
       <ul>
         <li>EU는 비회원국에서 오는 <strong>육류와 유제품 반입을 개인 소비 목적이라도 금지</strong>합니다. 장조림·육개장·사골 등 고기 성분이 든 제품은 적발 시 폐기되고, 신고하지 않으면 과태료가 붙을 수 있습니다.</li>
         <li>안전한 쪽: 김, 무말랭이, 단무지, 깻잎, 고추장·간장·참기름, 채소 베이스 국.</li>
@@ -484,13 +523,10 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
         <li>돌아올 때도 같습니다. 이탈리아 살라미·프로슈토·치즈는 한국 반입이 제한됩니다.</li>
       </ul>
     </div>
-    <div class="note cool"><b>여섯 명이 함께 움직일 때</b>
-      식당은 6인이면 대부분 예약이 필요합니다. 인기 트라토리아는 2~3주 전에 이메일이나 전화로 잡아두세요. 기차도 6석을 붙여 앉으려면 미리 예약해야 합니다.</div>
-    <div id="checks"></div>
   </section>
 
   <section class="pane" id="p-story">
-    <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">가기 전에 한 번 읽고 가면 현장에서 보이는 게 달라집니다. 아이들에게는 하나씩 퀴즈로 내도 좋습니다.</p>
+    <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">두 아이가 함께 떠나는 이탈리아 이야기. 제목을 누르면 4컷 웹툰이 먼저 펼쳐지고, 그 아래에 자세한 이야기가 이어집니다.</p>
     <div id="stories"></div>
   </section>
 
@@ -551,7 +587,7 @@ const DAYS = [
     rows:[["일정","10/3(토) 오후투어 · 추가 안함"],["인원","우리 가족 3인"],["요금","1인 65,000원 (결제 완료)"],["현장 추가","입장권 성인 35€ · 학생 10€ + 수신기 3€ (현장 별도)"]],
     url:"https://experiences.myrealtrip.com/products/3430529"}],
   notes:[
-    {t:"warn", h:"입장권이 투어비에 포함돼 있지 않습니다", b:["이 상품은 <strong>콜로세움 입장권 별도</strong>입니다. 현재 안내는 성인 35유로, 학생 10유로이고 여기에 수신기 3유로가 붙습니다.","티켓을 수배한 뒤 금액을 알려주고 이체받는 절차가 있습니다. <strong>이미 따로 납부했는지 지금 확인하세요.</strong> 안 냈다면 티켓 자체가 없을 수 있습니다.","학생 요금 기준이 상품에 따로 표기돼 있으니 아이 나이로 어디에 해당하는지 함께 확인하세요."]},{t:"warn", h:"아직 확정이 아닙니다", b:["파트너사 확정 대기 중이라 취소될 수 있습니다. 출발 1주 전까지 확정 안 되면 문의하기를 누르세요.","확정되면 가이드가 전날 카카오톡으로 미팅 시각·장소를 보냅니다. 카톡 ID가 제대로 등록됐는지 확인하세요."]},
+    {t:"warn", h:"입장권이 투어비에 포함돼 있지 않습니다", b:["이 상품은 <strong>콜로세움 입장권 별도</strong>입니다. 현재 안내는 성인 35유로, 학생 10유로이고 여기에 수신기 3유로가 붙습니다.","티켓을 수배한 뒤 금액을 알려주고 이체받는 절차가 있습니다. <strong>이미 따로 납부했는지 지금 확인하세요.</strong> 안 냈다면 티켓 자체가 없을 수 있습니다.","학생 요금 기준이 상품에 따로 표기돼 있으니 아이 나이로 어디에 해당하는지 함께 확인하세요.","참고로 <strong>콜로세움 일반 통합권(포로 로마노·팔라티노 포함)의 정가는 24유로 선</strong>입니다. 35유로면 예약 수수료와 대행 마진이 붙은 값이거나 아레나·지하 입장이 포함된 티켓일 수 있으니, 어떤 티켓인지 함께 물어보세요."]},{t:"warn", h:"아직 확정이 아닙니다", b:["파트너사 확정 대기 중이라 취소될 수 있습니다. 출발 1주 전까지 확정 안 되면 문의하기를 누르세요.","확정되면 가이드가 전날 카카오톡으로 미팅 시각·장소를 보냅니다. 카톡 ID가 제대로 등록됐는지 확인하세요."]},
     {t:"tip", h:"챙겨갈 것", b:["3시간 이상 야외 워킹 — 편한 운동화 필수","10월 로마 낮 최고 22~25도. 얇은 겉옷과 물 한 병","포로 로마노는 그늘이 거의 없습니다. 모자·선글라스"]}
   ],
   pins:[["콜로세움",41.8902,12.4922],["포로 로마노",41.8925,12.4853],["트레비 분수",41.9009,12.4833],["판테온",41.8986,12.4769],["나보나 광장",41.8992,12.4731],["I Pizzicaroli",41.8983,12.4707],["몬티 지구",41.8945,12.4905],["La Nuova Piazzetta",41.8933,12.4892]] },
@@ -861,19 +897,6 @@ const CHECKS = [
  ]}
 ];
 
-const QART = {
- "콜로세움": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><g fill="#C0522E" opacity=".9"><path d="M40 78V34a70 26 0 0 1 140 0v44z" opacity=".18"/></g><g stroke="#C0522E" stroke-width="2.4" fill="none"><path d="M42 78V36a68 24 0 0 1 136 0v42"/><path d="M42 56h136M42 66h136"/></g><g fill="#C0522E"><circle cx="62" cy="47" r="5"/><circle cx="88" cy="43" r="5"/><circle cx="114" cy="42" r="5"/><circle cx="140" cy="43" r="5"/><circle cx="166" cy="47" r="5"/></g><rect x="30" y="78" width="160" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
- "폼페이": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M110 12l46 62H64z" fill="#8B4A6B" opacity=".25"/><path d="M110 12l46 62H64z" fill="none" stroke="#8B4A6B" stroke-width="2.2"/><g fill="#5E7182" opacity=".55"><circle cx="110" cy="14" r="7"/><circle cx="96" cy="8" r="5"/><circle cx="124" cy="9" r="6"/></g><g stroke="#C0522E" stroke-width="2.6"><path d="M28 74V50M44 74V50M60 74V50"/><path d="M22 50h44M22 74h44"/></g><rect x="14" y="74" width="192" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
- "포지타노": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M0 60c40-6 60-30 110-30s70 24 110 30v32H0z" fill="#12718F" opacity=".16"/><g fill="#F2B705" opacity=".85"><rect x="52" y="34" width="16" height="14" rx="2"/><rect x="74" y="44" width="18" height="16" rx="2"/><rect x="40" y="50" width="15" height="14" rx="2"/><rect x="98" y="30" width="16" height="14" rx="2"/></g><g fill="#C0522E"><rect x="120" y="42" width="17" height="16" rx="2"/><rect x="142" y="52" width="15" height="14" rx="2"/></g><path d="M0 72q22 6 44 0t44 0 44 0 44 0 44 0" stroke="#12718F" stroke-width="2.4" fill="none"/><path d="M0 82q22 6 44 0t44 0 44 0 44 0 44 0" stroke="#12718F" stroke-width="2" fill="none" opacity=".6"/></svg>`,
- "아말피": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M0 44c50 0 60 26 110 26s60-26 110-26v48H0z" fill="#12718F" opacity=".16"/><path d="M150 30l12 24h-24z" fill="#6C8A45" opacity=".6"/><g fill="none" stroke="#12718F" stroke-width="2.4"><path d="M8 62h58l14-10h50"/></g><g fill="#C0522E"><rect x="20" y="46" width="14" height="14" rx="2"/><rect x="44" y="42" width="14" height="18" rx="2"/></g><path d="M0 80q22 6 44 0t44 0 44 0 44 0 44 0" stroke="#12718F" stroke-width="2.2" fill="none"/></svg>`,
- "바티칸": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M110 18a26 26 0 0 1 26 26h-52a26 26 0 0 1 26-26z" fill="#12718F" opacity=".2"/><path d="M110 18a26 26 0 0 1 26 26h-52a26 26 0 0 1 26-26z" fill="none" stroke="#0A4E66" stroke-width="2.4"/><path d="M110 6v10M105 11h10" stroke="#F2B705" stroke-width="2.6"/><rect x="78" y="44" width="64" height="30" fill="none" stroke="#0A4E66" stroke-width="2.2"/><g stroke="#0A4E66" stroke-width="2"><path d="M40 74V52M54 74V52M68 74V52M152 74V52M166 74V52M180 74V52"/><path d="M34 52h40M146 52h40"/></g><rect x="24" y="74" width="172" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
- "피렌체": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M110 14l30 34H80z" fill="#C0522E" opacity=".75"/><path d="M110 14l30 34H80z" fill="none" stroke="#8A3A1C" stroke-width="2"/><path d="M110 8v8" stroke="#F2B705" stroke-width="3"/><g stroke="#8A3A1C" stroke-width="1.6" opacity=".7"><path d="M110 16v32M96 30l14-16 14 16"/></g><rect x="82" y="48" width="56" height="26" fill="none" stroke="#6C8A45" stroke-width="2.2"/><rect x="150" y="24" width="18" height="50" fill="none" stroke="#6C8A45" stroke-width="2.2"/><path d="M150 36h18M150 48h18M150 60h18" stroke="#6C8A45" stroke-width="1.6"/><rect x="40" y="74" width="140" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
- "피사": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><g transform="rotate(-9 118 74)"><rect x="100" y="18" width="36" height="56" fill="none" stroke="#6C8A45" stroke-width="2.4"/><path d="M100 30h36M100 40h36M100 50h36M100 60h36" stroke="#6C8A45" stroke-width="1.5"/><rect x="104" y="8" width="28" height="10" fill="none" stroke="#6C8A45" stroke-width="2.2"/></g><path d="M40 78h140" stroke="#243542" stroke-width="3.5" opacity=".25" stroke-linecap="round"/><g fill="#6C8A45" opacity=".35"><ellipse cx="58" cy="72" rx="14" ry="5"/><ellipse cx="172" cy="72" rx="14" ry="5"/></g></svg>`,
- "토스카나": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M0 62q55-26 110-8t110-6v44H0z" fill="#6C8A45" opacity=".2"/><path d="M0 62q55-26 110-8t110-6" fill="none" stroke="#6C8A45" stroke-width="2.4"/><g fill="#6C8A45"><path d="M46 62c-4 0-6-12-2-20s6-10 8 0-1 20-6 20z"/><path d="M70 60c-4 0-6-14-2-22s6-10 8 0-1 22-6 22z"/><path d="M158 56c-4 0-6-12-2-20s6-10 8 0-1 20-6 20z"/></g><circle cx="186" cy="24" r="10" fill="#F2B705" opacity=".8"/><path d="M0 80q28 5 55 0t55 0 55 0 55 0" stroke="#6C8A45" stroke-width="1.8" fill="none" opacity=".5"/></svg>`,
- "로마 생활": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M78 74V40h64v34z" fill="#12718F" opacity=".15"/><path d="M78 74V40h64v34" fill="none" stroke="#0A4E66" stroke-width="2.4"/><path d="M110 40V22a12 12 0 0 1 24 0" fill="none" stroke="#0A4E66" stroke-width="2.4"/><g stroke="#12718F" stroke-width="2" stroke-linecap="round" opacity=".75"><path d="M110 44v8M118 44v6M102 44v6"/></g><circle cx="134" cy="22" r="4" fill="#F2B705"/><rect x="54" y="74" width="112" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`,
- "판테온": `<svg class="qart" viewBox="0 0 220 92"><rect width="220" height="92" fill="#FBF4E4"/><path d="M110 20a34 30 0 0 1 34 30H76a34 30 0 0 1 34-30z" fill="#C0522E" opacity=".18"/><path d="M110 20a34 30 0 0 1 34 30H76a34 30 0 0 1 34-30z" fill="none" stroke="#C0522E" stroke-width="2.4"/><circle cx="110" cy="26" r="5" fill="#F2B705"/><path d="M110 31v20" stroke="#F2B705" stroke-width="2" opacity=".6"/><g stroke="#C0522E" stroke-width="2.2"><path d="M84 74V52M96 74V52M110 74V52M124 74V52M136 74V52"/><path d="M76 52h68"/></g><rect x="62" y="74" width="96" height="4" rx="2" fill="#243542" opacity=".25"/></svg>`
-};
-
 const QUIZ = [
 {d:"콜로세움", q:"콜로세움의 원래 이름은 무엇일까?", o:["플라비우스 원형극장","네로 경기장","로마 대극장","티투스 극장"], a:0,
  e:"베스파시아누스 황제의 가문 이름을 따서 '플라비우스 원형극장'이었어. 콜로세움은 나중에 붙은 별명이야."},
@@ -1120,9 +1143,16 @@ const FCCITY = {
 })();
 
 /* ============ 탭 ============ */
+const TOOLTABS = ['plan','map'];   // 날씨·길찾기를 보여줄 탭
 function showTab(p){
   document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected', String(t.dataset.p===p)));
   document.querySelectorAll('.pane').forEach(s=>s.classList.toggle('on', s.id==='p-'+p));
+  const tools = document.querySelector('.travel-tools');
+  if(tools){
+    const show = TOOLTABS.includes(p);
+    tools.hidden = !show;
+    tools.setAttribute('aria-hidden', String(!show));
+  }
   if(p==='map') setTimeout(initMap, 60);
   window.scrollTo({top:0});
 }
@@ -1132,8 +1162,11 @@ document.getElementById('tabs').addEventListener('click', e=>{
 
 /* ============ 현지 날씨 ============ */
 const WXCITY = [
-  {n:"로마", la:41.9028, lo:12.4964},
-  {n:"피렌체", la:43.7696, lo:11.2558}
+ {n:"로마", la:41.9028, lo:12.4964, tz:"Europe/Rome"},
+ {n:"남부", sub:"포지타노 기준", la:40.6281, lo:14.4845, tz:"Europe/Rome"},
+ {n:"피렌체", la:43.7696, lo:11.2558, tz:"Europe/Rome"},
+ {n:"토스카나", sub:"피엔차 기준", la:43.0787, lo:11.6789, tz:"Europe/Rome"},
+ {n:"서울", la:37.5665, lo:126.9780, tz:"Asia/Seoul"}
 ];
 function wxIcon(c){
   if(c===0) return "☀️";
@@ -1160,25 +1193,19 @@ function wxWord(c){
   return "";
 }
 (async function loadWx(){
-  const el = document.getElementById('wx');
-  try{
-    const rs = await Promise.all(WXCITY.map(c=>
-      fetch('https://api.open-meteo.com/v1/forecast?latitude='+c.la+'&longitude='+c.lo+
-            '&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min'+
-            '&timezone=Europe%2FRome&forecast_days=1').then(r=>r.json())
-    ));
-    el.innerHTML = rs.map((r,i)=>{
-      const t = Math.round(r.current.temperature_2m);
-      const code = r.current.weather_code;
-      const hi = Math.round(r.daily.temperature_2m_max[0]);
-      const lo = Math.round(r.daily.temperature_2m_min[0]);
-      return '<div class="wxcard"><span class="ico">'+wxIcon(code)+'</span><div class="info">'+
-        '<div class="city">'+WXCITY[i].n+' 지금</div>'+
-        '<div class="now">'+t+'°<small>'+wxWord(code)+' · '+lo+'~'+hi+'°</small></div></div></div>';
-    }).join('');
-  }catch(e){
-    el.innerHTML = '<div class="wxcard skel">날씨를 불러오지 못했습니다. 연결을 확인해 주세요.</div>';
-  }
+ const el=document.getElementById('wx');
+ el.innerHTML=WXCITY.map(c=>'<div class="wxcard skel">'+c.n+' · 불러오는 중…</div>').join('');
+ await Promise.allSettled(WXCITY.map(async(c,i)=>{
+  const card=el.children[i];
+  try {
+   const response=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+c.la+'&longitude='+c.lo+'&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone='+encodeURIComponent(c.tz)+'&forecast_days=1', {signal:AbortSignal.timeout(15000)});
+   if(!response.ok) throw Error('weather');
+   const r=await response.json();
+   if(!Number.isFinite(r.current?.temperature_2m)) throw Error('weather data');
+   card.classList.remove('skel');
+   card.innerHTML='<span class="ico" aria-hidden="true">'+wxIcon(r.current.weather_code)+'</span><div class="info"><div class="city">'+c.n+' 지금</div><div class="now">'+Math.round(r.current.temperature_2m)+'°<small>'+wxWord(r.current.weather_code)+' · '+Math.round(r.daily.temperature_2m_min[0])+'~'+Math.round(r.daily.temperature_2m_max[0])+'°</small></div><div class="wxmeta">'+(c.sub?c.sub+' · ':'')+'현지 '+r.current.time.slice(11,16)+'</div></div>';
+  } catch(e) {card.innerHTML='<div><b>'+c.n+'</b><br>날씨 연결을 확인해 주세요.</div>';}
+ }));
 })();
 
 /* ============ 구글맵 바로가기 ============ */
@@ -1435,6 +1462,14 @@ function qStart(){
 const QSEC = 25;
 let qTimer = null, qLeft = 0, qTimed = true;
 function qStop(){ if(qTimer){ clearInterval(qTimer); qTimer = null; } }
+function quizArt(q){
+ let id=({'콜로세움':'colosseum','폼페이':'pompeii','포지타노':'amalfi','아말피':'amalfi','바티칸':'vatican','피렌체':'duomo','피사':'pisa','토스카나':'civita','로마 생활':'nasoni','판테온':'pantheon'})[q.d];
+ if(/트레비/.test(q.q))id='trevi';
+ if(/베키오/.test(q.q))id='ponte';
+ if(/우피치|메디치/.test(q.q))id='medici';
+ if(/몬테풀치아노/.test(q.q))id='montepulciano';
+ return id?'<div class="quiz-scene"><img src="'+COMIC_ASSETS[id]+'" alt="'+esc(q.d)+' 풍경 일러스트"></div>':'';
+}
 function qShow(){
   const q = qSet[qIdx];
   qEl.innerHTML = '<div class="qwrap">'+
@@ -1442,7 +1477,7 @@ function qShow(){
     '<span class="cnt">'+(qIdx+1)+' / '+QN+'</span>'+
     (qTimed ? '<span class="qsec" id="qsec">'+QSEC+'초</span>' : '')+'</div>'+
     (qTimed ? '<div class="qtimer" id="qtm"><i></i></div>' : '')+
-    (QART[q.d] || '')+
+    quizArt(q)+
     '<span class="qtag">'+esc(q.d)+'</span>'+
     '<p class="qtext">'+esc(q.q)+'</p>'+
     '<div class="qopts">'+q.o.map((t,i)=>
@@ -1499,9 +1534,13 @@ async function qEnd(){
 qHome();
 
 /* ============ 이야기 ============ */
-document.getElementById('stories').innerHTML = STORIES.map(s=>
+const COMIC_ASSETS={"colosseum": "img/colosseum.webp", "forum": "img/forum.webp", "pompeii": "img/pompeii.webp", "amalfi": "img/amalfi.webp", "vatican": "img/vatican.webp", "duomo": "img/duomo.webp", "ponte": "img/ponte.webp", "pisa": "img/pisa.webp", "civita": "img/civita.webp", "montepulciano": "img/montepulciano.webp", "valdorcia": "img/valdorcia.webp", "pantheon": "img/pantheon.webp", "trevi": "img/trevi.webp", "nasoni": "img/nasoni.webp", "medici": "img/medici.webp"};
+const COMIC_CAPTIONS={"colosseum":["거대한 원형극장 앞에서 로마 여행이 시작됩니다.","고대 로마의 관객들이 아치형 출입구로 들어갑니다.","무대 아래에서는 도르래와 장치가 움직였어요.","지금 남은 유적에서 그 흔적을 찾아봅니다."],"forum":["돌기둥 사이로 옛 광장의 모습이 보입니다.","이곳은 사람들이 모이던 로마의 중심이었어요.","세월이 흘러 소들이 풀을 뜯는 들판이 되었습니다.","발굴을 통해 옛 도시의 길이 다시 드러났어요."],"pompeii":["베수비오산 아래 폼페이의 거리를 걷습니다.","옛날 이곳의 빵집에서는 빵을 굽고 있었어요.","화산재가 도시를 덮었습니다.","발굴된 흔적은 당시의 일상을 들려줍니다."],"amalfi":["절벽에 기대어 선 포지타노의 집들.","가파른 계단에서는 당나귀가 짐을 날랐어요.","배는 해안 마을들을 이어 주었습니다.","푸른 바다와 골목을 여행 수첩에 담아 봅니다."],"vatican":["성 베드로 광장에서 바티칸을 만납니다.","미켈란젤로는 비계 위에 서서 천장을 그렸어요.","붓끝에서 거대한 그림이 완성됩니다.","오늘의 여행자들도 고개를 들어 감탄합니다."],"duomo":["피렌체의 하늘을 채운 붉은 돔.","브루넬레스키는 돔을 세울 방법을 고민했어요.","벽돌을 엇갈려 쌓아 올렸습니다.","오늘은 두 겹 돔 사이를 직접 걸어 봅니다."],"ponte":["아르노강을 가로지르는 베키오 다리.","예전에는 먹거리를 파는 가게가 있었어요.","이후 금세공점이 다리를 채웠습니다.","다리 위층에는 바사리 회랑이 지나갑니다."],"pisa":["기울어진 종탑을 올려다봅니다.","무른 땅 때문에 공사 중 기울기 시작했어요.","사람들은 탑을 지키려고 지반을 연구했습니다.","오늘의 여행자는 잔디밭에서 탑을 감상합니다."],"civita":["안개 위로 모습을 드러낸 언덕 마을.","주변 땅은 비와 바람에 조금씩 깎여 나갑니다.","여행자는 긴 보행 다리를 건너요.","돌로 지은 골목 안에는 일상이 이어집니다."],"montepulciano":["언덕 위 몬테풀치아노에 도착했습니다.","중세 골목을 따라 천천히 올라갑니다.","지하 저장고에는 오래된 와인 통이 있어요.","포도밭 풍경에서 이 마을의 문화를 만납니다."],"valdorcia":["사이프러스 길과 완만한 언덕이 펼쳐집니다.","밀밭 사이로 바람이 지나갑니다.","피엔차는 계획을 세워 다시 만든 도시예요.","오늘은 그 광장과 골목을 걸어 봅니다."],"pantheon":["거대한 기둥 뒤에 판테온이 있습니다.","돔 한가운데 열린 구멍으로 빛이 들어와요.","비도 그 구멍을 통해 내립니다.","바닥의 배수구가 물을 빼 줍니다."],"trevi":["트레비 분수의 조각과 물소리를 만납니다.","로마의 물길에는 오래된 수도교 이야기가 있어요.","오케아노스와 말 조각을 자세히 살펴봅니다.","다시 로마에 오기를 바라며 동전을 던집니다."],"nasoni":["로마 골목에서 작은 식수대를 발견했어요.","물병을 채우며 잠시 쉬어 갑니다.","주둥이 끝을 막으면 위로 물이 솟습니다.","시원한 물 한 모금으로 다시 걸을 힘을 얻어요."],"medici":["피렌체에는 메디치 가문의 흔적이 남아 있어요.","은행업으로 쌓은 재산이 바탕이 되었습니다.","예술가를 후원하며 작품이 탄생했어요.","안나 마리아 루이자는 미술품을 피렌체에 남겼습니다."]};
+const COMIC_IDS=["colosseum","forum","pompeii","amalfi","vatican","duomo","ponte","pisa","civita","montepulciano","valdorcia","pantheon","trevi","nasoni","medici"];
+document.getElementById('stories').innerHTML = STORIES.map((s,i)=>
   '<details class="story"><summary>'+esc(s.t)+'<small>'+esc(s.s)+'</small></summary>'+
-  '<div class="in">'+s.p.map(p=>'<p>'+rich(p)+'</p>').join('')+
+  '<div class="in"><div class="comic"><h4 class="comic-title">🎨 '+esc(s.t)+' · 여행 웹툰</h4><figure><img loading="lazy" decoding="async" src="'+COMIC_ASSETS[COMIC_IDS[i]]+'" alt="'+esc(s.t)+' · 4컷 여행 만화"><figcaption>2 아이의 여행 웹툰 · 위에서 아래로 읽어 보세요.</figcaption><ol class="comic-captions">'+COMIC_CAPTIONS[COMIC_IDS[i]].map(c=>'<li>'+esc(c)+'</li>').join('')+'</ol><figcaption>AI로 그린 웹툰입니다. 역사 장면은 이해를 돕기 위한 재구성입니다.</figcaption></figure></div>'+
+  s.p.map(p=>'<p>'+rich(p)+'</p>').join('')+
   '<div class="hook"><b>덧붙이는 이야기 — </b>'+rich(s.hook)+'</div>'+
   (s.v?'<a class="vlink" href="'+s.v+'" target="_blank" rel="noopener">▶ '+esc(s.vt||'관련 영상 보기')+'</a>':'')+'</div></details>').join('');
 </script>
