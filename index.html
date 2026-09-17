@@ -2,27 +2,27 @@
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="googlebot" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>이탈리아 2026 · 우리 여섯 사람</title>
+<title>이탈리아 2026 · 여행 스토리보드</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
 
 <style>
 :root{
-  --paper:#FFFCF4;
-  --paper-2:#FBF4E4;
-  --ink:#243542;
-  --ink-soft:#5E7182;
-  --line:#E7DCC6;
-  --adriatic:#12718F;
-  --adriatic-deep:#0A4E66;
-  --roof:#C0522E;
-  --lemon:#F2B705;
-  --lemon-soft:#FFF0BE;
-  --olive:#6C8A45;
-  --plum:#8B4A6B;
+  --paper:#FCFAF3;
+  --paper-2:#F7F4EC;
+  --ink:#1E1B16;
+  --ink-soft:#6B6355;
+  --line:#E3DCCB;
+  --adriatic:#14432B;
+  --adriatic-deep:#0F3521;
+  --roof:#B3261E;
+  --lemon:#A8922F;
+  --lemon-soft:#F1EADB;
+  --olive:#14432B;
+  --plum:#7A3450;
   --r:14px;
   --shadow:0 1px 0 var(--line);
   --safe-b:env(safe-area-inset-bottom,0px);
@@ -33,10 +33,10 @@ body{
   background:var(--paper);
   color:var(--ink);
   font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  font-size:15px; line-height:1.65; letter-spacing:-.01em;
+  font-size:16.5px; line-height:1.65; letter-spacing:-.01em;
   -webkit-font-smoothing:antialiased;
 }
-.num{font-family:"Fraunces",Georgia,serif;font-variant-numeric:lining-nums;letter-spacing:0}
+.num{font-family:"Bodoni Moda",Georgia,serif;font-variant-numeric:lining-nums;letter-spacing:0}
 .wrap{max-width:760px;margin:0 auto;padding:0 16px 120px}
 a{color:var(--adriatic-deep)}
 button{font:inherit;color:inherit}
@@ -45,28 +45,28 @@ button{font:inherit;color:inherit}
 
 /* ---------- header ---------- */
 header.top{
-  background:linear-gradient(178deg,#FFF8E3 0%,#FFFCF4 70%);
+  background:linear-gradient(178deg,#F7F4EC 0%,#FCFAF3 72%);
   border-bottom:1px solid var(--line);
   padding:18px 0 0;
   position:relative;overflow:hidden;
 }
 header.top::after{
-  content:"";position:absolute;inset:auto 0 -1px 0;height:3px;
-  background:linear-gradient(90deg,var(--olive) 0 33%,var(--paper) 33% 66%,var(--roof) 66% 100%);
-  opacity:.5;
+  content:"";position:absolute;inset:auto 0 -1px 0;height:4px;
+  background:linear-gradient(90deg,#14432B 0 33.333%,#EFE7D5 33.333% 66.666%,#B3261E 66.666% 100%);
+  opacity:1;
 }
 .brandrow{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
 h1.title{
-  margin:0;font-family:"Fraunces",Georgia,serif;font-weight:500;
-  font-size:30px;line-height:1.05;letter-spacing:-.02em;
+  margin:0;font-family:"Bodoni Moda",Georgia,serif;font-weight:600;
+  font-size:clamp(19.8px,5.9vw,29.7px);line-height:1.1;letter-spacing:-.03em;white-space:nowrap;
 }
-h1.title em{display:block;font-style:normal;font-size:13px;font-family:"Pretendard Variable",Pretendard,sans-serif;
+h1.title em{display:block;font-style:normal;font-size:13.2px;white-space:normal;font-family:"Pretendard Variable",Pretendard,sans-serif;
   font-weight:500;color:var(--ink-soft);letter-spacing:.02em;margin-top:6px}
 .dday{
   text-align:right;flex:none;
 }
-.dday b{display:block;font-family:"Fraunces",Georgia,serif;font-size:28px;font-weight:600;line-height:1;color:var(--roof)}
-.dday span{font-size:11.5px;color:var(--ink-soft)}
+.dday b{display:block;font-family:"Bodoni Moda",Georgia,serif;font-size:26.4px;font-weight:600;line-height:1;color:var(--roof)}
+.dday span{font-size:12.7px;color:var(--ink-soft)}
 
 /* day strip */
 .strip{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;padding:14px 0 12px;margin:0}
@@ -75,9 +75,9 @@ h1.title em{display:block;font-style:normal;font-size:13px;font-family:"Pretenda
   min-width:0;background:#fff;border:1px solid var(--line);border-radius:10px;
   padding:6px 2px;text-align:center;cursor:pointer;border-bottom-width:3px;
 }
-.chip .d{font-family:"Fraunces",Georgia,serif;font-size:15px;font-weight:600;line-height:1}
-.chip .w{font-size:9.5px;color:var(--ink-soft);margin-top:1px;line-height:1.25;min-height:12px}
-.chip .c{font-size:10px;margin-top:3px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip .d{font-family:"Bodoni Moda",Georgia,serif;font-size:16.5px;font-weight:600;line-height:1}
+.chip .w{font-size:10.5px;color:var(--ink-soft);margin-top:1px;line-height:1.25;min-height:12px}
+.chip .c{font-size:11px;margin-top:3px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chip[data-city=roma]{border-bottom-color:var(--roof)}
 .chip[data-city=roma] .c{color:var(--roof)}
 .chip[data-city=sud]{border-bottom-color:var(--adriatic)}
@@ -85,32 +85,32 @@ h1.title em{display:block;font-style:normal;font-size:13px;font-family:"Pretenda
 .chip[data-city=firenze]{border-bottom-color:var(--olive)}
 .chip[data-city=firenze] .c{color:var(--olive)}
 .chip[data-city=toscana]{border-bottom-color:var(--lemon)}
-.chip[data-city=toscana] .c{color:#9A7200}
+.chip[data-city=toscana] .c{color:#8A6612}
 .chip.on{background:var(--ink);border-color:var(--ink)}
-.chip.on .d,.chip.on .w,.chip.on .c{color:#FFF8E3}
+.chip.on .d,.chip.on .w,.chip.on .c{color:#F7F4EC}
 
 /* 날씨 + 바로가기 */
-.wxrow{display:flex;gap:8px;margin:2px 0 10px}
+.wxrow{display:flex;gap:8px;margin:0 0 9px}
 .wxcard{
   flex:1;min-width:0;background:#fff;border:1px solid var(--line);border-radius:12px;
   padding:9px 11px;display:flex;align-items:center;gap:10px;
 }
-.wxcard .ico{font-size:23px;line-height:1;flex:none}
+.wxcard .ico{font-size:25.3px;line-height:1;flex:none}
 .wxcard .info{min-width:0;flex:1}
-.wxcard .city{font-size:11px;color:var(--ink-soft);font-weight:600;letter-spacing:.02em}
-.wxcard .now{font-family:"Fraunces",Georgia,serif;font-size:19px;font-weight:600;line-height:1.15}
-.wxcard .now small{font-family:"Pretendard Variable",Pretendard,sans-serif;font-size:11px;font-weight:500;color:var(--ink-soft);margin-left:5px;letter-spacing:-.01em}
-.wxcard.skel{color:var(--ink-soft);font-size:12px;justify-content:center}
-.quick{display:flex;gap:6px;overflow-x:auto;padding-bottom:14px;scrollbar-width:none}
+.wxcard .city{font-size:12.1px;color:var(--ink-soft);font-weight:600;letter-spacing:.02em}
+.wxcard .now{font-family:"Bodoni Moda",Georgia,serif;font-size:20.9px;font-weight:600;line-height:1.15}
+.wxcard .now small{font-family:"Pretendard Variable",Pretendard,sans-serif;font-size:12.1px;font-weight:500;color:var(--ink-soft);margin-left:5px;letter-spacing:-.01em}
+.wxcard.skel{color:var(--ink-soft);font-size:13.2px;justify-content:center}
+.quick{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
 .quick::-webkit-scrollbar{display:none}
 .quick a{
   flex:none;display:inline-flex;align-items:center;gap:5px;text-decoration:none;
   background:#fff;border:1px solid var(--line);border-radius:99px;padding:6px 12px;
-  font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap;
+  font-size:13.8px;font-weight:600;color:var(--ink);white-space:nowrap;
 }
-.quick a b{font-weight:700;color:var(--adriatic-deep);font-size:11.5px}
-.quick a.key{background:var(--ink);color:#FFF8E3;border-color:var(--ink)}
-.quick a.key b{color:var(--lemon)}
+.quick a b{font-weight:700;color:var(--ink-soft);font-size:12.7px}
+.quick a.key{background:var(--lemon-soft);color:var(--ink);border-color:#EBD9A4}
+.quick a.key b{color:#8A6612}
 
 /* tabs */
 nav.tabs{
@@ -120,15 +120,15 @@ nav.tabs{
 .tabs-in{display:flex;gap:0;max-width:760px;margin:0 auto;padding:0 4px;overflow-x:auto;scrollbar-width:none}
 .tabs-in::-webkit-scrollbar{display:none}
 .tab{
-  flex:none;background:none;border:0;padding:12px 7px 10px;font-size:13.5px;font-weight:600;
+  flex:none;background:none;border:0;padding:12px 5px 10px;font-size:14.9px;font-weight:600;
   color:var(--ink-soft);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;
 }
 .tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--roof)}
 
-section.pane{display:none;padding-top:20px}
+section.pane{display:none;padding-top:16px}
 section.pane.on{display:block}
 
-h2.sec{font-size:13px;font-weight:700;color:var(--ink-soft);margin:26px 0 10px}
+h2.sec{font-size:14.3px;font-weight:700;color:var(--ink-soft);margin:26px 0 10px}
 h2.sec:first-child{margin-top:4px}
 
 /* ---------- day card ---------- */
@@ -144,12 +144,12 @@ h2.sec:first-child{margin-top:4px}
   flex:none;width:46px;height:46px;border-radius:11px;display:grid;place-content:center;
   background:var(--paper-2);text-align:center;line-height:1;
 }
-.daynum b{font-family:"Fraunces",Georgia,serif;font-size:17px;font-weight:600;display:block}
-.daynum i{font-style:normal;font-size:9.5px;color:var(--ink-soft);display:block;margin-top:3px}
+.daynum b{font-family:"Bodoni Moda",Georgia,serif;font-size:18.7px;font-weight:600;display:block}
+.daynum i{font-style:normal;font-size:10.5px;color:var(--ink-soft);display:block;margin-top:3px}
 .dayhead{flex:1;min-width:0}
-.dayhead h3{margin:0;font-size:16px;font-weight:700;letter-spacing:-.02em}
-.dayhead p{margin:2px 0 0;font-size:12.5px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.caret{flex:none;color:var(--ink-soft);font-size:12px;transition:transform .18s}
+.dayhead h3{margin:0;font-size:17.6px;font-weight:700;letter-spacing:-.02em}
+.dayhead p{margin:2px 0 0;font-size:13.8px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.caret{flex:none;color:var(--ink-soft);font-size:13.2px;transition:transform .18s}
 .day[open] .caret{transform:rotate(180deg)}
 .daybody{padding:2px 16px 18px;border-top:1px solid var(--paper-2)}
 
@@ -158,8 +158,8 @@ h2.sec:first-child{margin-top:4px}
 .tt::before{content:"";position:absolute;left:52px;top:10px;bottom:10px;width:1.5px;background:var(--line)}
 .tt li{display:flex;gap:14px;padding:7px 0;position:relative}
 .tt time{
-  flex:none;width:44px;text-align:right;font-family:"Fraunces",Georgia,serif;
-  font-size:13px;font-weight:600;color:var(--adriatic-deep);padding-top:1px;
+  flex:none;width:44px;text-align:right;font-family:"Bodoni Moda",Georgia,serif;
+  font-size:14.3px;font-weight:600;color:var(--adriatic-deep);padding-top:1px;
 }
 .tt .dot{
   position:absolute;left:49px;top:14px;width:8px;height:8px;border-radius:50%;
@@ -168,22 +168,22 @@ h2.sec:first-child{margin-top:4px}
 .tt li.key .dot{background:var(--roof);border-color:var(--roof)}
 .tt li.move .dot{background:var(--adriatic);border-color:var(--adriatic)}
 .tt .what{flex:1;min-width:0;padding-left:10px}
-.tt .what b{font-weight:600;font-size:14.5px}
-.tt .what p{margin:2px 0 0;font-size:12.8px;color:var(--ink-soft);line-height:1.55}
+.tt .what b{font-weight:600;font-size:16px}
+.tt .what p{margin:2px 0 0;font-size:14.1px;color:var(--ink-soft);line-height:1.55}
 .tt li.key .what b{color:var(--roof)}
 
 /* boxes */
-.note{border-radius:11px;padding:11px 13px;font-size:13px;line-height:1.6;margin:14px 0 0}
-.note b{display:block;font-size:12px;margin-bottom:4px}
+.note{border-radius:11px;padding:11px 13px;font-size:14.3px;line-height:1.6;margin:14px 0 0}
+.note b{display:block;font-size:13.2px;margin-bottom:4px}
 .note.warn{background:#FFF2EC;border:1px solid #F3D5C7;color:#7E3417}
 .note.warn b{color:var(--roof)}
-.note.tip{background:var(--lemon-soft);border:1px solid #F0DC9C;color:#6C5203}
-.note.tip b{color:#8A6A00}
-.note.cool{background:#EAF5F8;border:1px solid #C8E2EA;color:#0A4E66}
+.note.tip{background:var(--lemon-soft);border:1px solid #DFD2AC;color:#6B5A15}
+.note.tip b{color:#7A6614}
+.note.cool{background:#EFF3EE;border:1px solid #D3DFD4;color:#0F3521}
 .note ul{margin:6px 0 0;padding-left:17px}
 /* 탭 최상위 안내 카드와 다음 카드 사이 여백 */
 .pane > .note,.pane > details.note,.pane > .storagenote{margin-bottom:14px}
-.pane > .note:first-child,.pane > details.note:first-child{margin-top:4px}
+.pane > .note:first-child,.pane > details.note:first-child,.pane > .storagenote:first-child{margin-top:0}
 #days,#checks{margin-top:14px}
 .clist:first-child,.day:first-child{margin-top:0}
 .note li{margin:3px 0}
@@ -192,47 +192,47 @@ h2.sec:first-child{margin-top:4px}
   border:1px solid var(--line);border-left:4px solid var(--olive);border-radius:10px;
   padding:11px 13px;margin:14px 0 0;background:var(--paper);
 }
-.booked .bk-t{font-size:11px;font-weight:700;color:var(--olive)}
+.booked .bk-t{font-size:12.1px;font-weight:700;color:var(--olive)}
 .booked.pending{border-left-color:var(--lemon)}
-.booked.pending .bk-t{color:#9A7200}
-.booked h4{margin:3px 0 5px;font-size:14px;font-weight:700;line-height:1.4}
-.booked dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12.8px}
+.booked.pending .bk-t{color:#8A6612}
+.booked h4{margin:3px 0 5px;font-size:15.4px;font-weight:700;line-height:1.4}
+.booked dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:14.1px}
 .booked dt{color:var(--ink-soft)}
 .booked dd{margin:0}
 .booked a.go{
-  display:inline-block;margin-top:9px;font-size:12.5px;font-weight:600;text-decoration:none;
-  background:var(--ink);color:#FFF8E3;padding:6px 12px;border-radius:99px;
+  display:inline-block;margin-top:9px;font-size:13.8px;font-weight:600;text-decoration:none;
+  background:var(--ink);color:#F7F4EC;padding:6px 12px;border-radius:99px;
 }
 
 /* memo */
 .memo{margin-top:14px}
-.memo label{font-size:11.5px;font-weight:700;color:var(--ink-soft);display:block;margin-bottom:5px}
+.memo label{font-size:12.7px;font-weight:700;color:var(--ink-soft);display:block;margin-bottom:5px}
 textarea,input[type=text],input[type=url],input[type=number],select{
   width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;
-  padding:9px 11px;font:inherit;font-size:14px;color:var(--ink);resize:vertical;
+  padding:9px 11px;font:inherit;font-size:15.4px;color:var(--ink);resize:vertical;
 }
 textarea{min-height:62px}
 .saveline{display:flex;align-items:center;gap:9px;margin-top:7px}
 .btn{
-  background:var(--ink);color:#FFF8E3;border:0;border-radius:99px;padding:7px 15px;
-  font-size:13px;font-weight:600;cursor:pointer;
+  background:var(--ink);color:#F7F4EC;border:0;border-radius:99px;padding:7px 15px;
+  font-size:14.3px;font-weight:600;cursor:pointer;
 }
 .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
-.btn.sm{padding:5px 11px;font-size:12px}
-.said{font-size:12px;color:var(--olive);opacity:0;transition:opacity .2s}
+.btn.sm{padding:5px 11px;font-size:13.2px}
+.said{font-size:13.2px;color:var(--olive);opacity:0;transition:opacity .2s}
 .said.on{opacity:1}
 
 /* map */
 #map{height:62vh;min-height:380px;border-radius:var(--r);border:1px solid var(--line);background:var(--paper-2)}
-.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:13px}
 .fchip{
   border:1px solid var(--line);background:#fff;border-radius:99px;padding:5px 12px;
-  font-size:12.5px;font-weight:600;cursor:pointer;color:var(--ink-soft);
+  font-size:13.8px;font-weight:600;cursor:pointer;color:var(--ink-soft);
 }
-.fchip.on{background:var(--ink);color:#FFF8E3;border-color:var(--ink)}
+.fchip.on{background:var(--ink);color:#F7F4EC;border-color:var(--ink)}
 .fchip.eatbtn{border-color:#E2C9D6;color:var(--plum)}
-.fchip.eatbtn.on{background:var(--plum);color:#FFF8E3;border-color:var(--plum)}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--ink-soft);margin-top:10px}
+.fchip.eatbtn.on{background:var(--plum);color:#F7F4EC;border-color:var(--plum)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.7px;color:var(--ink-soft);margin-top:10px}
 .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:middle}
 
 /* eats */
@@ -241,16 +241,16 @@ textarea{min-height:62px}
   display:flex;gap:12px;align-items:flex-start;
 }
 .eat .body{flex:1;min-width:0}
-.eat h4{margin:0;font-size:15px;font-weight:700}
-.eat .meta{font-size:11.5px;color:var(--ink-soft);margin-top:1px}
-.eat p{margin:5px 0 0;font-size:13px;line-height:1.55}
+.eat h4{margin:0;font-size:16.5px;font-weight:700}
+.eat .meta{font-size:12.7px;color:var(--ink-soft);margin-top:1px}
+.eat p{margin:5px 0 0;font-size:14.3px;line-height:1.55}
 .eat .acts{margin-top:8px;display:flex;gap:7px;flex-wrap:wrap}
 .pill{
-  font-size:11.5px;font-weight:600;text-decoration:none;border:1px solid var(--line);
+  font-size:12.7px;font-weight:600;text-decoration:none;border:1px solid var(--line);
   border-radius:99px;padding:4px 10px;color:var(--adriatic-deep);background:var(--paper);
 }
 .tagline{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
-.tag{font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:5px;background:var(--paper-2);color:var(--ink-soft)}
+.tag{font-size:11.6px;font-weight:600;padding:2px 7px;border-radius:5px;background:var(--paper-2);color:var(--ink-soft)}
 .tag.hot{background:#FFF2EC;color:var(--roof)}
 
 .adder{background:var(--paper-2);border:1px dashed #DCCBA6;border-radius:12px;padding:13px;margin-bottom:16px}
@@ -259,81 +259,81 @@ textarea{min-height:62px}
 .adder .full{grid-column:1/-1}
 
 /* budget */
-table.bud{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table.bud{width:100%;border-collapse:collapse;font-size:14.9px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 table.bud th,table.bud td{padding:9px 11px;border-bottom:1px solid var(--paper-2);text-align:left}
-table.bud th{background:var(--paper-2);font-size:11.5px;color:var(--ink-soft);font-weight:700}
+table.bud th{background:var(--paper-2);font-size:12.7px;color:var(--ink-soft);font-weight:700}
 table.bud td:last-child,table.bud th:last-child{text-align:right}
-table.bud input{border:0;border-bottom:1.5px dashed var(--line);border-radius:0;padding:2px 0;text-align:right;font-size:13.5px;background:transparent}
+table.bud input{border:0;border-bottom:1.5px dashed var(--line);border-radius:0;padding:2px 0;text-align:right;font-size:14.9px;background:transparent}
 table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0}
 .bigsum{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:15px;margin-bottom:14px;display:flex;gap:14px;justify-content:space-between;align-items:center}
-.bigsum .lab{font-size:12px;color:var(--ink-soft)}
-.bigsum .val{font-family:"Fraunces",Georgia,serif;font-size:25px;font-weight:600;line-height:1.1}
+.bigsum .lab{font-size:13.2px;color:var(--ink-soft)}
+.bigsum .val{font-family:"Bodoni Moda",Georgia,serif;font-size:27.5px;font-weight:600;line-height:1.1}
 
 /* checklist */
 .clist{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
-.clist h3{margin:0;padding:11px 14px;font-size:13.5px;font-weight:700;background:var(--paper-2);border-bottom:1px solid var(--line)}
-.clist label{display:flex;gap:10px;align-items:flex-start;padding:9px 14px;border-bottom:1px solid #F7F1E2;cursor:pointer;font-size:14px}
+.clist h3{margin:0;padding:11px 14px;font-size:14.9px;font-weight:700;background:var(--paper-2);border-bottom:1px solid var(--line)}
+.clist label{display:flex;gap:10px;align-items:flex-start;padding:9px 14px;border-bottom:1px solid #F7F1E2;cursor:pointer;font-size:15.4px}
 .clist label:last-child{border-bottom:0}
 .clist input[type=checkbox]{width:19px;height:19px;flex:none;margin-top:1px;accent-color:var(--olive)}
-.clist label.done span{text-decoration:line-through;color:#A8B4BD}
-.clist label small{display:block;font-size:11.8px;color:var(--ink-soft);font-weight:400;text-decoration:none!important}
+.clist label.done span{text-decoration:line-through;color:#9A9284}
+.clist label small{display:block;font-size:13px;color:var(--ink-soft);font-weight:400;text-decoration:none!important}
 .prog{height:5px;background:var(--paper-2)}
 .prog i{display:block;height:100%;background:var(--olive);width:0;transition:width .25s}
 
 /* stories */
 .story{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:9px;overflow:hidden}
-.story > summary{list-style:none;cursor:pointer;padding:13px 15px;font-weight:700;font-size:15px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.story > summary{list-style:none;cursor:pointer;padding:13px 15px;font-weight:700;font-size:16.5px;display:flex;justify-content:space-between;gap:10px;align-items:center}
 .story > summary::-webkit-details-marker{display:none}
-.story > summary small{font-weight:500;font-size:11.5px;color:var(--ink-soft);flex:none}
-.story .in{padding:0 15px 15px;font-size:13.8px;line-height:1.72}
+.story > summary small{font-weight:500;font-size:12.7px;color:var(--ink-soft);flex:none}
+.story .in{padding:0 15px 15px;font-size:15.2px;line-height:1.72}
 .story .in p{margin:0 0 9px}
 .story .in p:last-child{margin-bottom:0}
-.story .in .hook{background:var(--lemon-soft);border-radius:9px;padding:9px 11px;font-size:13px;border:1px solid #F0DC9C}
-.story .in .hook b{color:#8A6A00}
+.story .in .hook{background:var(--lemon-soft);border-radius:9px;padding:9px 11px;font-size:14.3px;border:1px solid #DFD2AC}
+.story .in .hook b{color:#7A6614}
 
 /* quiz */
 .qwrap{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 16px}
 .qstart{text-align:center;padding:12px 4px}
-.qstart h3{margin:0 0 6px;font-size:21px;font-weight:700;letter-spacing:-.02em}
-.qstart p{margin:0 0 16px;font-size:13.5px;color:var(--ink-soft);line-height:1.7}
-.qbest{display:inline-block;background:var(--lemon-soft);border:1px solid #F0DC9C;border-radius:99px;padding:6px 15px;font-size:12.5px;font-weight:600;color:#8A6A00;margin-bottom:16px}
-.btn.big{padding:12px 28px;font-size:15.5px;border-radius:99px}
+.qstart h3{margin:0 0 6px;font-size:23.1px;font-weight:700;letter-spacing:-.02em}
+.qstart p{margin:0 0 16px;font-size:14.9px;color:var(--ink-soft);line-height:1.7}
+.qbest{display:inline-block;background:var(--lemon-soft);border:1px solid #DFD2AC;border-radius:99px;padding:6px 15px;font-size:13.8px;font-weight:600;color:#7A6614;margin-bottom:16px}
+.btn.big{padding:12px 28px;font-size:17.1px;border-radius:99px}
 .qbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .qbar .track{flex:1;height:6px;background:var(--paper-2);border-radius:99px;overflow:hidden}
 .qbar .track i{display:block;height:100%;background:var(--roof);width:0;transition:width .3s}
-.qbar .cnt{font-family:"Fraunces",Georgia,serif;font-size:13px;font-weight:600;color:var(--ink-soft);flex:none}
-.qtag{display:inline-block;font-size:11px;font-weight:700;background:var(--paper-2);color:var(--ink-soft);padding:3px 9px;border-radius:6px;margin-bottom:8px}
-.qtext{font-size:18px;font-weight:700;line-height:1.5;letter-spacing:-.02em;margin:0 0 16px}
+.qbar .cnt{font-family:"Bodoni Moda",Georgia,serif;font-size:14.3px;font-weight:600;color:var(--ink-soft);flex:none}
+.qtag{display:inline-block;font-size:12.1px;font-weight:700;background:var(--paper-2);color:var(--ink-soft);padding:3px 9px;border-radius:6px;margin-bottom:8px}
+.qtext{font-size:19.8px;font-weight:700;line-height:1.5;letter-spacing:-.02em;margin:0 0 16px}
 .qopts{display:grid;gap:8px}
 .qopt{
   display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%;
   background:var(--paper);border:1.5px solid var(--line);border-radius:12px;
-  padding:13px 14px;font-size:15px;line-height:1.45;cursor:pointer;
+  padding:13px 14px;font-size:16.5px;line-height:1.45;cursor:pointer;
 }
 .qopt b{flex:none;width:22px;height:22px;border-radius:50%;background:#fff;border:1.5px solid var(--line);
-  display:grid;place-content:center;font-size:12px;font-weight:700;color:var(--ink-soft)}
+  display:grid;place-content:center;font-size:13.2px;font-weight:700;color:var(--ink-soft)}
 .qopt:disabled{cursor:default}
 .qopt.right{background:#EDF6E7;border-color:var(--olive)}
 .qopt.right b{background:var(--olive);border-color:var(--olive);color:#fff}
 .qopt.wrong{background:#FFF0EA;border-color:var(--roof)}
 .qopt.wrong b{background:var(--roof);border-color:var(--roof);color:#fff}
-.qfb{margin-top:14px;border-radius:11px;padding:12px 14px;font-size:13.5px;line-height:1.65}
+.qfb{margin-top:14px;border-radius:11px;padding:12px 14px;font-size:14.9px;line-height:1.65}
 .qfb.ok{background:#EDF6E7;border:1px solid #CBE0BC;color:#3E5A2A}
 .qfb.no{background:#FFF0EA;border:1px solid #F3D5C7;color:#7E3417}
-.qfb b{display:block;margin-bottom:4px;font-size:14px}
+.qfb b{display:block;margin-bottom:4px;font-size:15.4px}
 .qres{text-align:center;padding:8px 4px}
-.qres .score{font-family:"Fraunces",Georgia,serif;font-size:44px;font-weight:600;line-height:1;color:var(--roof)}
-.qres .of{font-size:13px;color:var(--ink-soft);margin-top:4px}
-.qres .rank{font-size:23px;font-weight:700;margin:16px 0 4px;letter-spacing:-.02em}
-.qres .msg{font-size:14px;color:var(--ink-soft);margin-bottom:18px}
-.qmiss{text-align:left;background:var(--paper-2);border-radius:11px;padding:13px;margin-bottom:16px;font-size:13px}
-.qmiss h4{margin:0 0 8px;font-size:12px;font-weight:700;color:var(--ink-soft)}
+.qres .score{font-family:"Bodoni Moda",Georgia,serif;font-size:48.4px;font-weight:600;line-height:1;color:var(--roof)}
+.qres .of{font-size:14.3px;color:var(--ink-soft);margin-top:4px}
+.qres .rank{font-size:25.3px;font-weight:700;margin:16px 0 4px;letter-spacing:-.02em}
+.qres .msg{font-size:15.4px;color:var(--ink-soft);margin-bottom:18px}
+.qmiss{text-align:left;background:var(--paper-2);border-radius:11px;padding:13px;margin-bottom:16px;font-size:14.3px}
+.qmiss h4{margin:0 0 8px;font-size:13.2px;font-weight:700;color:var(--ink-soft)}
 .qmiss div{margin-bottom:9px;line-height:1.55}
 .qmiss div:last-child{margin-bottom:0}
 .qmiss em{font-style:normal;color:var(--olive);font-weight:600}
 
 .story .vlink{
-  display:inline-block;margin-top:12px;text-decoration:none;font-size:13px;font-weight:600;
+  display:inline-block;margin-top:12px;text-decoration:none;font-size:14.3px;font-weight:600;
   background:#FFF0EA;border:1px solid #F3D5C7;color:var(--roof);border-radius:99px;padding:7px 14px;
 }
 
@@ -341,28 +341,42 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
 .qtimer{height:5px;background:var(--paper-2);border-radius:99px;overflow:hidden;margin:0 0 12px}
 .qtimer i{display:block;height:100%;background:var(--olive);width:100%;transition:width .95s linear}
 .qtimer.low i{background:var(--roof)}
-.qsec{font-family:"Fraunces",Georgia,serif;font-size:12px;font-weight:600;color:var(--ink-soft);flex:none;min-width:26px;text-align:right}
-.qtoggle{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);margin-bottom:16px;cursor:pointer}
+.qsec{font-family:"Bodoni Moda",Georgia,serif;font-size:13.2px;font-weight:600;color:var(--ink-soft);flex:none;min-width:26px;text-align:right}
+.qtoggle{display:inline-flex;align-items:center;gap:8px;font-size:14.3px;color:var(--ink-soft);margin-bottom:16px;cursor:pointer}
 .qtoggle input{width:18px;height:18px;accent-color:var(--olive)}
 
-.foot{text-align:center;font-size:11.5px;color:var(--ink-soft);padding:26px 0 10px;line-height:1.7}
-.storagenote{font-size:11.5px;color:var(--ink-soft);background:var(--paper-2);border-radius:9px;padding:9px 12px;margin-bottom:14px;line-height:1.6}
+/* 이동 카드 */
+.mv{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--paper-2)}
+.mv:last-child{border-bottom:0;padding-bottom:0}
+.mv .dt{flex:none;width:36px;font-family:"Bodoni Moda",Georgia,serif;font-size:13.2px;font-weight:600;color:var(--ink-soft);padding-top:2px}
+.mv .bd{flex:1;min-width:0}
+.mv .rt{font-size:15.4px;font-weight:700;line-height:1.4}
+.mv .rt .dur{display:inline-block;background:var(--lemon-soft);border:1px solid #DFD2AC;color:#6B5A15;
+  border-radius:6px;padding:0 7px;font-size:12.7px;font-weight:700;margin-left:6px;vertical-align:1px;white-space:nowrap}
+.mv .mn{font-size:13.5px;color:var(--ink-soft);margin-top:3px;line-height:1.5}
+.mv .lk{margin-top:7px;display:flex;gap:6px;flex-wrap:wrap}
+.tt .what b .dur{display:inline-block;background:var(--lemon-soft);border:1px solid #DFD2AC;color:#6B5A15;
+  border-radius:6px;padding:0 6px;font-size:12.1px;font-weight:700;margin-left:6px;white-space:nowrap}
+
+.foot{text-align:center;font-size:12.7px;color:var(--ink-soft);padding:26px 0 10px;line-height:1.7}
+.storagenote{font-size:12.7px;color:var(--ink-soft);background:var(--paper-2);border-radius:9px;padding:9px 12px;margin-bottom:14px;line-height:1.6}
 
 /* 2026-09-17 mobile layout */
 .strip{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:7px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding-bottom:12px}
-.strip .chip{flex:0 0 72px;padding:10px 4px;scroll-snap-align:start}
-.chip .d{font-size:22px}.chip .w{font-size:11px}.chip .c{font-size:12px}
-.travel-tools{padding-top:14px}
+.strip .chip{flex:0 0 66px;padding:5px 4px 6px;scroll-snap-align:start;border-bottom-width:3px}
+.chip .d{font-size:18.7px;line-height:1}.chip .w{font-size:11px;margin-top:0;min-height:0;line-height:1.2}
+.chip .c{font-size:12.1px;margin-top:2px}
+.travel-tools{padding-top:12px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:0}
 .travel-tools[hidden]{display:none!important}.wxrow{overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:7px}
-.wxcard{flex:0 0 245px;scroll-snap-align:start;min-height:90px}.wxmeta{font-size:10px;color:var(--ink-soft)}
+.wxcard{flex:0 0 245px;scroll-snap-align:start;min-height:90px}.wxmeta{font-size:11px;color:var(--ink-soft)}
 .fold>summary{cursor:pointer;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
-.fold>summary::-webkit-details-marker{display:none}.fold>summary::after{content:'＋';font-size:20px}.fold[open]>summary::after{content:'−'}
+.fold>summary::-webkit-details-marker{display:none}.fold>summary::after{content:'＋';font-size:22px}.fold[open]>summary::after{content:'−'}
 .fold-body{padding-top:8px}.comic{margin-top:12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);overflow:hidden}
 .comic>summary{cursor:pointer;padding:12px;font-weight:700;color:var(--adriatic-deep)}
-.comic img{width:100%;height:auto;display:block}.comic figcaption{font-size:12px;color:var(--ink-soft);padding:12px}.comic figure{margin:0}
+.comic img{width:100%;height:auto;display:block}.comic figcaption{font-size:13.2px;color:var(--ink-soft);padding:12px}.comic figure{margin:0}
 .quiz-scene{width:100%;aspect-ratio:8/3;overflow:hidden;border-radius:10px;margin:8px 0 16px;background:var(--paper-2)}
 .quiz-scene img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.comic-captions{font-size:13px;padding:0 18px 0 34px;line-height:1.8}.comic-captions li{margin:5px 0}.comic-title{margin:0;padding:12px;font-size:14px;color:var(--adriatic-deep)}.story .comic{margin:0 0 18px}
+.comic-captions{font-size:14.3px;padding:0 18px 0 34px;line-height:1.8}.comic-captions li{margin:5px 0}.comic-title{margin:0;padding:12px;font-size:15.4px;color:var(--adriatic-deep)}.story .comic{margin:0 0 18px}
 /* Native horizontal touch swipe, without visible scrollbar tracks. */
 .strip,.wxrow{
   overflow-x:auto;
@@ -382,7 +396,7 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
 <header class="top">
   <div class="wrap" style="padding-bottom:0">
     <div class="brandrow">
-      <h1 class="title">Roma · Firenze<br>Toscana
+      <h1 class="title">Roma · Firenze · Toscana
         <em>2026.10.2 금 — 10.10 토 · 이탈리아 여행 가이드</em>
       </h1>
       <div class="dday"><b id="ddayNum" class="num">D-</b><span id="ddayTxt">출발까지</span></div>
@@ -390,7 +404,7 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
     <div class="strip" id="strip"></div>
     
     
-    <p id="fcNote" style="margin:-6px 0 12px;font-size:11px;color:var(--ink-soft);line-height:1.5">날짜별 예보를 확인하는 중…</p>
+    <p id="fcNote" style="margin:-6px 0 12px;font-size:12.1px;color:var(--ink-soft);line-height:1.5">날짜별 예보를 확인하는 중…</p>
   </div>
 </header>
 
@@ -399,8 +413,8 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
     <button class="tab" role="tab" data-p="plan" aria-selected="true">일정</button>
     <button class="tab" role="tab" data-p="map" aria-selected="false">지도</button>
     <button class="tab" role="tab" data-p="eat" aria-selected="false">맛집·링크</button>
-    <button class="tab" role="tab" data-p="money" aria-selected="false">경비</button>
     <button class="tab" role="tab" data-p="prep" aria-selected="false">준비물</button>
+    <button class="tab" role="tab" data-p="money" aria-selected="false">경비</button>
     <button class="tab" role="tab" data-p="story" aria-selected="false">이야기</button>
     <button class="tab" role="tab" data-p="quiz" aria-selected="false">퀴즈 🎲</button>
   </div>
@@ -420,7 +434,7 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
     </div></details>
     <details class="note cool fold"><summary>집합 시각 한눈에</summary><div class="fold-body">
       <ul>
-        <li><strong>10/3(토)</strong> 콜로세움 · 오후 — 전날 카톡 안내가 기준 <em style="color:#9A7200;font-style:normal">확정대기</em></li>
+        <li><strong>10/3(토)</strong> 콜로세움 · 오후 — 전날 카톡 안내가 기준 <em style="color:#8A6612;font-style:normal">확정대기</em></li>
         <li><strong>10/4(일)</strong> 06:20 · 호텔 갈레스 앞 (Viale Castro Pretorio 66) — 숙소에서 06:00 출발</li>
         <li><strong>10/5(월)</strong> 08:00 전후 · 바티칸 — 전날 카톡 안내가 기준</li>
         <li><strong>10/8(목)</strong> 06:30 · 피렌체 중앙역 뒤편 — 숙소에서 06:05 출발</li>
@@ -428,6 +442,7 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
       상품 공지 기준입니다. <strong>가이드가 전날 보내는 안내가 언제나 최종</strong>이니, 받으면 각 날짜의 메모칸에 적어두세요.
     </div></details>
     
+    <details class="note cool fold"><summary>이동 수단과 소요시간</summary><div class="fold-body" id="moves"></div></details>
     <div id="days"></div>
 <div class="note cool" style="margin-bottom:14px"><b>이 페이지는 링크만 있으면 누구나 볼 수 있습니다</b><ul><li>숙소 주소·항공편명·좌석번호·결제금액은 일부러 빼두었습니다.</li><li>메모칸에도 <strong>여권번호·예약번호·연락처·정확한 숙소 주소는 적지 마세요.</strong> 그런 정보는 단톡방에 두는 편이 안전합니다.</li></ul></div>
 <div class="note tip">
@@ -441,21 +456,25 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
   </section>
 
   <section class="pane" id="p-map">
+    <h2 class="sec" style="margin:0 0 9px">지도에 표시할 항목</h2>
     <div class="filters" id="mapFilters"></div>
     <div id="map"></div>
     <div class="legend">
-      <span><i style="background:#C0522E"></i>로마</span>
-      <span><i style="background:#12718F"></i>남부·아말피</span>
-      <span><i style="background:#6C8A45"></i>피렌체·피사</span>
-      <span><i style="background:#F2B705"></i>토스카나</span>
-      <span><i style="background:#8B4A6B"></i>맛집</span>
+      <span><i style="background:#B3261E"></i>로마</span>
+      <span><i style="background:#0F3521"></i>남부·아말피</span>
+      <span><i style="background:#14432B"></i>피렌체·피사</span>
+      <span><i style="background:#A8922F"></i>토스카나</span>
+      <span><i style="background:#7A3450"></i>맛집</span>
     </div>
     <p class="foot" style="padding-top:12px">핀을 누르면 이름과 구글지도 길찾기 링크가 열립니다. 맛집 핀이 거슬리면 위의 보라색 버튼으로 끌 수 있습니다. 지도 타일은 OpenStreetMap.</p>
   </section>
 
   <section class="pane" id="p-eat">
+    <h2 class="sec">미리 골라둔 후보</h2>
+    <div class="filters" id="eatFilters"></div>
+    <div id="eats"></div>
+  <h2 class="sec">내가 추가한 곳 (이 기기에만 저장됩니다)</h2>
     <div class="storagenote" id="shareNote">여기 적는 내용은 <strong>보고 계신 기기에만 저장됩니다.</strong> 다른 사람 화면에는 나타나지 않으니, 같이 정할 것은 단톡방에 올려주세요.</div>
-    <h2 class="sec">내가 추가한 곳 (이 기기에만 저장됩니다)</h2>
     <div class="adder">
       <div class="row">
         <input class="full" type="text" id="nName" placeholder="가게 이름 또는 메모 제목">
@@ -480,10 +499,7 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
       </div>
     </div>
     <div id="mine"></div>
-    <h2 class="sec">미리 골라둔 후보</h2>
-    <div class="filters" id="eatFilters"></div>
-    <div id="eats"></div>
-  </section>
+    </section>
 
   <section class="pane" id="p-money">
     <div class="bigsum">
@@ -491,12 +507,12 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
       <div style="text-align:right"><div class="lab">6인 합계 (원화 환산)</div><div class="val num" id="sumKrw">0</div></div>
     </div>
     <div class="saveline" style="margin:0 0 14px">
-      <span style="font-size:12.5px;color:var(--ink-soft)">환율 1€ =</span>
+      <span style="font-size:13.8px;color:var(--ink-soft)">환율 1€ =</span>
       <input type="number" id="fx" value="1560" style="width:90px;text-align:right"> 원
       <button class="btn sm ghost" id="fxSave">적용</button>
     </div>
     <h2 class="sec">현지에서 실제로 내는 돈 (1인, 유로)</h2>
-    <p style="font-size:12.8px;color:var(--ink-soft);margin:0 0 10px">예약한 투어비는 이미 결제했으니 빠져 있습니다. 여기 숫자는 <strong>현장에서 추가로 내는 금액</strong>이라 지갑에 얼마를 넣을지 가늠할 때 쓰세요. 칸을 직접 고쳐도 자동 저장됩니다.</p>
+    <p style="font-size:14.1px;color:var(--ink-soft);margin:0 0 10px">예약한 투어비는 이미 결제했으니 빠져 있습니다. 여기 숫자는 <strong>현장에서 추가로 내는 금액</strong>이라 지갑에 얼마를 넣을지 가늠할 때 쓰세요. 칸을 직접 고쳐도 자동 저장됩니다.</p>
     <table class="bud"><thead><tr><th>항목</th><th>메모</th><th>€</th></tr></thead><tbody id="budBody"></tbody></table>
     <h2 class="sec">예약한 투어 (이미 결제)</h2>
     <table class="bud"><thead><tr><th>투어</th><th>인원</th><th>원</th></tr></thead><tbody id="tourBody"></tbody></table>
@@ -526,12 +542,12 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
   </section>
 
   <section class="pane" id="p-story">
-    <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">두 아이가 함께 떠나는 이탈리아 이야기. 제목을 누르면 4컷 웹툰이 먼저 펼쳐지고, 그 아래에 자세한 이야기가 이어집니다.</p>
+    <p style="font-size:14.3px;color:var(--ink-soft);margin:0 0 14px">두 아이가 함께 떠나는 이탈리아 이야기. 제목을 누르면 4컷 웹툰이 먼저 펼쳐지고, 그 아래에 자세한 이야기가 이어집니다.</p>
     <div id="stories"></div>
   </section>
 
   <section class="pane" id="p-quiz">
-    <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">여행 전에 풀어보고, 현지에 가서 또 풀어보세요. 답을 알고 보면 같은 유적도 달라 보입니다.</p>
+    <p style="font-size:14.3px;color:var(--ink-soft);margin:0 0 14px">여행 전에 풀어보고, 현지에 가서 또 풀어보세요. 답을 알고 보면 같은 유적도 달라 보입니다.</p>
     <div id="quiz"></div>
   </section>
 
@@ -556,14 +572,44 @@ const QUICK = [
  {n:"인천공항 제2터미널", q:"인천국제공항 제2여객터미널"}
 ];
 
+const MOVES = [
+ {d:"10/2", r:"피우미치노 공항 → 로마 테르미니", m:"레오나르도 익스프레스", dur:"32분",
+  n:"직행 · 1인 14€ · 15~30분 간격. 유료 성인 1명당 만 12세 미만 아동 1명 무료.",
+  o:"Aeroporto di Roma Fiumicino", t:"Roma Termini", tt:"https://www.trenitalia.com/"},
+ {d:"10/2", r:"피우미치노 공항 → 시내 숙소", m:"공항 정액 택시", dur:"약 45분",
+  n:"로마 성벽 안까지 4인·짐 포함 55€ 정액. 6명이면 2대. 흰색 공식 택시만 이용하세요."},
+ {d:"10/4", r:"숙소 → 호텔 갈레스 (집합)", m:"도보", dur:"약 10분",
+  n:"약 700m. 06:20 집합이라 06:00에는 나서야 합니다. 전날 저녁에 한 번 걸어보세요.",
+  o:"Roma Termini", t:"Hotel Galles, Viale Castro Pretorio 66, Roma"},
+ {d:"10/5", r:"테르미니 → 오타비아노 (바티칸)", m:"지하철 A선", dur:"약 20분",
+  n:"1회권 1.5€ · 출근시간이라 혼잡합니다. 택시면 15분.",
+  o:"Roma Termini", t:"Ottaviano Metro Station Rome", tt:"https://www.atac.roma.it/"},
+ {d:"10/6", r:"로마 테르미니 → 피렌체 S.M.N.", m:"고속열차 (예약 완료)", dur:"1시간 32분",
+  n:"12:25 출발 → 13:57 도착 · 232km. 지정석이라 각인 불필요. 출발 20분 전 플랫폼 확인.",
+  o:"Roma Termini", t:"Firenze Santa Maria Novella", tt:"https://www.italotreno.com/en"},
+ {d:"10/7", r:"피렌체 S.M.N. → 피사 첸트랄레", m:"지역열차 (Regionale)", dur:"50분~1시간",
+  n:"약 68km · 1인 10€ 안팎. <strong>종이표는 반드시 각인</strong>하세요. 앱 QR은 각인 불필요.",
+  o:"Firenze Santa Maria Novella", t:"Pisa Centrale", tt:"https://www.trenitalia.com/"},
+ {d:"10/7", r:"피사 첸트랄레 → 기적의 광장", m:"버스 1+ 또는 도보", dur:"버스 10분 / 도보 25분",
+  n:"예전 LAM Rossa가 1+번으로 바뀌었습니다. 현장에서 ‘1+ / Torre’ 방향 확인.",
+  o:"Pisa Centrale", t:"Torre di Pisa", tt:"https://www.at-bus.it/"},
+ {d:"10/8", r:"피렌체 → 로마 (소도시 경유)", m:"투어 전세버스", dur:"하루 종일",
+  n:"06:30 출발 → 19:30 도착. 짐을 싣고 이동하며 피엔차·발도르차 등을 들릅니다."},
+ {d:"10/9", r:"테르미니 → 피우미치노 공항", m:"레오나르도 익스프레스", dur:"32분",
+  n:"20:20 출발편 기준 16:20에는 역에서 출발해야 합니다. 금요일 저녁이라 택시는 막힐 수 있습니다.",
+  o:"Roma Termini", t:"Aeroporto di Roma Fiumicino", tt:"https://www.trenitalia.com/"},
+ {d:"10/4", r:"로마 → 폼페이 (참고)", m:"투어 전세버스", dur:"편도 약 3시간 30분",
+  n:"왕복 7~8시간을 차에서 보냅니다. 목베개와 멀미약을 챙기세요."}
+];
+
 const DAYS = [
 { id:"d1", date:"10.02", wd:"금", city:"roma", cLabel:"이동", w:"⛅",
   title:"인천 → 로마 도착", sub:"직항 · 저녁 도착 후 숙소 체크인",
   items:[
     {t:"09:20", k:"key", n:"인천공항 제2터미널(T2) 도착", d:"출발 3시간 전. 아시아나는 2026년 1월 14일부로 제1터미널에서 제2터미널로 옮겼습니다. 체크인은 G~J 카운터입니다."},
-    {t:"12:20", k:"move", n:"인천 출발 · 로마행 직항", d:"비행 약 13시간. 기내에서 로마 시각(한국 -7시간)으로 시계를 맞춰두세요."},
+    {t:"12:20", k:"move", n:"인천 출발 · 로마행 직항", dur:"약 13시간", d:"비행 약 13시간. 기내에서 로마 시각(한국 -7시간)으로 시계를 맞춰두세요."},
     {t:"18:30", k:"key", n:"로마 피우미치노(FCO) 도착", d:"EU가 2026년 4월부터 출입국 등록 시스템(EES)을 전면 운영 중입니다. 처음 등록할 때 지문·얼굴 촬영이 있어 <strong>심사가 예전보다 오래 걸립니다.</strong> 아래 시각은 약속이 아니라 목표로 보세요."},
-    {t:"19:45", k:"move", n:"공항 → 테르미니역", d:"레오나르도 익스프레스 32분 직행(1인 14€) 또는 공항택시 정액. 6명+캐리어면 택시 2대나 사전예약 밴이 편합니다."},
+    {t:"19:45", k:"move", n:"공항 → 테르미니역", dur:"32분", d:"레오나르도 익스프레스 32분 직행(1인 14€) 또는 공항택시 정액. 6명+캐리어면 택시 2대나 사전예약 밴이 편합니다."},
     {t:"20:40", n:"숙소 체크인", d:"테르미니역 남쪽 출구에서 도보 3~5분. 밤에도 사람이 있는 길이지만 캐리어는 꼭 붙잡고 다니세요."},
     {t:"21:30", n:"가볍게 저녁", d:"첫날은 멀리 나가지 말 것. 테르미니역 안 메르카토 첸트랄레가 늦게까지 열고 취향도 제각각 고를 수 있습니다."}
   ],
@@ -596,14 +642,14 @@ const DAYS = [
   title:"폼페이와 아말피 해안", sub:"06:20 호텔 갈레스 앞 집합 · 하루 종일 · 페리 탑승",
   items:[
     {t:"05:20", k:"key", n:"기상 · 아침 도시락 챙기기", d:"전날 밤에 빵과 물을 사두세요. 이 시간에는 문 연 가게가 거의 없습니다."},
-    {t:"06:00", k:"move", n:"숙소 출발 → 호텔 갈레스", d:"숙소에서 도보 약 700m, 10분 거리입니다. 새벽이라 길이 어두우니 여유 있게 나가세요."},
+    {t:"06:00", k:"move", n:"숙소 출발 → 호텔 갈레스", dur:"도보 10분", d:"숙소에서 도보 약 700m, 10분 거리입니다. 새벽이라 길이 어두우니 여유 있게 나가세요."},
     {t:"06:20", k:"key", n:"호텔 갈레스 앞 집합", d:"Viale Castro Pretorio 66. 테르미니역 앞이 아니라 역 북동쪽 블록의 호텔 정문 앞입니다. 단체버스라 늦으면 기다려주지 않습니다."},
     {t:"10:30", n:"폼페이 유적 내부", d:"공인 가이드 해설. 입장료는 현장 결제인데 10/4는 무료입장일입니다 — 아래 확인."},
     {t:"13:00", n:"점심 (약 15€, 선택)", d:"현장 결제. 원하지 않으면 가이드에게 말하고 빠질 수 있습니다."},
     {t:"14:30", n:"소렌토·포지타노 전망대 · 아말피 해안도로", d:"절벽 도로 구간에서 멀미가 날 수 있습니다. 멀미약은 출발 30분 전에."},
     {t:"16:00", n:"포지타노 마을 자유시간", d:"진입 미니버스 편도 10€. 해변까지 계단이 꽤 가파릅니다."},
     {t:"17:30", n:"페리 탑승 (포지타노 → 살레르노, 17€)", d:"바다에서 보는 포지타노가 이 투어의 하이라이트입니다. 갑판 자리를 노리세요."},
-    {t:"21:00", k:"move", n:"로마 도착 · 해산", d:"21~22시 사이 도착. 저녁은 숙소 근처에서 간단히."}
+    {t:"21:00", k:"move", n:"로마 도착 · 해산", dur:"버스 약 3시간", d:"21~22시 사이 도착. 저녁은 숙소 근처에서 간단히."}
   ],
   booked:[{s:"예약확정", n:"[당일] 이탈리아 남부투어 – 포지타노·아말피 🚢페리 탑승 #우노트래블 (로마 출발)",
     rows:[["일정","10/4(일) 전일"],["집합","06:20 · 호텔 갈레스(Hotel Galles) 앞 · Viale Castro Pretorio 66"],["인원","우리 가족 3인"],["요금","1인 160,000원 (결제 완료)"],["현장 추가","점심 15€ + 미니버스 10€ + 페리 17€ + 수신기 3€ · 폼페이 입장료는 아래 확인"]],
@@ -620,7 +666,7 @@ const DAYS = [
   title:"바티칸", sub:"오전 패스트트랙 · 전원 여권 원본 필수",
   items:[
     {t:"06:30", n:"아침 식사", d:"입장 시간이 08:00~10:00 사이로 배정되므로 일찍 움직일 준비를 해두세요."},
-    {t:"07:20", k:"move", n:"숙소 → 바티칸", d:"지하철 A선 Termini → Ottaviano, 약 20분. 출근시간이라 붐빕니다. 택시면 15분."},
+    {t:"07:20", k:"move", n:"숙소 → 바티칸", dur:"약 20분", d:"지하철 A선 Termini → Ottaviano, 약 20분. 출근시간이라 붐빕니다. 택시면 15분."},
     {t:"08:00", k:"key", n:"가이드 미팅 · 패스트트랙 입장", d:"실제 시각은 전날 카톡 안내가 기준입니다. 이 칸은 안내받는 대로 고쳐 쓰세요."},
     {t:"08:30", k:"key", n:"바티칸 박물관 → 시스티나 예배당", d:"입장 후 약 4시간 일정입니다. 시스티나 안에서는 사진 촬영과 대화가 금지됩니다."},
     {t:"13:00", n:"투어 종료 · 점심", d:"종료 시각은 13~15시 사이로 벌어질 수 있습니다. 점심 예약은 잡지 마세요."},
@@ -646,7 +692,7 @@ const DAYS = [
     {t:"09:30", k:"key", n:"체크아웃 · 숙소에 짐 맡기기", d:"숙소가 테르미니 바로 옆이라 짐을 맡기고 가볍게 두어 시간 더 쓸 수 있습니다."},
     {t:"10:00", n:"로마 마지막 산책", d:"산타 마리아 마조레 대성당이 테르미니에서 도보 8분입니다. 로마 4대 바실리카 중 하나인데 관광객이 적어 조용합니다."},
     {t:"11:40", k:"key", n:"짐 찾아 테르미니역으로", d:"이탈로는 출발 20분 전쯤 플랫폼이 전광판에 뜹니다. 역이 넓으니 여유 있게 움직이세요."},
-    {t:"12:25", k:"move", n:"로마 테르미니 출발 · 고속열차", d:"6석 연속으로 예약해 두었습니다. 티켓은 예매 앱에서 QR로 열면 되고 개찰·각인은 필요 없습니다."},
+    {t:"12:25", k:"move", n:"로마 테르미니 출발 · 고속열차", dur:"1시간 32분", d:"6석 연속으로 예약해 두었습니다. 티켓은 예매 앱에서 QR로 열면 되고 개찰·각인은 필요 없습니다."},
     {t:"13:57", n:"피렌체 산타 마리아 노벨라역 도착", d:"1시간 32분. 짐칸 자리는 탑승 직후 먼저 잡는 사람이 임자입니다."},
     {t:"14:15", n:"숙소에 짐만 내려놓기", d:"S.M.N.역에서 도보 5분. 정식 체크인은 나중에 하고 짐만 두고 나오는 편이 낫습니다."},
     {t:"14:50", k:"key", n:"두오모 본당 입장 (무료)", d:"본당은 월~토 10:15~15:45, <strong>마지막 입장 15:30</strong>입니다. 오늘 놓치면 남은 일정에 다시 들어갈 시간이 없습니다. 보안검색 줄을 감안해 15:00 전에 도착하세요."},
@@ -668,7 +714,7 @@ const DAYS = [
 { id:"d6", date:"10.07", wd:"수", city:"firenze", cLabel:"피사", w:"☀️",
   title:"피사 당일치기", sub:"지역열차 약 1시간 · 기적의 광장",
   items:[
-    {t:"08:40", k:"move", n:"피렌체 S.M.N. → 피사 첸트랄레", d:"지역열차(Regionale) 약 50분~1시간, 1인 10€ 안팎. 종이표는 반드시 개찰기에 각인하세요."},
+    {t:"08:40", k:"move", n:"피렌체 S.M.N. → 피사 첸트랄레", dur:"약 1시간", d:"지역열차(Regionale) 약 50분~1시간, 1인 10€ 안팎. 종이표는 반드시 개찰기에 각인하세요."},
     {t:"09:50", n:"피사 첸트랄레 도착", d:"사탑까지 도보 25분 또는 버스 10분. 예전 LAM Rossa 노선은 <strong>1+번</strong>으로 바뀌었으니 현장에서 ‘1+ / Torre’ 방향으로 확인하세요. 걸어가면 아르노 강을 건넙니다."},
     {t:"10:30", k:"key", n:"기적의 광장 · 두오모 · 세례당", d:"잔디밭에서 사탑 받치는 사진은 필수 코스. 여섯 명이 각기 다른 포즈로 찍으면 더 재밌습니다."},
     {t:"11:30", k:"key", n:"사탑 등반 (예약 필요)", d:"시간 지정 입장이고 만 8세 미만은 오를 수 없습니다. 좁은 나선계단 294단, 가방 반입 불가."},
@@ -687,7 +733,7 @@ const DAYS = [
   items:[
     {t:"05:40", k:"key", n:"기상 · 짐 최종 정리", d:"집합이 이르니 전날 밤에 캐리어를 다 싸두세요."},
     {t:"06:05", k:"key", n:"체크아웃 · 숙소 출발", d:"숙소에서 S.M.N.역까지 도보 5분. 캐리어를 끌고 가는 시간을 넉넉히 잡으세요."},
-    {t:"06:30", k:"key", n:"피렌체 중앙역 집합 · 출발", d:"상품 안내 기준 집합 장소는 16번 플랫폼 쪽 <strong>Piazzale Montelungo의 더몰 버스정류장 앞</strong>입니다. 역 정문이 아니라 역 뒤쪽이라 처음이면 헤맵니다."},
+    {t:"06:30", k:"key", n:"피렌체 중앙역 집합 · 출발", dur:"로마까지 약 13시간", d:"상품 안내 기준 집합 장소는 16번 플랫폼 쪽 <strong>Piazzale Montelungo의 더몰 버스정류장 앞</strong>입니다. 역 정문이 아니라 역 뒤쪽이라 처음이면 헤맵니다."},
     {t:"09:30", n:"피엔차", d:"교황이 자기 고향을 통째로 르네상스 도시로 다시 지은 곳. 페코리노 치즈로 유명합니다."},
     {t:"11:00", n:"사이프러스 길 · 발도르차 공원", d:"이탈리아에서 가장 많이 찍히는 풍경. 영화 글래디에이터의 밀밭도 이 일대입니다."},
     {t:"13:00", k:"key", n:"몬테풀치아노 와이너리 투어 · 단체식 점심", d:"와이너리 투어 15€(미성년자 5€) + 점심 15€, 둘 다 현장 결제이고 카드가 됩니다. 미성년자에게는 주류가 제공되지 않습니다."},
@@ -713,9 +759,9 @@ const DAYS = [
     {t:"12:30", n:"점심 · 마지막 젤라또", d:"스페인 계단 방향으로 내려오면 동선이 자연스럽습니다."},
     {t:"13:30", n:"스페인 계단 · 콘도티 거리 쇼핑", d:"기념품과 면세 쇼핑을 여기서 마무리. 계단에 앉는 것은 금지이고 벌금이 있습니다."},
     {t:"15:30", k:"key", n:"호텔에서 짐 찾기 · 최종 점검", d:"보조배터리는 기내 가방, 올리브유·와인·발사믹은 부치는 짐. 여권과 탑승권 6명분 확인."},
-    {t:"16:20", k:"move", n:"테르미니 → 피우미치노 공항", d:"레오나르도 익스프레스 32분 직행(1인 14€). 6명+캐리어면 택시 2대도 좋습니다. 금요일 저녁이라 도로는 막힐 수 있습니다."},
+    {t:"16:20", k:"move", n:"테르미니 → 피우미치노 공항", dur:"32분", d:"레오나르도 익스프레스 32분 직행(1인 14€). 6명+캐리어면 택시 2대도 좋습니다. 금요일 저녁이라 도로는 막힐 수 있습니다."},
     {t:"17:20", k:"key", n:"FCO 도착 · 세금 환급 → 체크인", d:"환급 서류가 있으면 짐을 부치기 전에 세관 확인부터. 3터미널이고 줄이 깁니다."},
-    {t:"20:20", k:"key", n:"FCO 출발 · 인천행 직항", d:"비행 약 11시간 20분. 로마에서 인천은 올 때보다 짧습니다."}
+    {t:"20:20", k:"key", n:"FCO 출발 · 인천행 직항", dur:"약 11시간 20분", d:"비행 약 11시간 20분. 로마에서 인천은 올 때보다 짧습니다."}
   ],
   booked:[{s:"귀국편", n:"귀국 항공편 · 로마 → 인천",
     rows:[["출발","10/9(금) 20:20 · 로마 피우미치노 (FCO)"],["도착","10/10(토) 14:40 · 인천 (ICN)"],["비행시간","약 11시간 20분"],["공항 도착 권장","17:20까지 (출발 3시간 전)"]],
@@ -1130,7 +1176,7 @@ const FCCITY = {
       const date = '2026-' + d.date.replace('.','-');
       const i = dl.time.indexOf(date); if(i < 0) return;
       const el = document.getElementById('w-'+d.id); if(!el) return;
-      el.innerHTML = d.wd + ' ' + wxIcon(dl.weather_code[i]) + '<br><span style="font-size:10px">' +
+      el.innerHTML = d.wd + ' ' + wxIcon(dl.weather_code[i]) + '<br><span style="font-size:11px">' +
         Math.round(dl.temperature_2m_max[i]) + '°</span>';
       hit++;
     });
@@ -1221,7 +1267,7 @@ DAYS.forEach((d,i)=>{
   det.className = 'day'; det.id = d.id; if(i<2) det.open = true;
 
   let tt = '<ul class="tt">' + d.items.map(it =>
-    '<li class="'+(it.k||'')+'"><time>'+esc(it.t)+'</time><span class="dot"></span><div class="what"><b>'+rich(it.n)+'</b>'+
+    '<li class="'+(it.k||'')+'"><time>'+esc(it.t)+'</time><span class="dot"></span><div class="what"><b>'+rich(it.n)+(it.dur?'<span class="dur">'+esc(it.dur)+'</span>':'')+'</b>'+
     (it.d ? '<p>'+rich(it.d)+'</p>' : '') + '</div></li>').join('') + '</ul>';
 
   let bk = (d.booked||[]).map(b =>
@@ -1263,19 +1309,34 @@ daysWrap.addEventListener('click', async e=>{
   flash(s);
 });
 
+/* ============ 이동 수단 ============ */
+const gtransit = (o,t) => 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(o) +
+  '&destination=' + encodeURIComponent(t) + '&travelmode=transit';
+document.getElementById('moves').innerHTML = MOVES.map(m =>
+  '<div class="mv"><div class="dt">'+esc(m.d)+'</div><div class="bd">'+
+  '<div class="rt">'+esc(m.r)+'<span class="dur">'+esc(m.dur)+'</span></div>'+
+  '<div class="mn">'+esc(m.m)+' · '+rich(m.n)+'</div>'+
+  ((m.o||m.tt) ? '<div class="lk">'+
+    (m.o ? '<a class="pill" href="'+gtransit(m.o,m.t)+'" target="_blank" rel="noopener">실시간 출발시각</a>' : '')+
+    (m.tt ? '<a class="pill" href="'+m.tt+'" target="_blank" rel="noopener">공식 시간표</a>' : '')+
+  '</div>' : '')+
+  '</div></div>').join('') +
+  '<p style="margin:12px 0 0;font-size:12.7px;color:var(--ink-soft);line-height:1.6">' +
+  '‘실시간 출발시각’은 구글지도 대중교통 길찾기로 열립니다. 오늘 기준으로 나오니, 여행 당일에 누르면 그날 시간표가 그대로 보입니다.</p>';
+
 /* ============ 지도 ============ */
 let map = null, layers = {}, eatLayer = null;
-const CITYC = {roma:'#C0522E', sud:'#12718F', firenze:'#6C8A45', toscana:'#F2B705'};
+const CITYC = {roma:'#B3261E', sud:'#0F3521', firenze:'#14432B', toscana:'#A8922F'};
 function initMap(){
   if(map){ map.invalidateSize(); return; }
-  if(typeof L === 'undefined'){ document.getElementById('map').innerHTML = '<p style="padding:20px;font-size:13px">지도를 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.</p>'; return; }
+  if(typeof L === 'undefined'){ document.getElementById('map').innerHTML = '<p style="padding:20px;font-size:14.3px">지도를 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.</p>'; return; }
   map = L.map('map', {scrollWheelZoom:false}).setView([42.4, 12.4], 6);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18, attribution:'&copy; OpenStreetMap'}).addTo(map);
   const all = [];
   DAYS.forEach((d,i)=>{
     (d.pins||[]).forEach(p=>{
-      const m = L.circleMarker([p[1],p[2]], {radius:8, color:'#fff', weight:2, fillColor:CITYC[d.city]||'#243542', fillOpacity:1});
-      m.bindPopup('<b style="font-size:13px">'+esc(p[0])+'</b><br><span style="font-size:11px;color:#5E7182">Day '+(i+1)+' · '+d.date+'</span><br><a style="font-size:12px" href="'+gmap(p[0]+' Italy')+'" target="_blank" rel="noopener">구글지도에서 열기</a>');
+      const m = L.circleMarker([p[1],p[2]], {radius:8, color:'#fff', weight:2, fillColor:CITYC[d.city]||'#1E1B16', fillOpacity:1});
+      m.bindPopup('<b style="font-size:14.3px">'+esc(p[0])+'</b><br><span style="font-size:12.1px;color:#6B6355">Day '+(i+1)+' · '+d.date+'</span><br><a style="font-size:13.2px" href="'+gmap(p[0]+' Italy')+'" target="_blank" rel="noopener">구글지도에서 열기</a>');
       m.__day = d.id;
       (layers[d.id] = layers[d.id] || L.layerGroup().addTo(map)).addLayer(m);
       all.push([p[1],p[2]]);
@@ -1284,10 +1345,10 @@ function initMap(){
   eatLayer = L.layerGroup();
   EATS.forEach(e=>{
     if(!e.ll) return;
-    const m = L.circleMarker(e.ll, {radius:6, color:'#fff', weight:2, fillColor:'#8B4A6B', fillOpacity:1});
-    m.bindPopup('<b style="font-size:13px">'+esc(e.n)+'</b><br><span style="font-size:11px;color:#5E7182">'+esc(e.c)+' · '+esc(e.k)+'</span><br>'+
-      (e.u?'<a style="font-size:12px" href="'+e.u+'" target="_blank" rel="noopener">저장한 지도 링크</a><br>':'')+
-      '<a style="font-size:12px" href="'+gmap(e.n+' '+e.a+' Italy')+'" target="_blank" rel="noopener">구글지도에서 열기</a>');
+    const m = L.circleMarker(e.ll, {radius:6, color:'#fff', weight:2, fillColor:'#7A3450', fillOpacity:1});
+    m.bindPopup('<b style="font-size:14.3px">'+esc(e.n)+'</b><br><span style="font-size:12.1px;color:#6B6355">'+esc(e.c)+' · '+esc(e.k)+'</span><br>'+
+      (e.u?'<a style="font-size:13.2px" href="'+e.u+'" target="_blank" rel="noopener">저장한 지도 링크</a><br>':'')+
+      '<a style="font-size:13.2px" href="'+gmap(e.n+' '+e.a+' Italy')+'" target="_blank" rel="noopener">구글지도에서 열기</a>');
     eatLayer.addLayer(m);
   });
   if(document.querySelector('.fchip.eatbtn.on')) eatLayer.addTo(map);
@@ -1340,7 +1401,7 @@ ef.addEventListener('click', e=>{
 const mine = document.getElementById('mine');
 async function drawMine(){
   const list = (await sGet('trip:mine', true)) || [];
-  if(!list.length){ mine.innerHTML = '<p style="font-size:13px;color:var(--ink-soft);padding:4px 0 8px">아직 비어 있습니다. 위에서 첫 곳을 추가해 보세요. 추가한 내용은 이 기기에만 남습니다.</p>'; return; }
+  if(!list.length){ mine.innerHTML = '<p style="font-size:14.3px;color:var(--ink-soft);padding:4px 0 8px">아직 비어 있습니다. 위에서 첫 곳을 추가해 보세요. 추가한 내용은 이 기기에만 남습니다.</p>'; return; }
   mine.innerHTML = list.map((e,i)=>
     '<div class="eat"><div class="body"><h4>'+esc(e.n)+'</h4>'+
     '<div class="meta">'+esc(e.c)+' · '+esc(e.k)+'</div>'+
@@ -1378,7 +1439,7 @@ let budVals = {};
 async function drawBudget(){
   budVals = (await sGet('trip:budget')) || {};
   budBody.innerHTML = BUDGET.map(b=>
-    '<tr><td>'+esc(b.n)+'</td><td style="font-size:11.5px;color:var(--ink-soft)">'+esc(b.m)+'</td>'+
+    '<tr><td>'+esc(b.n)+'</td><td style="font-size:12.7px;color:var(--ink-soft)">'+esc(b.m)+'</td>'+
     '<td><input type="number" data-b="'+b.id+'" value="'+(budVals[b.id] ?? b.v)+'" style="width:64px"></td></tr>').join('')
     + '<tr class="tot"><td colspan="2">1인 합계</td><td id="budTot" class="num">0</td></tr>';
   calc();
@@ -1402,7 +1463,7 @@ document.getElementById('fxSave').addEventListener('click', async ()=>{
 (async()=>{ const f = await sGet('trip:fx'); if(f) document.getElementById('fx').value = f; await drawBudget(); })();
 
 document.getElementById('tourBody').innerHTML = TOURS.map(t=>
-  '<tr><td>'+esc(t.n)+'<div style="font-size:11px;color:'+(t.s.includes('대기')?'#9A7200':'var(--olive)')+'">'+esc(t.s)+'</div></td>'+
+  '<tr><td>'+esc(t.n)+'<div style="font-size:12.1px;color:'+(t.s.includes('대기')?'#8A6612':'var(--olive)')+'">'+esc(t.s)+'</div></td>'+
   '<td>'+esc(t.p)+'</td><td class="num">'+(t.v?t.v.toLocaleString():'—')+'</td></tr>').join('')
   + '<tr class="tot"><td colspan="2">3인 결제 합계 (토스카나 제외)</td><td class="num">'+TOURS.reduce((a,b)=>a+b.v,0).toLocaleString()+'</td></tr>';
 
