@@ -6,22 +6,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
 
 <style>
 :root{
-  --paper:#FCFAF3;
-  --paper-2:#F7F4EC;
-  --ink:#1E1B16;
-  --ink-soft:#6B6355;
-  --line:#E3DCCB;
-  --adriatic:#14432B;
-  --adriatic-deep:#0F3521;
-  --roof:#B3261E;
-  --lemon:#A8922F;
-  --lemon-soft:#F1EADB;
-  --olive:#14432B;
+  --paper:#FFF8E6;
+  --paper-2:#FBF0D6;
+  --ink:#0E2238;
+  --ink-soft:#5A5A52;
+  --line:#EADFC2;
+  --adriatic:#0B4F8C;
+  --adriatic-deep:#083B69;
+  --roof:#E4573D;
+  --lemon:#F5C518;
+  --lemon-soft:#FFF1C2;
+  --olive:#1F7A6A;
   --plum:#7A3450;
   --r:14px;
   --shadow:0 1px 0 var(--line);
@@ -36,7 +36,7 @@ body{
   font-size:16.5px; line-height:1.65; letter-spacing:-.01em;
   -webkit-font-smoothing:antialiased;
 }
-.num{font-family:"Bodoni Moda",Georgia,serif;font-variant-numeric:lining-nums;letter-spacing:0}
+.num{font-family:"DM Serif Display",Georgia,serif;font-variant-numeric:lining-nums;letter-spacing:0}
 .wrap{max-width:760px;margin:0 auto;padding:0 16px 120px}
 a{color:var(--adriatic-deep)}
 button{font:inherit;color:inherit}
@@ -57,7 +57,7 @@ header.top::after{
 }
 .brandrow{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
 h1.title{
-  margin:0;font-family:"Bodoni Moda",Georgia,serif;font-weight:600;
+  margin:0;font-family:"DM Serif Display",Georgia,serif;font-weight:600;
   font-size:clamp(19.8px,5.9vw,29.7px);line-height:1.1;letter-spacing:-.03em;white-space:nowrap;
 }
 h1.title em{display:block;font-style:normal;font-size:13.2px;white-space:normal;font-family:"Pretendard Variable",Pretendard,sans-serif;
@@ -65,7 +65,7 @@ h1.title em{display:block;font-style:normal;font-size:13.2px;white-space:normal;
 .dday{
   text-align:right;flex:none;
 }
-.dday b{display:block;font-family:"Bodoni Moda",Georgia,serif;font-size:26.4px;font-weight:600;line-height:1;color:var(--roof)}
+.dday b{display:block;font-family:"DM Serif Display",Georgia,serif;font-size:26.4px;font-weight:600;line-height:1;color:var(--roof)}
 .dday span{font-size:12.7px;color:var(--ink-soft)}
 
 /* day strip */
@@ -75,7 +75,7 @@ h1.title em{display:block;font-style:normal;font-size:13.2px;white-space:normal;
   min-width:0;background:#fff;border:1px solid #DCD9C8;border-radius:10px;
   padding:6px 2px;text-align:center;cursor:pointer;border-bottom-width:3px;
 }
-.chip .d{font-family:"Bodoni Moda",Georgia,serif;font-size:16.5px;font-weight:600;line-height:1}
+.chip .d{font-family:"DM Serif Display",Georgia,serif;font-size:16.5px;font-weight:600;line-height:1}
 .chip .w{font-size:10.5px;color:var(--ink-soft);margin-top:1px;line-height:1.25;min-height:12px}
 .chip .c{font-size:11px;margin-top:3px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chip[data-city=roma]{border-bottom-color:var(--roof)}
@@ -98,7 +98,7 @@ h1.title em{display:block;font-style:normal;font-size:13.2px;white-space:normal;
 .wxcard .ico{font-size:25.3px;line-height:1;flex:none}
 .wxcard .info{min-width:0;flex:1}
 .wxcard .city{font-size:12.1px;color:var(--ink-soft);font-weight:600;letter-spacing:.02em}
-.wxcard .now{font-family:"Bodoni Moda",Georgia,serif;font-size:20.9px;font-weight:600;line-height:1.15}
+.wxcard .now{font-family:"DM Serif Display",Georgia,serif;font-size:20.9px;font-weight:600;line-height:1.15}
 .wxcard .now small{font-family:"Pretendard Variable",Pretendard,sans-serif;font-size:12.1px;font-weight:500;color:var(--ink-soft);margin-left:5px;letter-spacing:-.01em}
 .wxcard.skel{color:var(--ink-soft);font-size:13.2px;justify-content:center}
 .quick{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
@@ -145,7 +145,7 @@ h2.sec:first-child{margin-top:4px}
   flex:none;width:46px;height:46px;border-radius:11px;display:grid;place-content:center;
   background:var(--paper-2);text-align:center;line-height:1;
 }
-.daynum b{font-family:"Bodoni Moda",Georgia,serif;font-size:18.7px;font-weight:600;display:block}
+.daynum b{font-family:"DM Serif Display",Georgia,serif;font-size:18.7px;font-weight:600;display:block}
 .daynum i{font-style:normal;font-size:10.5px;color:var(--ink-soft);display:block;margin-top:3px}
 .dayhead{flex:1;min-width:0}
 .dayhead h3{margin:0;font-size:17.6px;font-weight:700;letter-spacing:-.02em}
@@ -159,7 +159,7 @@ h2.sec:first-child{margin-top:4px}
 .tt::before{content:"";position:absolute;left:52px;top:10px;bottom:10px;width:1.5px;background:var(--line)}
 .tt li{display:flex;gap:14px;padding:7px 0;position:relative}
 .tt time{
-  flex:none;width:44px;text-align:right;font-family:"Bodoni Moda",Georgia,serif;
+  flex:none;width:44px;text-align:right;font-family:"DM Serif Display",Georgia,serif;
   font-size:14.3px;font-weight:600;color:var(--adriatic-deep);padding-top:1px;
 }
 .tt .dot{
@@ -268,7 +268,7 @@ table.bud input{border:0;border-bottom:1.5px dashed var(--line);border-radius:0;
 table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0}
 .bigsum{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:15px;margin-bottom:14px;display:flex;gap:14px;justify-content:space-between;align-items:center}
 .bigsum .lab{font-size:13.2px;color:var(--ink-soft)}
-.bigsum .val{font-family:"Bodoni Moda",Georgia,serif;font-size:27.5px;font-weight:600;line-height:1.1}
+.bigsum .val{font-family:"DM Serif Display",Georgia,serif;font-size:27.5px;font-weight:600;line-height:1.1}
 
 /* checklist */
 .clist{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
@@ -302,7 +302,7 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
 .qbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .qbar .track{flex:1;height:6px;background:var(--paper-2);border-radius:99px;overflow:hidden}
 .qbar .track i{display:block;height:100%;background:var(--roof);width:0;transition:width .3s}
-.qbar .cnt{font-family:"Bodoni Moda",Georgia,serif;font-size:14.3px;font-weight:600;color:var(--ink-soft);flex:none}
+.qbar .cnt{font-family:"DM Serif Display",Georgia,serif;font-size:14.3px;font-weight:600;color:var(--ink-soft);flex:none}
 .qtag{display:inline-block;font-size:12.1px;font-weight:700;background:var(--paper-2);color:var(--ink-soft);padding:3px 9px;border-radius:6px;margin-bottom:8px}
 .qtext{font-size:19.8px;font-weight:700;line-height:1.5;letter-spacing:-.02em;margin:0 0 16px}
 .qopts{display:grid;gap:8px}
@@ -323,7 +323,7 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
 .qfb.no{background:#FFF0EA;border:1px solid #F3D5C7;color:#7E3417}
 .qfb b{display:block;margin-bottom:4px;font-size:15.4px}
 .qres{text-align:center;padding:8px 4px}
-.qres .score{font-family:"Bodoni Moda",Georgia,serif;font-size:48.4px;font-weight:600;line-height:1;color:var(--roof)}
+.qres .score{font-family:"DM Serif Display",Georgia,serif;font-size:48.4px;font-weight:600;line-height:1;color:var(--roof)}
 .qres .of{font-size:14.3px;color:var(--ink-soft);margin-top:4px}
 .qres .rank{font-size:25.3px;font-weight:700;margin:16px 0 4px;letter-spacing:-.02em}
 .qres .msg{font-size:15.4px;color:var(--ink-soft);margin-bottom:18px}
@@ -342,14 +342,14 @@ table.bud tr.tot td{font-weight:700;background:var(--lemon-soft);border-bottom:0
 .qtimer{height:5px;background:var(--paper-2);border-radius:99px;overflow:hidden;margin:0 0 12px}
 .qtimer i{display:block;height:100%;background:var(--olive);width:100%;transition:width .95s linear}
 .qtimer.low i{background:var(--roof)}
-.qsec{font-family:"Bodoni Moda",Georgia,serif;font-size:13.2px;font-weight:600;color:var(--ink-soft);flex:none;min-width:26px;text-align:right}
+.qsec{font-family:"DM Serif Display",Georgia,serif;font-size:13.2px;font-weight:600;color:var(--ink-soft);flex:none;min-width:26px;text-align:right}
 .qtoggle{display:inline-flex;align-items:center;gap:8px;font-size:14.3px;color:var(--ink-soft);margin-bottom:16px;cursor:pointer}
 .qtoggle input{width:18px;height:18px;accent-color:var(--olive)}
 
 /* 이동 카드 */
 .mv{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--paper-2)}
 .mv:last-child{border-bottom:0;padding-bottom:0}
-.mv .dt{flex:none;width:36px;font-family:"Bodoni Moda",Georgia,serif;font-size:13.2px;font-weight:600;color:var(--ink-soft);padding-top:2px}
+.mv .dt{flex:none;width:36px;font-family:"DM Serif Display",Georgia,serif;font-size:13.2px;font-weight:600;color:var(--ink-soft);padding-top:2px}
 .mv .bd{flex:1;min-width:0}
 .mv .rt{font-size:15.4px;font-weight:700;line-height:1.4}
 .mv .rt .dur{display:inline-block;background:var(--lemon-soft);border:1px solid #DFD2AC;color:#6B5A15;
@@ -423,12 +423,45 @@ table.mp td:first-child{white-space:nowrap;font-weight:700}
   width:0;
   height:0;
 }
+
+/* ===== 2a Tirreno theme ===== */
+h1.title,.dday b,.chip .d,.wxcard .now,.daynum b,.tt time,.bigsum .val,.qbar .cnt,.qres .score,.qsec,.mv .dt,.num{font-weight:400}
+header.top{background:#0B4F8C;border-bottom:0;padding-top:22px}
+header.top::after{display:none}
+h1.title{color:#FFF8E6;letter-spacing:-.01em}
+h1.title em{color:#DCE8F4;font-weight:600}
+.dday{background:#E4573D;color:#fff;border-radius:99px;padding:10px 13px;text-align:center}
+.dday b{color:#fff;font-size:24px}
+.dday span{color:#fff;font-size:10.5px;display:block;margin-top:3px}
+.chip{background:#FFF8E6;border:0;border-radius:10px}
+.chip .w{color:#5A5A52}
+.chip[data-city=roma] .c{color:#C8442B}
+.chip[data-city=toscana] .c{color:#8A6612}
+.chip.on{background:#F5C518;border-color:#F5C518}
+.chip.on .d,.chip.on .w{color:#0E2238}
+.chip.on .c{color:#0B4F8C}
+nav.tabs{background:rgba(255,248,230,.95);border-bottom-color:#EADFC2}
+.tab[aria-selected=true]{color:#0B4F8C;border-bottom-color:#0B4F8C}
+.day{border-radius:16px}
+.daynum{border-radius:50%;background:#0B4F8C;color:#fff}
+.daynum b{font-size:20px}
+.daynum i{color:#DCE8F4;font-size:9.5px}
+.tt time{color:#0B4F8C;font-size:15px}
+.tt li.key time{color:#E4573D}
+.note.tip{background:#FFF1C2;border-color:#F2DE8C;color:#4A3B00}
+.note.tip b{color:#0B4F8C}
+.note.warn{background:#FFEDE7;border-color:#F6CFC3;color:#8A2E1A}
+.note.warn b{color:#C8442B}
+.note.cool{background:#E6F0F8;border-color:#C9DCEE;color:#083B69}
+.btn,.booked a.go{background:#0B4F8C}
+.fchip.on{background:#0B4F8C;border-color:#0B4F8C}
+.quick a.key{border-color:#F2DE8C}
 </style>
 
 <header class="top">
   <div class="wrap" style="padding-bottom:0">
     <div class="brandrow">
-      <h1 class="title">Roma · Firenze · Toscana
+      <h1 class="title">2026 ITALY TOUR
         <em>2026.10.2 금 — 10.10 토 · 이탈리아 여행 가이드</em>
       </h1>
       <div class="dday"><b id="ddayNum" class="num">D-</b><span id="ddayTxt">출발까지</span></div>
@@ -453,7 +486,6 @@ table.mp td:first-child{white-space:nowrap;font-weight:700}
 <div class="travel-tools" aria-label="현재 날씨와 길찾기"><div class="wxrow" id="wx"><div class="wxcard skel">현지 날씨를 불러오는 중…</div></div><div class="quick" id="quick"></div></div>
 
   <section class="pane on" id="p-plan">
-    <div class="note cool" id="rainBox" hidden></div>
     <details class="note warn fold" id="todoBox"><summary>출발 전에 반드시 확인할 네 가지</summary><div class="fold-body">
       <ul>
         <li><strong>10/4 집합 06:20 · 호텔 갈레스 앞</strong> — 일정표의 ‘호텔 갈레스’는 숙소가 아니라 남부투어 집합 장소였습니다.</li>
@@ -491,10 +523,10 @@ table.mp td:first-child{white-space:nowrap;font-weight:700}
     <div class="filters" id="mapFilters"></div>
     <div id="map"></div>
     <div class="legend">
-      <span><i style="background:#B3261E"></i>로마</span>
-      <span><i style="background:#0F3521"></i>남부·아말피</span>
-      <span><i style="background:#14432B"></i>피렌체·피사</span>
-      <span><i style="background:#A8922F"></i>토스카나</span>
+      <span><i style="background:#E4573D"></i>로마</span>
+      <span><i style="background:#0B4F8C"></i>남부·아말피</span>
+      <span><i style="background:#1F7A6A"></i>피렌체·피사</span>
+      <span><i style="background:#D9A800"></i>토스카나</span>
       <span><i style="background:#7A3450"></i>맛집</span>
     </div>
     <p class="foot" style="padding-top:12px">핀을 누르면 이름과 구글지도 길찾기 링크가 열립니다. 맛집 핀이 거슬리면 위의 보라색 버튼으로 끌 수 있습니다. 지도 타일은 OpenStreetMap.</p>
@@ -1457,7 +1489,7 @@ document.getElementById('moves').innerHTML = MOVES.map(m =>
 
 /* ============ 지도 ============ */
 let map = null, layers = {}, eatLayer = null;
-const CITYC = {roma:'#B3261E', sud:'#0F3521', firenze:'#14432B', toscana:'#A8922F'};
+const CITYC = {roma:'#E4573D', sud:'#0B4F8C', firenze:'#1F7A6A', toscana:'#D9A800'};
 function initMap(){
   if(map){ map.invalidateSize(); return; }
   if(typeof L === 'undefined'){ document.getElementById('map').innerHTML = '<p style="padding:20px;font-size:14.3px">지도를 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.</p>'; return; }
