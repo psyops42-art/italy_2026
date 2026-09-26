@@ -459,12 +459,23 @@ nav.tabs{background:rgba(255,248,230,.95);border-bottom-color:#EADFC2}
 .btn,.booked a.go{background:#0B4F8C}
 .fchip.on{background:#0B4F8C;border-color:#0B4F8C}
 .quick a.key{border-color:#F2DE8C}
+
+/* 타이틀 · 이탈리아 삼색 */
+h1.title .ttl{display:inline-block;position:relative;padding-bottom:10px}
+h1.title .ttl::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:4px;border-radius:2px;
+  background:linear-gradient(90deg,#009246 0 33.33%,#F4F5F0 33.33% 66.66%,#CE2B37 66.66% 100%);
+}
+h1.title .it-g{color:#6EE0A6}
+h1.title .it-w{color:#FFFFFF}
+h1.title .it-r{color:#FF8A7E}
+h1.title em{margin-top:8px}
 </style>
 
 <header class="top">
   <div class="wrap" style="padding-bottom:0">
     <div class="brandrow">
-      <h1 class="title">2026 ITALY TOUR
+      <h1 class="title"><span class="ttl"><span class="it-g">2026</span> <span class="it-w">ITALY</span> <span class="it-r">TOUR</span></span>
         <em>2026.10.2 금 — 10.10 토 · 이탈리아 여행 가이드</em>
       </h1>
       <div class="dday"><b id="ddayNum" class="num">D-</b><span id="ddayTxt">출발까지</span></div>
