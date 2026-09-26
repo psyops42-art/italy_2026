@@ -424,6 +424,9 @@ table.mp td:first-child{white-space:nowrap;font-weight:700}
   height:0;
 }
 
+/* 날짜 카드로 이동할 때 고정 탭바에 가리지 않도록 */
+.day{scroll-margin-top:calc(var(--navh,56px) + 12px)}
+
 /* ===== 2a Tirreno theme ===== */
 h1.title,.dday b,.chip .d,.wxcard .now,.daynum b,.tt time,.bigsum .val,.qbar .cnt,.qres .score,.qsec,.mv .dt,.num{font-weight:400}
 header.top{background:#0B4F8C;border-bottom:0;padding-top:22px}
@@ -749,9 +752,9 @@ const DAYS = [
 
 { id:"d3", date:"10.04", wd:"일", city:"sud", cLabel:"남부", w:"⛅",
   title:"폼페이와 아말피 해안", sub:"06:20 호텔 갈레스 앞 집합 · 하루 종일 · 페리 탑승",
-  meal:["간단한 빵","투어 중 외식 (선택, 약 15€)","숙소 · 한식 (늦은 귀가라 간단히)"],
+  meal:["전날 결정 (05:20 기상)","투어 중 외식 (선택, 약 15€)","숙소 · 한식 (늦은 귀가라 간단히)"],
   items:[
-    {t:"05:20", k:"key", n:"기상 · 간단한 빵으로 아침", d:"어제 장 볼 때 사둔 빵과 물로 가볍게. <strong>투어 차량 안에서는 음식을 먹을 수 없으니</strong> 탑승 전에 드세요. 간식은 정차 때나 자유시간에."},
+    {t:"05:20", k:"key", n:"기상 · 아침", d:"메뉴는 전날 정해두세요. 새벽이라 빵처럼 간단한 것이 무난합니다. <strong>투어 차량 안에서는 음식을 먹을 수 없으니</strong> 탑승 전에 드세요. 간식은 정차 때나 자유시간에."},
     {t:"06:00", k:"move", n:"숙소 출발 → 호텔 갈레스", dur:"도보 10분", d:"지도상 약 700m, 도보 10분쯤으로 보입니다. <strong>실제 숙소 주소로 한 번 재보세요.</strong> 새벽이라 길이 어두우니 여유 있게 나가세요."},
     {t:"06:20", k:"key", n:"호텔 갈레스 앞 집합", d:"Viale Castro Pretorio 66. 테르미니역 앞이 아니라 역 북동쪽 블록의 호텔 정문 앞입니다. 단체버스라 늦으면 기다려주지 않습니다."},
     {t:"10:30", n:"폼페이 유적 내부", d:"공인 가이드 해설. 입장료는 현장 결제인데 10/4는 무료입장일입니다 — 아래 확인."},
@@ -848,7 +851,7 @@ const DAYS = [
 
 { id:"d7", date:"10.08", wd:"목", city:"toscana", cLabel:"토스카나", w:"☀️",
   title:"토스카나 소도시 → 로마", sub:"06:30 피렌체 중앙역 집합 · B코스(와이너리) 확정",
-  meal:["간단히 (05:40 기상)","와이너리 단체식","외식 · 로마 도착 후"],
+  meal:["전날 결정 (05:40 기상)","와이너리 단체식","외식 · 로마 도착 후"],
   items:[
     {t:"05:40", k:"key", n:"기상 · 짐 최종 정리", d:"집합이 이르니 전날 밤에 캐리어를 다 싸두세요. <strong>투어 차량 안은 음식 금지</strong>라 아침은 출발 전에 드세요."},
     {t:"06:05", k:"key", n:"체크아웃 · 숙소 출발", d:"숙소에서 S.M.N.역까지 도보 5분. 캐리어를 끌고 가는 시간을 넉넉히 잡으세요."},
@@ -1288,8 +1291,22 @@ strip.addEventListener('click', e=>{
   b.classList.add('on');
   showTab('plan');
   const el = document.getElementById(b.dataset.go);
-  if(el){ el.open = true; setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),60); }
+  if(el){
+    el.open = true;
+    // 펼침·레이아웃 반영 후, 고정 탭바 높이만큼 비켜서 스크롤
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      const nav = document.querySelector('nav.tabs');
+      const off = (nav ? nav.getBoundingClientRect().height : 0) + 12;
+      const y = el.getBoundingClientRect().top + window.scrollY - off;
+      window.scrollTo({top: Math.max(0, y), behavior: 'smooth'});
+    }));
+  }
 });
+
+(function(){
+  const setNavH=()=>{ const n=document.querySelector('nav.tabs'); if(n) document.documentElement.style.setProperty('--navh', n.getBoundingClientRect().height+'px'); };
+  setNavH(); window.addEventListener('resize', setNavH);
+})();
 
 /* ============ 날짜별 실제 예보 ============ */
 const FCCITY = {
