@@ -1,0 +1,382 @@
+<!doctype html><html lang="ko"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="stylesheet" href="audio-guide.css"></head><body>
+<title>성 베드로 쿠폴라 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap">
+<style>
+/* Layout: one narrow phone-first column; a violet "route rail" ties the day's steps together, mirroring the VIOLET route on the ticket */
+:root{
+  --bg:#f6f6fa; --surface:#ffffff; --fg:#22202b; --muted:#625e70; --line:#e2e0ea;
+  --violet:#6a4dbb; --violet-soft:#efeafb; --gold:#a8771f; --gold-soft:#fbf3e2;
+  --warn:#b23a2e; --warn-soft:#fcebe8;
+  --display:"Noto Serif KR","Nanum Myeongjo",serif;
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15131b; --surface:#1f1c27; --fg:#ece9f4; --muted:#a8a3b8; --line:#34303f;
+  --violet:#a891ef; --violet-soft:#2a2340; --gold:#e2b65e; --gold-soft:#2d2618;
+  --warn:#f08a7d; --warn-soft:#3a201d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15131b; --surface:#1f1c27; --fg:#ece9f4; --muted:#a8a3b8; --line:#34303f;
+  --violet:#a891ef; --violet-soft:#2a2340; --gold:#e2b65e; --gold-soft:#2d2618;
+  --warn:#f08a7d; --warn-soft:#3a201d; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.65;margin:0}
+.wrap{max-width:640px;margin:0 auto;padding-inline:18px;padding-block:28px 56px;display:flex;flex-direction:column;gap:36px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:1.9rem}
+h2{font-size:1.3rem;display:flex;align-items:baseline;gap:10px}
+h3{font-size:1.02rem;margin:0}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;color:var(--violet);font-weight:700}
+.lede{color:var(--muted);margin-top:8px}
+section{display:flex;flex-direction:column;gap:14px}
+.tag{font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--violet);background:var(--violet-soft);padding:2px 8px;border-radius:99px}
+
+/* key facts */
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.fact{min-width:0}
+.fact .k{font-size:.78rem;color:var(--muted)}
+.fact .v{font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.fact .v.big{font-size:1.6rem;color:var(--violet);font-family:var(--display)}
+.fact.wide{grid-column:1/-1}
+.route{display:inline-flex;align-items:center;gap:6px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--violet);display:inline-block;flex:none}
+
+/* callouts */
+.call{border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.call.warn{background:var(--warn-soft)}
+.call.warn h3{color:var(--warn)}
+.call.gold{background:var(--gold-soft)}
+.call.gold h3{color:var(--gold)}
+.call ul{margin:0;padding-left:1.1em}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:62px;top:8px;bottom:8px;width:3px;background:var(--violet);opacity:.35;border-radius:2px}
+.tl li{display:grid;grid-template-columns:52px 24px 1fr;gap:0 10px;padding-block:10px}
+.tl .t{font-variant-numeric:tabular-nums;font-weight:700;font-size:.95rem;text-align:right;padding-top:1px}
+.tl .t small{display:block;font-weight:400;color:var(--muted);font-size:.72rem}
+.tl .m{width:15px;height:15px;border-radius:50%;background:var(--surface);border:3px solid var(--violet);margin:5px 0 0 1px;position:relative;z-index:1}
+.tl li.key .m{background:var(--violet)}
+.tl .c{min-width:0;display:flex;flex-direction:column;gap:3px}
+.tl .c p{color:var(--muted);font-size:.93rem}
+.pt{display:inline-block;min-width:22px;text-align:center;font-size:.72rem;font-weight:700;border:1px solid var(--line);border-radius:6px;padding:0 5px;margin-right:4px;color:var(--fg);background:var(--surface)}
+
+/* checklist */
+.check{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.check li+li{border-top:1px solid var(--line)}
+.check label{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:13px 16px;cursor:pointer;align-items:start}
+.check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--violet)}
+.check input:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+.check b{display:block}
+.check span span{color:var(--muted);font-size:.9rem}
+.check input:checked+span{opacity:.5}
+.progress{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* sights */
+.sights{display:flex;flex-direction:column;gap:10px}
+.sight{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;display:flex;flex-direction:column;gap:4px}
+.sight p{color:var(--muted);font-size:.93rem}
+.where{font-size:.78rem;color:var(--gold);font-weight:700}
+
+.steps{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px}
+.steps li::marker{color:var(--violet);font-weight:700}
+.muted{color:var(--muted);font-size:.9rem}
+a{color:var(--violet);text-underline-offset:3px}
+.copy{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.copy code{font-family:var(--body);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:4px 8px;user-select:all;word-break:break-all}
+.copy button{font:inherit;font-size:.82rem;border:1px solid var(--violet);color:var(--violet);background:transparent;border-radius:8px;padding:4px 10px;cursor:pointer}
+.copy button:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+footer{color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:16px}
+/* nav */
+.jump{display:flex;flex-wrap:wrap;gap:8px}
+.jump a{font-size:.85rem;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:5px 12px}
+.jump a:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+
+/* map */
+.map{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.map img{display:block;width:100%;height:auto;cursor:zoom-in}
+.maphint{font-size:.85rem;color:var(--muted)}
+
+.lb{position:fixed;inset:0;background:rgba(10,8,16,.92);z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:calc(20px + env(safe-area-inset-top,0px)) 16px calc(20px + env(safe-area-inset-bottom,0px))}
+.lb img{max-width:min(92vw,560px);max-height:72vh;background:#fff;border-radius:12px;padding:10px}
+.lb p{color:#fff;font-weight:700;margin:0}
+.lb .row{display:flex;gap:10px}
+.lb button{font:inherit;font-size:.95rem;border:0;border-radius:10px;padding:10px 18px;background:#fff;color:#22202b;cursor:pointer}
+.lb button:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+
+/* narration */
+.stop{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.stop .head{display:flex;gap:12px;align-items:flex-start}
+.stop .no{flex:none;width:30px;height:30px;border-radius:50%;background:var(--violet);color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.stop .head div{min-width:0}
+.stop h3{font-size:1.06rem}
+.stop p{font-size:.95rem}
+.stop .look{background:var(--violet-soft);border-radius:10px;padding:9px 12px;font-size:.9rem}
+.stop .look b{color:var(--violet)}
+.quote{font-family:var(--display);font-size:.98rem;border-left:3px solid var(--gold);padding-left:12px;color:var(--fg)}
+.mission{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.mission li{background:var(--gold-soft);border-radius:12px;padding:12px 14px;font-size:.92rem}
+.mission b{display:block;color:var(--gold)}
+.subhead{font-size:.82rem;font-weight:700;color:var(--muted);letter-spacing:.04em;margin-top:6px}
+
+@media (max-width:380px){.facts{grid-template-columns:1fr}.tl::before{left:58px}.tl li{grid-template-columns:48px 24px 1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">BASILICA DI SAN PIETRO · 10월 9일(금)</div>
+  <h1>성 베드로 대성당<br>쿠폴라 가이드</h1>
+  <p class="lede">엘리베이터로 쿠폴라에 올랐다가, 내려오는 길에 바로 대성당 안으로 이어지는 코스입니다. 예약 메일 내용을 바탕으로 정리했습니다.</p>
+</header>
+
+<nav class="jump" aria-label="바로가기">
+  <a href="#audio-guide">🎧 음성 가이드</a><a href="#map">광장 지도</a><a href="#h-time">동선</a><a href="#h-check">챙길 것</a><a href="#square">광장 해설</a><a href="#h-dome">쿠폴라</a><a href="#tour">대성당 해설</a>
+</nav>
+
+<div class="facts" role="group" aria-label="예약 요약">
+  <div class="fact"><div class="k">쿠폴라 입장 (엘리베이터)</div><div class="v big">14:30</div></div>
+  <div class="fact"><div class="k">대성당 입장</div><div class="v big">15:30</div></div>
+  <div class="fact"><div class="k">광장 도착 목표</div><div class="v">14:00 전</div></div>
+  <div class="fact"><div class="k">인원</div><div class="v">6명 <span class="muted">(성인 4 · 어린이 2)</span></div></div>
+  <div class="fact wide"><div class="k">내 경로</div><div class="v route"><span class="dot" aria-hidden="true"></span>VIOLET 경로 · Lambertini 입구</div></div>
+</div>
+
+<div class="call warn">
+  <h3>백팩·캐리어는 들고 들어갈 수 없어요</h3>
+  <p>캐리어, 배낭(백팩), 부피 큰 가방은 반입 금지이고 <b>짐 보관소도 없습니다</b>(유모차 두는 곳만 있음). 피렌체에서 산 백팩도 해당돼요. 작은 크로스백이나 손가방만 들고 가고, 나머지 짐은 숙소에 맡기거나 짐 보관 서비스를 이용하세요.</p>
+</div>
+
+<section id="audio-guide" aria-labelledby="h-audio"><h2 id="h-audio">귀로 걷는 성 베드로 <span class="tag">20개 MP3</span></h2><p class="muted">총 약 16분 · 한국어 음성. 항목을 누르면 바로 재생됩니다. 해설은 듣기 편하게 재구성했으며, 아래 원문과 표현이 다를 수 있어요.</p><div class="audio-actions"><button id="a-start">▶ 처음부터 듣기</button><button id="a-resume" hidden>이어서 듣기</button><a href="audio-list.m3u" download>재생목록 저장</a></div><p class="muted">오프라인으로 들으려면 각 항목의 <b>MP3 저장</b>을 눌러 주세요. 재생목록 파일만으로는 오프라인 재생이 되지 않습니다.</p><p id="a-progress" class="muted"></p><nav id="a-filters" aria-label="음성 구역 선택"><button data-group="전체" class="selected">전체</button><button data-group="광장">광장</button><button data-group="쿠폴라">쿠폴라</button><button data-group="대성당">성당 내부</button><button data-group="마무리">마무리</button></nav><input id="a-search" type="search" placeholder="해설 찾기 — 피에타, 꿀벌…" aria-label="해설 검색"><div id="a-cards"></div><p id="a-empty" hidden>검색 결과가 없습니다.</p></section>
+<section aria-labelledby="h-map" id="map">
+  <h2 id="h-map">광장 지도 <span class="tag">한국어</span></h2>
+  <p class="maphint">빨간 화살표가 예약자 동선입니다. 보라색 <b>I</b>에서 엘리베이터를 타고, 하늘색 <b>H</b>로 내려와 대성당 안으로 이어집니다. 지도를 누르면 크게 볼 수 있어요.</p>
+  <div class="map"><img id="mapimg" src="map_ko.jpg" width="1170" height="1464" alt="성 베드로 광장과 대성당 지도. A 콜로나토 광장, B 성 안나 문, C 안젤리카 문, D 예약 확인 가제보, E 대성당 입구, H 소비에스키 엘리베이터 출구, I 람베르티니 엘리베이터 입구, M 그로토 입구 등 한국어 범례 포함"></div>
+  <p class="maphint"><a href="map_ko.jpg" target="_blank" rel="noopener">새 창에서 원본 크기로 열기 ↗</a> (손가락으로 확대할 수 있어요)</p>
+</section>
+
+<section aria-labelledby="h-time">
+  <h2 id="h-time">내일의 동선</h2>
+  <p class="muted">알파벳은 위 지도의 표시 기호입니다. 현장 안내판과 노란 조끼를 입은 직원이 길을 안내해 줍니다.</p>
+  <ol class="tl">
+    <li><div class="t">13:45<small>권장</small></div><div class="m"></div><div class="c">
+      <h3><span class="pt">C</span>Via di Porta Angelica로 가기</h3>
+      <p>성 베드로 광장을 바라봤을 때 오른쪽 열주(콜로네이드) 바깥 길입니다. 길 <b>오른쪽</b>으로 걷다가 Porta Sant'Anna(성 안나 문)를 지나면 “온라인 예약(online bookings)” 표지판을 따라가세요.</p>
+      <p><a href="https://www.google.com/maps/search/?api=1&query=Via+di+Porta+Angelica+Roma" target="_blank" rel="noopener">구글 지도에서 열기 ↗</a></p>
+    </div></li>
+    <li class="key"><div class="t">14:00<small>늦어도</small></div><div class="m"></div><div class="c">
+      <h3><span class="pt">D</span>1차 · QR 확인 (광장 안 가제보)</h3>
+      <p>직원이 6명 각자의 QR을 확인합니다. 메일 안내는 <b>예약 시간 최소 30분 전</b> 광장 도착입니다.</p>
+    </div></li>
+    <li><div class="t">14:05</div><div class="m"></div><div class="c">
+      <h3>2차 · 보안 검색 (콜로네이드 아래)</h3>
+      <p>이탈리아 경찰이 공항식으로 검색합니다. 붐빌 때는 여기서 지연될 수 있어요.</p>
+    </div></li>
+    <li class="key"><div class="t">14:15<small>까지</small></div><div class="m"></div><div class="c">
+      <h3><span class="pt">E</span>→<span class="pt">I</span>대성당 입구에서 Lambertini 엘리베이터로</h3>
+      <p>대성당 입구(E)로 들어가 <b>VIOLET 경로</b> 표시를 따라 Lambertini 엘리베이터 입구(I)로 갑니다. 예약 시간 <b>15분 전까지</b> 도착해야 하고, 여기서 QR을 한 번 더 확인합니다.</p>
+    </div></li>
+    <li class="key"><div class="t">14:30</div><div class="m"></div><div class="c">
+      <h3>쿠폴라 오르기</h3>
+      <p>엘리베이터로 지붕 테라스까지 오른 뒤, 돔 안쪽 회랑을 거쳐 꼭대기까지 약 320계단을 걸어 올라갑니다. 아래 ‘쿠폴라 오르는 법’을 참고하세요.</p>
+    </div></li>
+    <li><div class="t">15:30<small>무렵</small></div><div class="m"></div><div class="c">
+      <h3><span class="pt">H</span>내려와서 대성당 안으로</h3>
+      <p>꼭대기에서 내려오면 Sobieski 엘리베이터(H)나 계단으로 내려가 <b>대성당 내부로 바로 이어집니다</b>. 다시 줄 설 필요가 없어요.</p>
+    </div></li>
+    <li><div class="t">15:30<small>~16:30</small></div><div class="m"></div><div class="c">
+      <h3>대성당 관람</h3>
+      <p>1시간 정도 둘러보면 좋아요. 볼거리는 아래 ‘대성당 해설’에 걷는 순서대로 정리했습니다.</p>
+    </div></li>
+    <li><div class="t">16:30<small>선택</small></div><div class="m"></div><div class="c">
+      <h3><span class="pt">M</span>바티칸 그로토 (지하 교황 묘소)</h3>
+      <p>그로토는 출구가 바깥으로 이어지는 한 방향 동선이라, 들어간다면 <b>맨 마지막</b>에 가세요.</p>
+    </div></li>
+  </ol>
+</section>
+
+<section aria-labelledby="h-check">
+  <h2 id="h-check">챙길 것 <span class="progress" id="progress" aria-live="polite"></span></h2>
+  <ul class="check" id="checklist">
+    <li><label for="c1"><input type="checkbox" id="c1"><span><b>QR 코드 6장</b><span>한 장에 한 명, 실명 티켓이라 본인 것만 유효합니다. 메일을 캡처해 두고 가족·친구 휴대폰에도 나눠 보내 두세요.</span></span></label></li>
+    <li><label for="c4"><input type="checkbox" id="c4"><span><b>휴대폰 충전 · 보조배터리</b><span>입장 QR과 사진까지 휴대폰 하나로 해결해야 합니다.</span></span></label></li>
+    <li><label for="c5"><input type="checkbox" id="c5"><span><b>어깨와 무릎을 가리는 옷</b><span>민소매, 짧은 반바지·치마는 입장이 거절될 수 있어요. 아이들도 같습니다.</span></span></label></li>
+    <li><label for="c6"><input type="checkbox" id="c6"><span><b>편한 운동화</b><span>돔 위쪽 계단은 좁고 벽이 기울어져 있어요.</span></span></label></li>
+    <li><label for="c7"><input type="checkbox" id="c7"><span><b>작은 가방만</b><span>백팩·캐리어 반입 불가, 보관소 없음.</span></span></label></li>
+    <li><label for="c8"><input type="checkbox" id="c8"><span><b>여권 (또는 사본)</b><span>실명 티켓이라 이름 확인을 요청받을 때를 대비하세요.</span></span></label></li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-square" id="square">
+  <h2 id="h-square">광장에서 기다리며 <span class="tag">5분 해설</span></h2>
+  <p>QR 확인 줄에 서 있는 동안 고개를 들어 보세요. 지금 서 계신 이 광장부터가 작품입니다.</p>
+  <div class="stop">
+    <h3>두 팔로 안아 주는 광장</h3>
+    <p>바로크의 거장 베르니니가 1656년부터 11년 동안 만든 광장이에요. 양쪽으로 휘어진 회랑(콜로네이드)은 기둥이 4줄, 모두 284개이고, 지붕 위에는 성인 조각상 140개가 서 있습니다. 베르니니는 이 모양을 “어머니인 교회가 두 팔을 벌려 세상 사람들을 안아 주는 모습”이라고 설명했어요.</p>
+    <p class="look"><b>직접 해 보세요</b> 오벨리스크와 양쪽 분수 사이 바닥에 <b>‘Centro del Colonnato’</b>라고 새겨진 둥근 돌판이 있어요. 그 위에 서서 회랑을 보면 4줄 기둥이 겹쳐져 한 줄처럼 보입니다. 아이들이 무척 신기해해요.</p>
+  </div>
+  <div class="stop">
+    <h3>광장 한가운데 이집트 오벨리스크</h3>
+    <p>높이 약 25m의 이 돌기둥은 이집트에서 만들어져 로마 황제 칼리굴라가 배로 실어 온 것입니다. 원래는 지금 대성당 왼편에 있던 네로 황제의 경기장에 서 있었는데, 베드로가 바로 그 근처에서 거꾸로 십자가에 매달려 순교했다고 전해져요. 그러니까 이 오벨리스크는 베드로의 마지막 순간을 지켜본 증인인 셈이죠. 1586년에 지금 자리로 옮겼습니다.</p>
+  </div>
+  <div class="stop">
+    <h3>정면과 ‘강복의 발코니’</h3>
+    <p>정면은 카를로 마데르노가 1612년에 완성했어요. 꼭대기에는 예수님, 세례자 요한, 그리고 사도 11명의 조각상이 서 있습니다. 베드로가 없는 이유는 계단 아래에서 열쇠를 든 채 여러분을 맞이하고 있기 때문이에요. 정면 가운데 발코니가 새 교황이 선출되면 처음 모습을 드러내는 곳으로, 2025년 5월 레오 14세 교황도 저기서 첫 인사를 했습니다.</p>
+  </div>
+</section>
+
+<section aria-labelledby="h-dome">
+  <h2 id="h-dome">쿠폴라 오르는 법</h2>
+  <ol class="steps">
+    <li><b>엘리베이터 → 지붕 테라스.</b> 대성당 지붕 위로 나옵니다. 정면 꼭대기에 선 거대한 성인 조각상들을 바로 뒤에서 볼 수 있고, 미켈란젤로의 돔을 가장 가까이에서 올려다보는 자리이기도 해요.</li>
+    <li><b>돔 안쪽 회랑.</b> 돔 내부 둘레를 걷는 난간 통로입니다. 저 아래 대성당 바닥과 발다키노가 장난감처럼 내려다보여요. 눈앞의 금빛 띠에 쓰인 라틴어 글자는 하나가 약 2m로 어른 키보다 큽니다. 내용은 마태오복음의 이 구절이에요.
+      <p class="quote" style="margin-top:8px">TU ES PETRUS ET SUPER HANC PETRAM AEDIFICABO ECCLESIAM MEAM…<br>“너는 베드로이다. 내가 이 반석 위에 내 교회를 세우리라. 너에게 하늘나라의 열쇠를 주겠다.”</p>
+      ‘베드로(Petrus)’라는 이름 자체가 ‘바위’라는 뜻이에요. 그 베드로가 묻힌 자리 위에 이 성당을 세웠으니, 돔 전체가 이 문장을 증명하는 셈입니다. 회랑 벽의 모자이크도 가까이서 보면 작은 유리 조각이 하나하나 박혀 있어요.</li>
+    <li><b>약 320계단.</b> 돔의 이중 벽 사이로 오릅니다. 위로 갈수록 통로가 좁아지고 벽이 돔 곡선을 따라 기울어지며, 마지막은 밧줄을 잡고 오르는 좁은 나선계단입니다.</li>
+    <li><b>꼭대기 전망대.</b> 열쇠 구멍 모양의 성 베드로 광장, 바티칸 정원, 로마 시내가 한눈에 들어옵니다. 사진은 여기서.</li>
+  </ol>
+  <div class="call gold">
+    <h3>아이들과 오를 때</h3>
+    <ul>
+      <li>계단은 한 방향으로만 진행해 중간에 되돌아가기 어렵습니다. 출발 전 화장실을 다녀오세요.</li>
+      <li>좁은 구간에서는 아이 손을 잡고 앞뒤로 어른이 서세요.</li>
+      <li>폐소공포증이나 심장·호흡기 문제가 있는 분은 무리하지 마세요.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="h-tour" id="tour">
+  <h2 id="h-tour">대성당 해설 <span class="tag">걷는 순서대로</span></h2>
+  <p>쿠폴라에서 내려오면 지도의 <b>H</b>, 즉 정문 쪽 왼편으로 나옵니다. 거기서 출발해 <b>정문 → 오른쪽 통로 → 중앙 → 맨 안쪽 → 왼쪽</b>으로 크게 한 바퀴 도는 순서로 정리했어요.</p>
+
+  <div class="stop">
+    <div class="head"><span class="no">1</span><div><div class="where">들어서자마자 · 전체 조망</div><h3>세상에서 가장 큰 성당에 오신 것을 환영합니다</h3></div></div>
+    <p>먼저 정문 쪽에서 안쪽을 한번 바라보세요. 내부 길이가 약 190m로, 축구장 두 개를 이어 놓은 것에 가까워요. 그런데 막상 서 보면 그렇게까지 커 보이지 않죠? 모든 것이 같은 비율로 거대해서 눈이 크기를 착각하기 때문이에요.</p>
+    <p class="look"><b>확인해 보세요</b> 첫 번째 기둥에 붙은 성수반을 아기 천사 둘이 받치고 있어요. 멀리서는 아기만 해 보이지만, 가까이 가서 아이와 나란히 서 보면 천사 키가 2m 가까이 됩니다. 중앙 통로 바닥에는 세계 다른 큰 성당들의 길이가 금색 글자로 표시돼 있어서, 여기가 얼마나 긴지 비교할 수 있어요.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">2</span><div><div class="where">정문 바로 안쪽 바닥</div><h3>붉은 반암 원판과 ‘거룩한 문’</h3></div></div>
+    <p>정문 바로 안쪽 바닥에 커다란 붉은 둥근 돌이 박혀 있어요. 800년 성탄절에 카롤루스 대제(샤를마뉴)가 옛 성 베드로 성당에서 황제관을 받을 때 무릎 꿇은 돌이라고 전해집니다. 서유럽 ‘신성로마제국’ 역사가 시작된 자리죠.</p>
+    <p>정문 벽 가장 오른쪽 문은 ‘거룩한 문’이에요. 25년마다 돌아오는 희년에만 열리는데, 2025년 희년이 끝나 지금은 다시 닫혀 있습니다.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">3</span><div><div class="where">정문 들어와 오른쪽 첫 경당</div><h3>미켈란젤로의 피에타</h3></div></div>
+    <p>오늘의 하이라이트 중 하나예요. 십자가에서 내려진 예수님을 성모 마리아가 무릎에 안고 있는 조각으로, 미켈란젤로가 겨우 스물네 살 때 대리석 한 덩어리를 깎아 완성했습니다(1499년).</p>
+    <p>성모님이 아들보다 오히려 더 젊어 보이죠? 왜 그렇게 젊게 만들었냐는 질문에 미켈란젤로는 “순결한 영혼은 늙지 않는다”고 답했다고 전해집니다. 그리고 성모님 가슴을 가로지르는 띠를 보세요. 사람들이 이 작품을 다른 조각가 것이라고 수군대자, 화가 난 미켈란젤로가 밤에 몰래 들어와 자기 이름을 새겼다고 해요. 그가 평생 이름을 새긴 작품은 이것 하나뿐입니다.</p>
+    <p class="look"><b>왜 유리 뒤에 있을까</b> 1972년에 한 남자가 망치로 성모님 얼굴과 팔을 내리친 사건이 있었어요. 복원한 뒤로는 방탄유리 너머로만 볼 수 있습니다. 사람이 많으니 앞쪽 가운데 자리가 나면 잠깐 서서 보세요.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">4</span><div><div class="where">오른쪽 통로 · 피에타 다음 경당</div><h3>성 요한 바오로 2세 교황의 무덤</h3></div></div>
+    <p>우리에게 특히 친근한 교황님이에요. 1984년과 1989년 두 번 한국을 찾았고, 1984년 방한 때는 여의도에서 김대건 신부를 비롯한 한국 순교자 103위를 성인으로 선포했습니다. 바티칸 밖에서 거행된 시성식으로도 유명해요. 2005년 선종했고, 2014년 성인이 되었습니다.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">5</span><div><div class="where">중앙 통로 오른쪽 · 돔 직전 기둥</div><h3>성 베드로 청동상</h3></div></div>
+    <p>의자에 앉아 오른손으로 축복하고 왼손에 천국의 열쇠를 든 베드로예요. 13세기 조각가 아르놀포 디 캄비오의 작품으로 전해집니다. 오른발을 보세요. 수백 년 동안 순례자들이 만지고 입을 맞춰 발가락이 거의 닳아 없어졌어요. 매년 6월 29일 베드로 축일에는 이 동상에 교황 예복을 입힌답니다.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">6</span><div><div class="where">돔 바로 아래 · 성당의 심장</div><h3>베르니니의 발다키노와 베드로의 무덤</h3></div></div>
+    <p>꽈배기처럼 꼬인 청동 기둥 네 개가 받치는 거대한 지붕 장식이에요. 높이가 약 29m, 아파트 10층 정도입니다. 베르니니가 20대 중반에 맡아 1634년에 완성했어요. 청동이 모자라 판테온 현관의 청동을 뜯어 썼다는 이야기가 전해지는데, 로마 사람들은 이를 두고 “야만인도 안 한 짓을 바르베리니가 했다”고 비꼬았답니다. 바르베리니는 당시 교황 우르바노 8세의 가문 이름이에요.</p>
+    <p>발다키노 바로 아래가 교황만 미사를 드릴 수 있는 교황 제대이고, 그 앞에 아래로 내려가는 반원형 공간(고백의 제대)이 있어요. 그 아래 땅속 깊은 곳에 베드로의 무덤이 있습니다. 2,000년 전 순교한 어부 베드로의 무덤 위에 4세기 콘스탄티누스 황제가 첫 성당을 세웠고, 그 자리에 지금 성당을 다시 지은 거예요. 이 성당이 왜 하필 여기 있는지에 대한 답이 바로 이 자리입니다.</p>
+    <p class="look"><b>숨은 그림</b> 기둥을 타고 올라가는 금빛 꿀벌을 찾아보세요. 바르베리니 가문의 문장이에요. 기둥 받침 대리석의 문장 장식에는 여인의 얼굴이 조금씩 변해 가는 조각이 있는데, 출산 과정을 표현했다는 재미있는 해석이 전해집니다.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">7</span><div><div class="where">발다키노 옆에서 올려다보기</div><h3>방금 우리가 저 위에 있었어요</h3></div></div>
+    <p>이제 고개를 젖혀 돔을 올려다보세요. 지름 약 42m, 꼭대기 십자가까지 약 136m입니다. 아까 걸었던 금빛 글자 띠와 회랑이 보이고, 그 위 가장 작은 창 근처가 우리가 서 있던 전망대예요. 아이들에게 “우리가 저기 있었어” 하고 가리켜 주기 딱 좋은 순간입니다.</p>
+    <p>미켈란젤로가 일흔이 넘어 설계했지만, 완성을 보지 못하고 세상을 떠났어요. 제자 자코모 델라 포르타가 1590년에 마무리했습니다.</p>
+    <p>돔을 받치는 네 기둥에는 4m가 넘는 성인 조각상이 서 있어요. 예수님 옆구리를 창으로 찌른 로마 병사 <b>롱기누스</b>(베르니니 작), 예수님의 십자가를 찾았다는 <b>헬레나</b>, 예수님 얼굴을 닦아 드린 <b>베로니카</b>, 베드로의 동생 <b>안드레아</b>입니다. 모두 이 성당에 보관된 유물과 관련된 인물이에요.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">8</span><div><div class="where">맨 안쪽 정면 (앱스)</div><h3>성 베드로의 의자와 빛나는 비둘기</h3></div></div>
+    <p>발다키노 기둥 사이로 저 안쪽을 보면 금빛으로 폭발하는 듯한 장식이 보여요. 베르니니가 말년에 10년 가까이 매달려 1666년에 완성한 ‘성 베드로의 의자’입니다. 청동 왕좌 안에 베드로가 썼다고 전해 온 오래된 나무 의자가 들어 있어요. 이 의자를 교회의 큰 스승(교부) 네 명이 받치고 있는데, 앞의 두 명은 서방 교회, 뒤의 두 명은 동방 교회를 대표해요. 동서 교회가 함께 베드로의 권위를 떠받친다는 뜻이죠.</p>
+    <p>그 위 노란 유리창 한가운데 날개를 편 비둘기는 성령을 상징해요. 이 성당은 정면이 동쪽, 안쪽이 서쪽을 향해 있어서, 맑은 날 오후에는 서쪽 햇살이 이 창을 통과해 금빛 장식 전체가 빛납니다. 우리가 들어가는 오후 시간이 마침 그때예요.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">9</span><div><div class="where">왼쪽 뒤편 · 문 위</div><h3>베르니니의 마지막 걸작, 해골과 모래시계</h3></div></div>
+    <p>안쪽에서 왼쪽으로 돌아 나오다 보면, 문 위에 붉은 대리석 휘장이 드리워진 교황 알렉산데르 7세의 무덤이 있어요. 휘장 아래에서 금빛 해골이 모래시계를 들어 올리고 있습니다. “당신의 시간도 흘러가고 있다”는 뜻이에요. 여든이 다 된 베르니니가 만든 마지막 대작이라, 그 의미가 더 묵직하게 다가옵니다.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">10</span><div><div class="where">성당 곳곳</div><h3>그림처럼 보이지만 사실은 모자이크</h3></div></div>
+    <p>경당마다 걸린 커다란 제단화를 가까이서 보세요. 붓 자국 대신 작은 돌과 유리 조각이 보일 거예요. 성당 안이 습해서 그림이 상하자 대부분을 모자이크로 바꿨습니다. 라파엘로의 ‘그리스도의 변모’ 같은 명화도 여기서는 모자이크 사본이에요. 수백 년이 지나도 색이 바래지 않습니다.</p>
+    <p class="look"><b>미리 알려 주세요</b> 오른쪽 통로 쪽 제대 아래에는 성 요한 23세 교황의 시신이 유리관에 안치돼 있어요. 아이들이 놀랄 수 있으니 미리 이야기해 주세요.</p>
+  </div>
+
+  <div class="stop">
+    <div class="head"><span class="no">11</span><div><div class="where">지도의 M · 선택</div><h3>바티칸 그로토 (지하 교황 묘소)</h3></div></div>
+    <p>대성당 바닥 아래, 옛 성당 바닥 높이에 역대 교황들의 무덤이 모여 있어요. 2022년 선종한 베네딕토 16세 교황도 이곳에 잠들어 있습니다. 출구가 바로 바깥으로 이어지는 한 방향 동선이라 <b>맨 마지막</b>에 들르세요.</p>
+  </div>
+
+  <p class="subhead">나가는 길</p>
+  <p class="muted">출구 근처에서 파랑·노랑·빨강 줄무늬 제복의 <b>스위스 근위대</b>를 볼 수 있어요. 1506년부터 교황을 지켜 온 세계에서 가장 작은 군대입니다.</p>
+
+  <p class="subhead">아이들과 함께하는 보물찾기</p>
+  <ul class="mission">
+    <li><b>닳아 버린 발</b>성 베드로 청동상의 반들반들한 오른발</li>
+    <li><b>숨은 꿀벌</b>발다키노 기둥을 기어오르는 금빛 꿀벌</li>
+    <li><b>거인 아기 천사</b>성수반을 든 천사와 키 재기</li>
+    <li><b>해골과 모래시계</b>알렉산데르 7세 무덤 위</li>
+    <li><b>빛나는 비둘기</b>맨 안쪽 노란 창 한가운데</li>
+    <li><b>바닥의 금색 글자</b>다른 나라 성당 이름 찾기</li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-help">
+  <h2 id="h-help">문제가 생기면</h2>
+  <ul class="steps" style="list-style:disc">
+    <li>늦을 것 같으면 현장의 방문객 안내(Visitor Assistance)나 노란 조끼 직원에게 바로 말하세요. 대성당 단독 QR은 예약 시간 15분 전부터 15분 후까지만 유효합니다.</li>
+    <li>보안 검색이 붐비면 지연될 수 있다고 메일에도 적혀 있으니, 30분 전 도착을 지켜 주세요.</li>
+    <li>예약 문의 이메일
+      <div class="copy"><code id="mail">booking@basilicasanpietro.va</code><button type="button" id="copyBtn">복사</button></div>
+    </li>
+    <li>예약 메일 맨 위의 <b>Booking code</b>를 캡처해 두면 문의할 때 편합니다.</li>
+  </ul>
+</section>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="크게 보기">
+  <p id="lbLabel"></p>
+  <img id="lbImg" src="" alt="">
+  <div class="row"><button type="button" id="lbClose">닫기</button></div>
+</div>
+
+<footer>예약 확인 메일(Basilica Papale di San Pietro)과 공식 사이트 basilicasanpietro.va 안내를 바탕으로 정리했습니다. 현장 안내가 다르면 현장 안내를 따르세요.</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='stpeter-check-v1', boxes=[].slice.call(document.querySelectorAll('#checklist input')), prog=document.getElementById('progress'), saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){}
+  function render(){var n=boxes.filter(function(b){return b.checked}).length;prog.textContent=n+' / '+boxes.length}
+  boxes.forEach(function(b){b.checked=!!saved[b.id];b.addEventListener('change',function(){saved[b.id]=b.checked;try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}render()})});
+  render();
+  var btn=document.getElementById('copyBtn'), mail=document.getElementById('mail');
+  btn.addEventListener('click',function(){
+    var t=mail.textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){btn.textContent='복사됨'},function(){sel();btn.textContent='선택됨'})}else{sel();btn.textContent='선택됨'}
+    setTimeout(function(){btn.textContent='복사'},1800);
+  });
+
+  var lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), lbLabel=document.getElementById('lbLabel'), close=document.getElementById('lbClose'), last=null;
+  function open(){last=document.activeElement;lbImg.src='map_ko.jpg';lbImg.alt='광장 지도';lbLabel.textContent='광장 지도';lb.hidden=false;close.focus();}
+  function shut(){lb.hidden=true;if(last)last.focus();}
+  document.getElementById('mapimg').addEventListener('click',open);
+  close.addEventListener('click',shut);
+  lb.addEventListener('click',function(e){if(e.target===lb)shut()});
+  document.addEventListener('keydown',function(e){if(!lb.hidden&&e.key==='Escape')shut();});
+})();
+</script>
+
+<aside id="a-player" hidden aria-label="오디오 재생기"><div class="a-player-inner"><strong id="a-title"></strong><audio id="a-audio" controls preload="metadata"></audio><div class="a-player-controls"><button id="a-prev" aria-label="이전 해설">⏮</button><button id="a-back">−10초</button><button id="a-forward">+10초</button><button id="a-next" aria-label="다음 해설">⏭</button><label>속도 <select id="a-speed"><option value="0.85">0.85×</option><option value="1" selected>1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option></select></label><button id="a-close">닫기</button></div><div class="a-options"><label><input id="a-auto" type="checkbox"> 연속 재생</label><button id="a-read">해설 보기</button><a id="a-download" download>MP3 저장 ↓</a></div><p id="a-error" role="status" hidden>음성을 불러오지 못했습니다. 연결을 확인한 뒤 다시 눌러 주세요.</p></div></aside><dialog id="a-dialog"><button id="a-dialog-close" aria-label="닫기">✕</button><h2 id="a-dialog-title"></h2><p id="a-dialog-text"></p><p class="look" id="a-dialog-tip"></p></dialog><script src="audio-guide.js"></script></body></html>
