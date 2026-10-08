@@ -1,0 +1,130 @@
+<!doctype html><html lang="ko"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="stylesheet" href="audio-guide.css"></head><body>
+<title>성 베드로 오디오 가이드 · 20개 해설</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap">
+<style>
+/* Layout: one narrow phone-first column; a violet "route rail" ties the day's steps together, mirroring the VIOLET route on the ticket */
+:root{
+  --bg:#f6f6fa; --surface:#ffffff; --fg:#22202b; --muted:#625e70; --line:#e2e0ea;
+  --violet:#6a4dbb; --violet-soft:#efeafb; --gold:#a8771f; --gold-soft:#fbf3e2;
+  --warn:#b23a2e; --warn-soft:#fcebe8;
+  --display:"Noto Serif KR","Nanum Myeongjo",serif;
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15131b; --surface:#1f1c27; --fg:#ece9f4; --muted:#a8a3b8; --line:#34303f;
+  --violet:#a891ef; --violet-soft:#2a2340; --gold:#e2b65e; --gold-soft:#2d2618;
+  --warn:#f08a7d; --warn-soft:#3a201d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15131b; --surface:#1f1c27; --fg:#ece9f4; --muted:#a8a3b8; --line:#34303f;
+  --violet:#a891ef; --violet-soft:#2a2340; --gold:#e2b65e; --gold-soft:#2d2618;
+  --warn:#f08a7d; --warn-soft:#3a201d; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.65;margin:0}
+.wrap{max-width:640px;margin:0 auto;padding-inline:18px;padding-block:28px 56px;display:flex;flex-direction:column;gap:36px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:1.9rem}
+h2{font-size:1.3rem;display:flex;align-items:baseline;gap:10px}
+h3{font-size:1.02rem;margin:0}
+p{margin:0}
+.eyebrow{font-size:.78rem;letter-spacing:.08em;color:var(--violet);font-weight:700}
+.lede{color:var(--muted);margin-top:8px}
+section{display:flex;flex-direction:column;gap:14px}
+.tag{font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.06em;color:var(--violet);background:var(--violet-soft);padding:2px 8px;border-radius:99px}
+
+/* key facts */
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px 16px}
+.fact{min-width:0}
+.fact .k{font-size:.78rem;color:var(--muted)}
+.fact .v{font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.fact .v.big{font-size:1.6rem;color:var(--violet);font-family:var(--display)}
+.fact.wide{grid-column:1/-1}
+.route{display:inline-flex;align-items:center;gap:6px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--violet);display:inline-block;flex:none}
+
+/* callouts */
+.call{border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.call.warn{background:var(--warn-soft)}
+.call.warn h3{color:var(--warn)}
+.call.gold{background:var(--gold-soft)}
+.call.gold h3{color:var(--gold)}
+.call ul{margin:0;padding-left:1.1em}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:62px;top:8px;bottom:8px;width:3px;background:var(--violet);opacity:.35;border-radius:2px}
+.tl li{display:grid;grid-template-columns:52px 24px 1fr;gap:0 10px;padding-block:10px}
+.tl .t{font-variant-numeric:tabular-nums;font-weight:700;font-size:.95rem;text-align:right;padding-top:1px}
+.tl .t small{display:block;font-weight:400;color:var(--muted);font-size:.72rem}
+.tl .m{width:15px;height:15px;border-radius:50%;background:var(--surface);border:3px solid var(--violet);margin:5px 0 0 1px;position:relative;z-index:1}
+.tl li.key .m{background:var(--violet)}
+.tl .c{min-width:0;display:flex;flex-direction:column;gap:3px}
+.tl .c p{color:var(--muted);font-size:.93rem}
+.pt{display:inline-block;min-width:22px;text-align:center;font-size:.72rem;font-weight:700;border:1px solid var(--line);border-radius:6px;padding:0 5px;margin-right:4px;color:var(--fg);background:var(--surface)}
+
+/* checklist */
+.check{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.check li+li{border-top:1px solid var(--line)}
+.check label{display:grid;grid-template-columns:24px 1fr;gap:12px;padding:13px 16px;cursor:pointer;align-items:start}
+.check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--violet)}
+.check input:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+.check b{display:block}
+.check span span{color:var(--muted);font-size:.9rem}
+.check input:checked+span{opacity:.5}
+.progress{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* sights */
+.sights{display:flex;flex-direction:column;gap:10px}
+.sight{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;display:flex;flex-direction:column;gap:4px}
+.sight p{color:var(--muted);font-size:.93rem}
+.where{font-size:.78rem;color:var(--gold);font-weight:700}
+
+.steps{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px}
+.steps li::marker{color:var(--violet);font-weight:700}
+.muted{color:var(--muted);font-size:.9rem}
+a{color:var(--violet);text-underline-offset:3px}
+.copy{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.copy code{font-family:var(--body);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:4px 8px;user-select:all;word-break:break-all}
+.copy button{font:inherit;font-size:.82rem;border:1px solid var(--violet);color:var(--violet);background:transparent;border-radius:8px;padding:4px 10px;cursor:pointer}
+.copy button:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+footer{color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:16px}
+/* nav */
+.jump{display:flex;flex-wrap:wrap;gap:8px}
+.jump a{font-size:.85rem;text-decoration:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:99px;padding:5px 12px}
+.jump a:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+
+/* map */
+.map{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.map img{display:block;width:100%;height:auto;cursor:zoom-in}
+.maphint{font-size:.85rem;color:var(--muted)}
+
+.lb{position:fixed;inset:0;background:rgba(10,8,16,.92);z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:calc(20px + env(safe-area-inset-top,0px)) 16px calc(20px + env(safe-area-inset-bottom,0px))}
+.lb img{max-width:min(92vw,560px);max-height:72vh;background:#fff;border-radius:12px;padding:10px}
+.lb p{color:#fff;font-weight:700;margin:0}
+.lb .row{display:flex;gap:10px}
+.lb button{font:inherit;font-size:.95rem;border:0;border-radius:10px;padding:10px 18px;background:#fff;color:#22202b;cursor:pointer}
+.lb button:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+
+/* narration */
+.stop{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.stop .head{display:flex;gap:12px;align-items:flex-start}
+.stop .no{flex:none;width:30px;height:30px;border-radius:50%;background:var(--violet);color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.stop .head div{min-width:0}
+.stop h3{font-size:1.06rem}
+.stop p{font-size:.95rem}
+.stop .look{background:var(--violet-soft);border-radius:10px;padding:9px 12px;font-size:.9rem}
+.stop .look b{color:var(--violet)}
+.quote{font-family:var(--display);font-size:.98rem;border-left:3px solid var(--gold);padding-left:12px;color:var(--fg)}
+.mission{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.mission li{background:var(--gold-soft);border-radius:12px;padding:12px 14px;font-size:.92rem}
+.mission b{display:block;color:var(--gold)}
+.subhead{font-size:.82rem;font-weight:700;color:var(--muted);letter-spacing:.04em;margin-top:6px}
+
+@media (max-width:380px){.facts{grid-template-columns:1fr}.tl::before{left:58px}.tl li{grid-template-columns:48px 24px 1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<main class="wrap"><nav class="jump" aria-label="페이지 이동"><a href="index.html">← 관람 안내 · 지도 보기</a></nav><section id="audio-guide" aria-labelledby="h-audio"><h1 id="h-audio">귀로 걷는 성 베드로 <span class="tag">20개 MP3</span></h1><p class="muted">총 약 16분 · 한국어 음성. 항목을 누르면 바로 재생됩니다. 해설은 듣기 편하게 재구성했으며, 관람 안내의 원문과 표현이 다를 수 있어요.</p><div class="audio-actions"><button id="a-start">▶ 처음부터 듣기</button><button id="a-resume" hidden>이어서 듣기</button><a href="audio-list.m3u" download>재생목록 저장</a></div><p class="muted">오프라인으로 들으려면 각 항목의 <b>MP3 저장</b>을 눌러 주세요. 재생목록 파일만으로는 오프라인 재생이 되지 않습니다.</p><p id="a-progress" class="muted"></p><nav id="a-filters" aria-label="음성 구역 선택"><button data-group="전체" class="selected">전체</button><button data-group="광장">광장</button><button data-group="쿠폴라">쿠폴라</button><button data-group="대성당">성당 내부</button><button data-group="마무리">마무리</button></nav><input id="a-search" type="search" placeholder="해설 찾기 — 피에타, 꿀벌…" aria-label="해설 검색"><div id="a-cards"></div><p id="a-empty" hidden>검색 결과가 없습니다.</p></section></main><aside id="a-player" hidden aria-label="오디오 재생기"><div class="a-player-inner"><strong id="a-title"></strong><audio id="a-audio" controls preload="metadata"></audio><div class="a-player-controls"><button id="a-prev" aria-label="이전 해설">⏮</button><button id="a-back">−10초</button><button id="a-forward">+10초</button><button id="a-next" aria-label="다음 해설">⏭</button><label>속도 <select id="a-speed"><option value="0.85">0.85×</option><option value="1" selected>1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option></select></label><button id="a-close">닫기</button></div><div class="a-options"><label><input id="a-auto" type="checkbox"> 연속 재생</label><button id="a-read">해설 보기</button><a id="a-download" download>MP3 저장 ↓</a></div><p id="a-error" role="status" hidden>음성을 불러오지 못했습니다. 연결을 확인한 뒤 다시 눌러 주세요.</p></div></aside><dialog id="a-dialog"><button id="a-dialog-close" aria-label="닫기">✕</button><h2 id="a-dialog-title"></h2><p id="a-dialog-text"></p><p class="look" id="a-dialog-tip"></p></dialog><script src="audio-guide.js"></script></body></html>
