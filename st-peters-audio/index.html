@@ -136,7 +136,7 @@ footer{color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);paddi
 </header>
 
 <nav class="jump" aria-label="바로가기">
-  <a href="#audio-guide">🎧 음성 가이드</a><a href="#map">광장 지도</a><a href="#h-time">동선</a><a href="#h-check">챙길 것</a><a href="#square">광장 해설</a><a href="#h-dome">쿠폴라</a><a href="#tour">대성당 해설</a>
+  <a href="audio.html">🎧 음성 가이드</a><a href="#map">광장 지도</a><a href="#h-time">동선</a><a href="#h-check">챙길 것</a><a href="#square">광장 해설</a><a href="#h-dome">쿠폴라</a><a href="#tour">대성당 해설</a>
 </nav>
 
 <div class="facts" role="group" aria-label="예약 요약">
@@ -152,7 +152,7 @@ footer{color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);paddi
   <p>캐리어, 배낭(백팩), 부피 큰 가방은 반입 금지이고 <b>짐 보관소도 없습니다</b>(유모차 두는 곳만 있음). 피렌체에서 산 백팩도 해당돼요. 작은 크로스백이나 손가방만 들고 가고, 나머지 짐은 숙소에 맡기거나 짐 보관 서비스를 이용하세요.</p>
 </div>
 
-<section id="audio-guide" aria-labelledby="h-audio"><h2 id="h-audio">귀로 걷는 성 베드로 <span class="tag">20개 MP3</span></h2><p class="muted">총 약 16분 · 한국어 음성. 항목을 누르면 바로 재생됩니다. 해설은 듣기 편하게 재구성했으며, 아래 원문과 표현이 다를 수 있어요.</p><div class="audio-actions"><button id="a-start">▶ 처음부터 듣기</button><button id="a-resume" hidden>이어서 듣기</button><a href="audio-list.m3u" download>재생목록 저장</a></div><p class="muted">오프라인으로 들으려면 각 항목의 <b>MP3 저장</b>을 눌러 주세요. 재생목록 파일만으로는 오프라인 재생이 되지 않습니다.</p><p id="a-progress" class="muted"></p><nav id="a-filters" aria-label="음성 구역 선택"><button data-group="전체" class="selected">전체</button><button data-group="광장">광장</button><button data-group="쿠폴라">쿠폴라</button><button data-group="대성당">성당 내부</button><button data-group="마무리">마무리</button></nav><input id="a-search" type="search" placeholder="해설 찾기 — 피에타, 꿀벌…" aria-label="해설 검색"><div id="a-cards"></div><p id="a-empty" hidden>검색 결과가 없습니다.</p></section>
+<section id="audio-guide" aria-label="음성 가이드 바로가기"><h2>귀로 걷는 성 베드로 <span class="tag">20개 MP3</span></h2><p class="muted">해설 듣기와 MP3 저장은 별도 음성 가이드 페이지에서 이용하세요.</p><nav class="jump"><a href="audio.html">🎧 음성 가이드 열기 →</a></nav></section>
 <section aria-labelledby="h-map" id="map">
   <h2 id="h-map">광장 지도 <span class="tag">한국어</span></h2>
   <p class="maphint">빨간 화살표가 예약자 동선입니다. 보라색 <b>I</b>에서 엘리베이터를 타고, 하늘색 <b>H</b>로 내려와 대성당 안으로 이어집니다. 지도를 누르면 크게 볼 수 있어요.</p>
@@ -379,4 +379,4 @@ footer{color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);paddi
 })();
 </script>
 
-<aside id="a-player" hidden aria-label="오디오 재생기"><div class="a-player-inner"><strong id="a-title"></strong><audio id="a-audio" controls preload="metadata"></audio><div class="a-player-controls"><button id="a-prev" aria-label="이전 해설">⏮</button><button id="a-back">−10초</button><button id="a-forward">+10초</button><button id="a-next" aria-label="다음 해설">⏭</button><label>속도 <select id="a-speed"><option value="0.85">0.85×</option><option value="1" selected>1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option></select></label><button id="a-close">닫기</button></div><div class="a-options"><label><input id="a-auto" type="checkbox"> 연속 재생</label><button id="a-read">해설 보기</button><a id="a-download" download>MP3 저장 ↓</a></div><p id="a-error" role="status" hidden>음성을 불러오지 못했습니다. 연결을 확인한 뒤 다시 눌러 주세요.</p></div></aside><dialog id="a-dialog"><button id="a-dialog-close" aria-label="닫기">✕</button><h2 id="a-dialog-title"></h2><p id="a-dialog-text"></p><p class="look" id="a-dialog-tip"></p></dialog><script src="audio-guide.js"></script></body></html>
+</body></html>
